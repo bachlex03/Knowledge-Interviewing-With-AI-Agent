@@ -28,3 +28,17 @@ vi: **Lớp (Class)** là một bản thiết kế hoặc khuôn mẫu để t�
 **Answer**:
 en: A special method used to initialize objects. It is called automatically when an instance of a class is created.
 vi: Một phương thức đặc biệt được sử dụng để khởi tạo đối tượng. Nó được gọi tự động khi một thực thể của lớp được tạo ra.
+
+## 5. What are Access Modifiers?
+**Answer**:
+en: They define the visibility and accessibility of classes, methods, and variables. Common ones include **public**, **private**, and **protected**.
+vi: Chúng xác định mức độ hiển thị và khả năng truy cập của các lớp, phương thức và biến. Các loại phổ biến bao gồm **public** (công khai), **private** (riêng tư) và **protected** (được bảo vệ).
+
+## 6. What is Method Overloading vs. Overriding?
+**Answer**:
+en: 
+- **Overloading**: Multiple methods with the same name but different parameters within the same class (compile-time polymorphism).
+- **Overriding**: A subclass provides a specific implementation for a method already defined in its parent class (runtime polymorphism).
+vi:
+- **Overloading (Nạp chồng)**: Nhiều phương thức có cùng tên nhưng khác tham số trong cùng một lớp (đa hình tại thời điểm biên dịch).
+- **Overriding (Ghi đè)**: Một lớp con cung cấp triển khai cụ thể cho một phương thức đã được định nghĩa trong lớp cha của nó (đa hình tại thời điểm thực thi).
