@@ -18,4 +18,6 @@ When this workflow is triggered, the AI must activate the technical interviewing
    - The agent will identify the topic.
    - The agent will read `TOPIC.md`.
    - The agent will create `foundation` and `advance` Q&A files.
+   - **Critical Rule**: Generate at least **10 questions** for each folder (`foundation` and `advance`).
+   - **Optional Rule**: Provide visualization (e.g., Mermaid diagrams) for questions in the markdown file if possible to enhance understanding.
    - The agent will begin the interview process using the `format-question-and-answer` skill.
