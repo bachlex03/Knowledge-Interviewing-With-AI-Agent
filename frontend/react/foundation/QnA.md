@@ -38,30 +38,30 @@ vi: Việc xử lý sự kiện trong React tương tự như xử lý sự ki�
 
 ---
 
-## Q5: Why is the 'key' prop important in lists?
+## Q5: Why is the 'key' prop important in lists? - **MEDIUM**
 en: Keys help React identify which items have changed, been added, or been removed. They should be given to the elements inside the array to give the elements a stable identity, which helps in efficient DOM updates during reconciliation.
 vi: Các khóa (Keys) giúp React xác định mục nào đã thay đổi, được thêm vào hoặc bị xóa bỏ. Chúng nên được gán cho các phần tử bên trong mảng để tạo cho chúng một danh tính ổn định, giúp cập nhật DOM hiệu quả trong quá trình đối soát (reconciliation).
 
 ---
 
-## Q7: What is the useEffect hook used for?
+## Q7: What is the useEffect hook used for? - **HIGH**
 en: The useEffect hook allows you to perform side effects in functional components. Examples of side effects include fetching data, directly updating the DOM, and setting up subscriptions. It serves a similar purpose as componentDidMount, componentDidUpdate, and componentWillUnmount in React classes.
 vi: Hook useEffect cho phép bạn thực hiện các tác vụ lề (side effects) trong các thành phần hàm. Ví dụ về các tác vụ lề bao gồm lấy dữ liệu, cập nhật DOM trực tiếp và thiết lập các đăng ký (subscriptions). Nó phục vụ mục đích tương tự như componentDidMount, componentDidUpdate và componentWillUnmount trong các lớp (classes) React.
 
 ---
 
-## Q8: How does conditional rendering work in React?
+## Q8: How does conditional rendering work in React? - **HIGH**
 en: Conditional rendering in React works the same way conditions work in JavaScript. Use JavaScript operators like 'if' or the ternary operator to create elements representing the current state, and let React update the UI to match them.
 vi: Việc render có điều kiện trong React hoạt động giống như cách các điều kiện hoạt động trong JavaScript. Sử dụng các toán tử JavaScript như 'if' hoặc toán tử ba ngôi để tạo các phần tử đại diện cho trạng thái hiện tại, và để React cập nhật giao diện người dùng cho phù hợp.
 
 ---
 
-## Q9: What are React Fragments?
+## Q9: What are React Fragments? - **LOW**
 en: Fragments let you group a list of children without adding extra nodes to the DOM. You can use `<React.Fragment>` or the short syntax `<>...</>`.
 vi: Fragments cho phép bạn nhóm một danh sách các phần tử con mà không cần thêm các nút bổ sung vào DOM. Bạn có thể sử dụng `<React.Fragment>` hoặc cú pháp ngắn gọn `<>...</>`.
 
 ---
 
-## Q10: What is the difference between Controlled and Uncontrolled components?
+## Q10: What is the difference between Controlled and Uncontrolled components? - **LOW**
 en: In a controlled component, form data is handled by a React component state. In uncontrolled components, form data is handled by the DOM itself, often using refs to pull values from the form.
 vi: Trong một thành phần được kiểm soát (controlled component), dữ liệu form được xử lý bởi trạng thái (state) của thành phần React. Trong các thành phần không được kiểm soát (uncontrolled components), dữ liệu form được xử lý bởi chính DOM, thường sử dụng refs để lấy các giá trị từ form.
