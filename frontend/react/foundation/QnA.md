@@ -104,6 +104,35 @@ vi: Ba giai đoạn chính là: 1. **Mounting** (đưa các phần tử vào DOM
 en: In functional components, you perform cleanup (like clearing timers or cancelling network requests) by returning a function from the `useEffect` hook. This function runs before the component unmounts and before the effect re-runs.
 vi: Trong các thành phần hàm (functional components), bạn thực hiện dọn dẹp (như xóa bộ hẹn giờ hoặc hủy yêu cầu mạng) bằng cách trả về một hàm từ hook `useEffect`. Hàm này chạy trước khi thành phần bị hủy (unmount) và trước khi hiệu ứng chạy lại.
 
+#### Example / Ví dụ: `Window Resize Listener`
+
+en: We add an event listener when the component mounts and MUST remove it during cleanup to prevent memory leaks and unexpected behavior.
+vi: Chúng ta thêm một trình lắng nghe sự kiện khi thành phần được gắn (mount) và BẮT BUỘC phải gỡ bỏ nó trong quá trình dọn dẹp để tránh rò rỉ bộ nhớ và các hành vi không mong muốn.
+
+```javascript
+import { useState, useEffect } from 'react';
+
+function WindowWidth() {
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+
+    // en: Setup: Add the listener / vi: Thiết lập: Thêm trình lắng nghe
+    window.addEventListener('resize', handleResize);
+
+    // en: Cleanup: Return a function to remove the listener
+    // vi: Dọn dẹp: Trả về một hàm để gỡ bỏ trình lắng nghe
+    return () => {
+      console.log('Cleaning up resize listener...');
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []); // en: Run once on mount / vi: Chạy một lần khi mount
+
+  return <div>Window width: {width}px</div>;
+}
+```
+
 ---
 
 ## Q12: How can you prevent a functional component from re-rendering unnecessarily? - **MEDIUM**
@@ -188,8 +217,44 @@ function ControlledInput() {
 ---
 
 ## Q21: What are Refs in React and what are they used for? - **MEDIUM**
-en: Refs (References) provide a way to access DOM nodes or React elements directly. They are used for tasks like managing focus, text selection, or triggering animations without using the typical prop-driven data flow.
-vi: Refs (Tham chiếu) cung cấp cách truy cập trực tiếp các nút DOM hoặc phần tử React. Chúng được dùng cho các tác vụ như quản lý focus, chọn văn bản hoặc kích hoạt hiệu ứng mà không qua luồng props thông thường.
+en: Refs (References) provide a way to access DOM nodes or React elements directly. They are created using the `useRef` hook in functional components.
+vi: Refs (Tham chiếu) cung cấp cách truy cập trực tiếp các nút DOM hoặc phần tử React. Chúng được tạo bằng hook `useRef` trong các thành phần hàm.
+
+> **Note on Persistent & Mutable Nature / Ghi chú về tính Bền vững & Khả biến:**
+> en: A `ref` is an object that **persists for the entire lifetime** of the component. Unlike normal variables, React guarantees it won't be re-created on every render. Crucially, updating `ref.current` **does not** trigger a re-render, making it perfect for storing data that doesn't affect the UI directly (like timer IDs).
+> vi: Một `ref` là một đối tượng **tồn tại xuyên suốt toàn bộ vòng đời** của component. Không giống như các biến thông thường, React đảm bảo nó sẽ không bị tạo lại mỗi khi render. Quan trọng là, việc cập nhật `ref.current` **không** kích hoạt render lại, giúp nó trở nên hoàn hảo để lưu trữ dữ liệu không trực tiếp ảnh hưởng đến giao diện (như ID của bộ hẹn giờ).
+
+#### Example / Ví dụ: Using Ref for a Timer (Mutable State)
+```javascript
+import { useRef, useState } from 'react';
+
+function Timer() {
+  const [count, setCount] = useState(0);
+  const timerRef = useRef(null); // en: Persists through renders / vi: Lưu trữ bền vững qua các lần render
+
+  const startTimer = () => {
+    // en: Update ref.current directly without re-rendering
+    // vi: Cập nhật trực tiếp ref.current mà không gây render lại
+    timerRef.current = setInterval(() => {
+      setCount(prev => prev + 1);
+    }, 1000);
+  };
+
+  const stopTimer = () => {
+    // en: Read the ID back from ref.current to clear
+    // vi: Đọc lại ID từ ref.current để dừng
+    clearInterval(timerRef.current);
+  };
+
+  return (
+    <div>
+      <p>Count: {count}</p>
+      <button onClick={startTimer}>Start</button>
+      <button onClick={stopTimer}>Stop</button>
+    </div>
+  );
+}
+```
 
 ---
 
@@ -210,24 +275,3 @@ en: A browser extension for inspecting the React component hierarchy, viewing pr
 vi: Một tiện ích mở rộng trình duyệt để kiểm tra hệ thống thành phần React, xem props/state và gỡ lỗi hiệu suất với Profiler.
 
 ---
-
-## Q25: What is a "cleanup function" in useEffect? - **MEDIUM**
-en: A function returned from `useEffect` to clear resources (intervals, listeners) before unmounting or re-running the effect.
-vi: Một hàm trả về từ `useEffect` để xóa tài nguyên (bộ hẹn giờ, trình lắng nghe) trước khi unmount hoặc chạy lại hiệu ứng.
-
-#### Example / Ví dụ:
-```javascript
-useEffect(() => {
-  const timer = setInterval(() => {
-    console.log('Timer running');
-  }, 1000);
-
-  // en: Cleanup function / vi: Hàm dọn dẹp
-  return () => {
-    clearInterval(timer);
-  };
-}, []);
-```
-
----
-
