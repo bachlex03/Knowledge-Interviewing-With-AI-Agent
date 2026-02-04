@@ -51,8 +51,8 @@ vi: Hook useEffect cho phép bạn thực hiện các tác vụ lề (side effec
 ---
 
 ## Q8: How does conditional rendering work in React? - **HIGH**
-en: Conditional rendering in React works the same way conditions work in JavaScript. Use JavaScript operators like 'if' or the ternary operator to create elements representing the current state, and let React update the UI to match them.
-vi: Việc render có điều kiện trong React hoạt động giống như cách các điều kiện hoạt động trong JavaScript. Sử dụng các toán tử JavaScript như 'if' hoặc toán tử ba ngôi để tạo các phần tử đại diện cho trạng thái hiện tại, và để React cập nhật giao diện người dùng cho phù hợp.
+en: Conditional rendering in React works just like conditional logic in JavaScript. Since React components are essentially functions, you can use standard operators like if, &&, and ternary operators to decide which UI elements should actually hit the screen.
+vi: Render có điều kiện trong React hoạt động tương tự như logic điều kiện trong JavaScript. Vì các component trong React thực chất là các hàm, bạn có thể sử dụng các toán tử tiêu chuẩn như `if`, `&&`, và toán tử ba ngôi (ternary) để quyết định phần tử UI nào sẽ thực sự được hiển thị lên màn hình.
 
 ---
 
@@ -65,3 +65,169 @@ vi: Fragments cho phép bạn nhóm một danh sách các phần tử con mà kh
 ## Q10: What is the difference between Controlled and Uncontrolled components? - **LOW**
 en: In a controlled component, form data is handled by a React component state. In uncontrolled components, form data is handled by the DOM itself, often using refs to pull values from the form.
 vi: Trong một thành phần được kiểm soát (controlled component), dữ liệu form được xử lý bởi trạng thái (state) của thành phần React. Trong các thành phần không được kiểm soát (uncontrolled components), dữ liệu form được xử lý bởi chính DOM, thường sử dụng refs để lấy các giá trị từ form.
+
+---
+
+## React Component Lifecycle (Hooks) Visualization - **HIGH**
+
+```mermaid
+graph TD
+    subgraph FC [Functional Component Cycle]
+        Start["Component Starts"] --> Render["Render / Logic Executed"]
+        Render --> Browser["Browser Paints UI"]
+        
+        subgraph Effects [useEffect Scenarios]
+            Browser --> M["Mounting: useEffect(() => {}, [])"]
+            Browser --> U["Updating: useEffect(() => {}, [deps])"]
+            Browser --> UN["Unmounting: Cleanup function runs"]
+        end
+    end
+    
+    style FC fill:#f0f7ff,stroke:#0050b3
+    style Effects fill:#fff,stroke:#bfbfbf
+    style M fill:#e6f7ff,stroke:#1890ff
+    style U fill:#fff7e6,stroke:#ffa940
+    style UN fill:#fff1f0,stroke:#ff4d4f
+```
+
+
+
+---
+
+## Q10: What are the three main phases of a React component's lifecycle? - **HIGH**
+en: The three main phases are: 1. **Mounting** (putting elements into the DOM), 2. **Updating** (when a component's state or props change), and 3. **Unmounting** (removing elements from the DOM).
+vi: Ba giai đoạn chính là: 1. **Mounting** (đưa các phần tử vào DOM), 2. **Updating** (khi trạng thái hoặc props của thành phần thay đổi), và 3. **Unmounting** (loại bỏ các phần tử khỏi DOM).
+
+---
+
+## Q11: How do you perform cleanup in a functional component? - **MEDIUM**
+en: In functional components, you perform cleanup (like clearing timers or cancelling network requests) by returning a function from the `useEffect` hook. This function runs before the component unmounts and before the effect re-runs.
+vi: Trong các thành phần hàm (functional components), bạn thực hiện dọn dẹp (như xóa bộ hẹn giờ hoặc hủy yêu cầu mạng) bằng cách trả về một hàm từ hook `useEffect`. Hàm này chạy trước khi thành phần bị hủy (unmount) và trước khi hiệu ứng chạy lại.
+
+---
+
+## Q12: How can you prevent a functional component from re-rendering unnecessarily? - **MEDIUM**
+en: You can use `React.memo` to prevent unnecessary re-renders. It is a higher-order component that wraps your functional component, memoizing the result and only re-rendering if the props have changed (via shallow comparison).
+vi: Bạn có thể sử dụng `React.memo` để ngăn việc render lại không cần thiết. Đây là một higher-order component bao bọc thành phần hàm của bạn, giúp ghi nhớ kết quả và chỉ render lại nếu các props thay đổi (thông qua so sánh nông).
+
+---
+
+## Q14: What is MVC architecture and how does React fit in? - **LOW**
+en: MVC stands for Model-View-Controller. It's a design pattern for developing user interfaces. React is often considered only the 'V' (View) in MVC because it is responsible only for rendering the UI. It doesn't dictate how you handle the Controller or Model logic.
+vi: MVC là viết tắt của Model-View-Controller. Đó là một mẫu thiết kế để phát triển giao diện người dùng. React thường được coi chỉ là phần 'V' (View) trong MVC vì nó chỉ chịu trách nhiệm hiển thị giao diện người dùng. Nó không quy định cách bạn xử lý logic Controller hoặc Model.
+
+---
+
+## Q15: What are the basic building blocks of React? - **LOW**
+en: The basic building blocks of React are **Components**, **JSX**, **Props**, and **State**. Components are self-contained modules that render UI, JSX is the syntax used to describe UI, Props are inputs, and State is internal data.
+vi: Các thành phần cơ bản của React là **Components**, **JSX**, **Props**, và **State**. Các thành phần (Components) là các mô-đun độc lập hiển thị giao diện người dùng, JSX là cú pháp, Props là đầu vào, và State là dữ liệu nội bộ.
+
+---
+
+## Q16: What is a Component and what are its types? - **LOW**
+en: A Component is a reusable piece of code that returns a React element. Main types: **Functional Components** (functions with Hooks) and **Class Components** (ES6 classes). Modern development favors functional components.
+vi: Một thành phần (Component) là một đoạn mã có thể tái sử dụng trả về một phần tử React. Có hai loại chính: **Thành phần hàm** (hàm kèm Hooks) và **Thành phần lớp** (lớp ES6). Phát triển hiện đại ưu tiên các thành phần hàm.
+
+---
+
+## Q17: How does the browser read JSX? - **MEDIUM**
+en: Browsers cannot read JSX directly because it's not valid JavaScript. JSX must be "transpiled" into regular JavaScript (usually using a tool like Babel) before it reaches the browser. For example, `<h1>Hello</h1>` is converted to `React.createElement('h1', null, 'Hello')`.
+vi: Trình duyệt không thể đọc trực tiếp JSX vì nó không phải là JavaScript hợp lệ. JSX phải được "biên dịch chuyển đổi" (transpiled) thành JavaScript thông thường (thường sử dụng một công cụ như Babel) trước khi đến trình duyệt. Ví dụ: `<h1>Hello</h1>` được chuyển đổi thành `React.createElement('h1', null, 'Hello')`.
+
+---
+
+## Q18: What is the difference between Functional and Class components? - **HIGH**
+en: Functional components are simple JavaScript functions that take props and return JSX. They are easier to read and test. Class components are ES6 classes that can hold state and use lifecycle methods. Since React 16.8 (Hooks), functional components can do almost everything class components can.
+vi: Các thành phần hàm (Functional components) là các hàm JavaScript đơn giản nhận props và trả về JSX. Chúng dễ đọc và kiểm tra hơn. Các thành phần lớp (Class components) là các lớp ES6 có thể giữ trạng thái và sử dụng các phương thức vòng đời. Kể từ React 16.8 (Hooks), các thành phần hàm có thể làm hầu hết mọi thứ mà các thành phần lớp có thể làm.
+
+---
+
+## Q19: What is One-Way Data Binding in React? - **HIGH**
+en: React uses one-way data flow, meaning data stays in the parent and is passed down to children via props. This makes the code more predictable and maintains a clear "Single Source of Truth."
+vi: React sử dụng luồng dữ liệu một chiều, nghĩa là dữ liệu nằm ở cha và được truyền xuống con thông qua props. Điều này giúp mã dễ dự đoán hơn và duy trì một "Nguồn sự thật duy nhất" rõ ràng.
+
+> **Note on "Single Source of Truth"**:
+> en: This means data is stored in one place only (a component’s state). If other components need it, they receive it as props. This prevents "out-of-sync" bugs where different parts of the UI show different values for the same piece of data.
+> vi: Điều này có nghĩa là dữ liệu chỉ được lưu trữ ở một nơi duy nhất (state của một component). Nếu các component khác cần nó, chúng sẽ nhận được nó dưới dạng props. Điều này ngăn chặn các lỗi "mất đồng bộ" khi các phần khác nhau của giao diện hiển thị các giá trị khác nhau cho cùng một mẩu dữ liệu.
+
+#### Example / Ví dụ:
+
+```javascript
+function Parent() {
+  const [message] = useState("Hello from Parent");
+  // en: Data flows DOWN to Child / vi: Dữ liệu truyền XUỐNG cho con
+  return <Child text={message} />;
+}
+
+function Child({ text }) {
+  return <p>{text}</p>;
+}
+```
+
+---
+
+## Q20: Does React support Two-Way Data Binding? - **HIGH**
+en: React does not have built-in two-way data binding (like Angular). However, you can achieve it using **Controlled Components**. This is done by linking an input's `value` to a state variable and updating that state via an `onChange` event handler.
+vi: React không có ràng buộc dữ liệu hai chiều (two-way data binding) tích hợp sẵn (như Angular). Tuy nhiên, bạn có thể đạt được nó bằng cách sử dụng **Thành phần được kiểm soát (Controlled Components)**. Điều này được thực hiện bằng cách liên kết `value` của một ô nhập liệu với một biến trạng thái (state) và cập nhật trạng thái đó thông qua trình xử lý sự kiện `onChange`.
+
+#### Example / Ví dụ:
+```javascript
+function ControlledInput() {
+  const [name, setName] = useState("");
+
+  return (
+    <input 
+      value={name} // en: View reflects State / vi: Giao diện phản ánh State
+      onChange={(e) => setName(e.target.value)} // en: Input updates State / vi: Nhập liệu cập nhật State
+    />
+  );
+}
+```
+
+
+---
+
+## Q21: What are Refs in React and what are they used for? - **MEDIUM**
+en: Refs (References) provide a way to access DOM nodes or React elements directly. They are used for tasks like managing focus, text selection, or triggering animations without using the typical prop-driven data flow.
+vi: Refs (Tham chiếu) cung cấp cách truy cập trực tiếp các nút DOM hoặc phần tử React. Chúng được dùng cho các tác vụ như quản lý focus, chọn văn bản hoặc kích hoạt hiệu ứng mà không qua luồng props thông thường.
+
+---
+
+## Q22: What are React Hooks? - **LOW**
+en: Hooks are functions that let you “hook into” React state and lifecycle features from functional components. Examples include `useState`, `useEffect`, and `useContext`.
+vi: Hooks là các hàm cho phép bạn "móc vào" trạng thái và tính năng vòng đời của React từ các thành phần hàm. Ví dụ bao gồm `useState`, `useEffect` và `useContext`.
+
+---
+
+## Q23: Explain the useState Hook. - **LOW**
+en: `useState` allows you to add state to functional components. It returns the current state value and a function to update it.
+vi: `useState` cho phép bạn thêm trạng thái vào các thành phần hàm. Nó trả về giá trị trạng thái hiện tại và một hàm để cập nhật nó.
+
+---
+
+## Q24: What are React Developer Tools? - **LOW**
+en: A browser extension for inspecting the React component hierarchy, viewing props/state, and debugging performance with the Profiler.
+vi: Một tiện ích mở rộng trình duyệt để kiểm tra hệ thống thành phần React, xem props/state và gỡ lỗi hiệu suất với Profiler.
+
+---
+
+## Q25: What is a "cleanup function" in useEffect? - **MEDIUM**
+en: A function returned from `useEffect` to clear resources (intervals, listeners) before unmounting or re-running the effect.
+vi: Một hàm trả về từ `useEffect` để xóa tài nguyên (bộ hẹn giờ, trình lắng nghe) trước khi unmount hoặc chạy lại hiệu ứng.
+
+#### Example / Ví dụ:
+```javascript
+useEffect(() => {
+  const timer = setInterval(() => {
+    console.log('Timer running');
+  }, 1000);
+
+  // en: Cleanup function / vi: Hàm dọn dẹp
+  return () => {
+    clearInterval(timer);
+  };
+}, []);
+```
+
+---
+
