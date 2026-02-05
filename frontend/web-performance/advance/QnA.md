@@ -48,19 +48,19 @@ vi: Service Workers là các tập lệnh chạy trong nền, tách biệt với
 
 ---
 
-## Q9: How do you debug Layout Thrashing?
+## Q9: How do you debug Layout Thrashing? - **LOW**
 en: Layout Thrashing occurs when JavaScript reads and writes to the DOM repeatedly in the same frame, forcing the browser to recalculate layout multiple times. To debug, rely on performance profiling tools (like Chrome DevTools Performance tab) to identify "Forced Reflow" warnings, and batch DOM reads/writes or use `requestAnimationFrame`.
 vi: Layout Thrashing (Rung layout) xảy ra khi JavaScript đọc và ghi vào DOM liên tục trong cùng một khung hình, buộc trình duyệt phải tính toán lại bố cục nhiều lần. Để gỡ lỗi, hãy dựa vào các công cụ cấu hình hiệu suất (như tab Performance của Chrome DevTools) để xác định các cảnh báo "Forced Reflow" (Reflow cưỡng bức), và nhóm các thao tác đọc/ghi DOM hoặc sử dụng `requestAnimationFrame`.
 
 ---
 
-## Q10: What is the Performance API (User Timing vs Navigation Timing)?
+## Q10: What is the Performance API (User Timing vs Navigation Timing)? - **LOW**
 en: The Performance API provides access to performance-related data. Navigation Timing provides metrics on the page load process (DNS, TCP, Request, Response). User Timing allows developers to create custom performance markers (`performance.mark`) and measures (`performance.measure`) to track specific application events.
 vi: Performance API cung cấp quyền truy cập vào dữ liệu liên quan đến hiệu suất. Navigation Timing cung cấp các số liệu về quá trình tải trang (DNS, TCP, Yêu cầu, Phản hồi). User Timing cho phép các nhà phát triển tạo các điểm đánh dấu hiệu suất tùy chỉnh (`performance.mark`) và các phép đo (`performance.measure`) để theo dõi các sự kiện ứng dụng cụ thể.
 
 ---
 
-## Q11: How do you implement Code Splitting in React? (Code Example)
+## Q11: How do you implement Code Splitting in React? (Code Example) - **HIGH**
 en: Code splitting allows you to split your bundle into smaller chunks which can then be loaded on demand. In React, this is commonly done using `React.lazy` and `Suspense`.
 
 ```javascript
@@ -84,7 +84,7 @@ vi: Tách mã (Code splitting) cho phép bạn chia gói của mình thành các
 
 ---
 
-## Q12: How does List Virtualization work and when should you use it?
+## Q12: How does List Virtualization work and when should you use it? - **LOW**
 en: List virtualization (or "windowing") renders only the items that are currently visible to the user (plus a small buffer), instead of rendering the entire list. This significantly reduces the number of DOM nodes created and memory usage for large lists. Libraries like `react-window` or `react-virtualized` are commonly used.
 
 ```javascript
@@ -155,7 +155,7 @@ vi: Web Workers chạy một tập lệnh trong một luồng nền, tách biệ
 
 ---
 
-## Q16: What is `next/dynamic` and how does it differ from `React.lazy`?
+## Q16: What is `next/dynamic` and how does it differ from `React.lazy`? - **HIGH**
 en: `next/dynamic` is a composite of `React.lazy` and `Suspense` specifically designed for Next.js. It allows for lazy loading components but with an important addition: it supports Server-Side Rendering (SSR). You can also disable SSR for specific components if they rely heavily on browser APIs.
 
 ```javascript
@@ -179,7 +179,7 @@ vi: `next/dynamic` là sự kết hợp của `React.lazy` và `Suspense` đư�
 
 ---
 
-## Q17: What is Lazy Loading and why is it important for performance?
+## Q17: What is Lazy Loading and why is it important for performance? - **HIGH**
 en: Lazy loading is a design pattern that delays the initialization of resources (like images, scripts, or components) until they are actually needed (e.g., when they scroll into view). This reduces the initial load time (improving LCP and TTI), saves bandwidth, and reduces system resource usage.
 
 ```javascript

@@ -1,26 +1,58 @@
 # Web Performance Foundation Q&A
 
-## Q1: What is LCP (Largest Contentful Paint)?
-en: LCP measures the loading performance of a web page. It marks the point in the page load timeline when the page's main content has likely loaded. A good LCP score is 2.5 seconds or less.
-vi: LCP (Nội dung hiển thị lớn nhất) đo lường hiệu suất tải của một trang web. Nó đánh dấu thời điểm trong dòng thời gian tải trang khi nội dung chính của trang có khả năng đã được tải xong. Điểm LCP tốt là 2.5 giây trở xuống.
+## Q4: What are Core Web Vitals?
+en: Core Web Vitals are a set of specific factors that Google considers important in a webpage's overall user experience. They currently consist of three metrics: LCP (loading), FID/INP (interactivity), and CLS (visual stability).
+vi: Core Web Vitals (Các chỉ số thiết yếu về trang web) là tập hợp các yếu tố cụ thể mà Google coi là quan trọng trong trải nghiệm người dùng tổng thể của một trang web. Hiện tại chúng bao gồm ba chỉ số: LCP (tải trang), FID/INP (tương tác) và CLS (ổn định hình ảnh).
+
+---
+
+## Q1: What is LCP (Largest Contentful Paint)? - **HIGH**
+ref: `https://vietnix.vn/largest-contentful-paint/?utm_source=ggads&utm_medium=pmax&p=&gad_source=1&gad_campaignid=23385187609&gbraid=0AAAAABwedNKnOq-UyLnvoG7vmSpJSxsa5&gclid=Cj0KCQiAnJHMBhDAARIsABr7b87aNehM_P-UpQc6AnAGv2RGh7c5CXtMXgEyFgLDpGO66ZKeUXy2TswaAnIdEALw_wcB`
+en: LCP measures the loading performance of a web page. It marks the point in the page load timeline when the page's main content has likely loaded. **A good LCP score is 2.5 seconds or less**.
+
+#### Key Details / Chi tiết quan trọng:
+en:
+- **LCP Candidates**: Only certain elements are considered: `<img>`, `<image>` inside `<svg>`, `<video>` (poster image), and block-level elements containing text.
+- **Common Causes of Poor LCP**:
+    - Slow server response times (TTFB).
+    - Render-blocking JavaScript and CSS.
+    - Resource load times (heavy images/videos).
+    - Client-side rendering (CSR) without optimization.
+- **Optimization Strategies**:
+    - Use a Content Delivery Network (CDN).
+    - Optimize and compress images (WebP/AVIF).
+    - Implement Server-Side Rendering (SSR) or Static Site Generation (SSG).
+    - Prioritize critical resources using `<link rel="preload">` or `fetchpriority="high"`.
+
+vi: LCP (Nội dung hiển thị lớn nhất) đo lường hiệu suất tải của một trang web. Nó đánh dấu thời điểm trong dòng thời gian tải trang khi nội dung chính của trang có khả năng đã được tải xong. **Điểm LCP tốt là 2.5 giây trở xuống**.
+
+#### Chi tiết quan trọng:
+vi:
+- **Các thành phần LCP**: Chỉ một số phần tử được xem xét: `<img>`, `<image>` bên trong `<svg>`, `<video>` (ảnh poster), và các phần tử cấp khối (block-level) chứa văn bản.
+- **Nguyên nhân phổ biến gây LCP kém**:
+    - Thời gian phản hồi của máy chủ chậm (TTFB).
+    - JavaScript và CSS chặn render (Render-blocking).
+    - Thời gian tải tài nguyên lâu (hình ảnh/video nặng).
+    - Render phía client (CSR) mà không có tối ưu hóa.
+- **Chiến lược tối ưu hóa**:
+    - Sử dụng Mạng phân phối nội dung (CDN).
+    - Tối ưu hóa và nén hình ảnh (WebP/AVIF).
+    - Triển khai Server-Side Rendering (SSR) hoặc Static Site Generation (SSG).
+    - Ưu tiên các tài nguyên quan trọng bằng cách sử dụng `<link rel="preload">` hoặc `fetchpriority="high"`.
 
 ---
 
 ## Q2: What is TTI (Time to Interactive)?
-en: TTI measures how long it takes for a page to become fully interactive. A page is considered fully interactive when it displays useful content (First Contentful Paint - FCP), event handlers are registered for most visible page elements, and the page responds to user interactions within 50 milliseconds.
-vi: TTI (Thời gian tương tác) đo thời gian cần thiết để một trang trở nên hoàn toàn tương tác. Một trang được coi là hoàn toàn tương tác khi nó hiển thị nội dung hữu ích (First Contentful Paint - FCP), các trình xử lý sự kiện đã được đăng ký cho hầu hết các phần tử trang hiển thị và trang phản hồi lại các tương tác của người dùng trong vòng 50 mili giây.
+ref: `https://vietnix.vn/time-to-interactive-la-gi/`
+en: TTI measures how long it takes for a page to become fully interactive. A page is considered fully interactive when it displays useful content (First Contentful Paint - FCP), event handlers are registered for most visible page elements, and the page responds to user interactions **within 50 milliseconds**.
+vi: TTI (Thời gian tương tác) đo thời gian cần thiết để một trang trở nên hoàn toàn tương tác. Một trang được coi là hoàn toàn tương tác khi nó hiển thị nội dung hữu ích (First Contentful Paint - FCP), các trình xử lý sự kiện đã được đăng ký cho hầu hết các phần tử trang hiển thị và trang phản hồi lại các tương tác của người dùng **trong vòng 50 mili giây**.
 
 ---
 
 ## Q3: What is CLS (Cumulative Layout Shift) and why does it matter?
+ref: `https://vietnix.vn/cumulative-layout-shift/?utm_source=ggads&utm_medium=pmax&p=&gad_source=1&gad_campaignid=23385187609&gbraid=0AAAAABwedNKnOq-UyLnvoG7vmSpJSxsa5&gclid=Cj0KCQiAnJHMBhDAARIsABr7b85onAjO4ugA9pop6jYw0PleE_S1Lxg1PNDCyj6c6Z2j96-ccBOATRgaAqVSEALw_wcB`
 en: CLS measures visual stability. It quantifies how much visible content shifts unexpectedly during the page's lifespan. A low CLS score (0.1 or less) ensures a good user experience by preventing accidental clicks and jarring visual changes.
 vi: CLS (Điểm thay đổi bố cục tích lũy) đo lường độ ổn định hình ảnh. Nó định lượng mức độ dịch chuyển bất ngờ của nội dung hiển thị trong suốt vòng đời của trang. Điểm CLS thấp (0.1 trở xuống) đảm bảo trải nghiệm người dùng tốt bằng cách ngăn chặn các lần nhấp tình cờ và những thay đổi hình ảnh gây khó chịu.
-
----
-
-## Q4: What are Core Web Vitals?
-en: Core Web Vitals are a set of specific factors that Google considers important in a webpage's overall user experience. They currently consist of three metrics: LCP (loading), FID/INP (interactivity), and CLS (visual stability).
-vi: Core Web Vitals (Các chỉ số thiết yếu về trang web) là tập hợp các yếu tố cụ thể mà Google coi là quan trọng trong trải nghiệm người dùng tổng thể của một trang web. Hiện tại chúng bao gồm ba chỉ số: LCP (tải trang), FID/INP (tương tác) và CLS (ổn định hình ảnh).
 
 ---
 
@@ -54,7 +86,7 @@ vi: Lighthouse là một công cụ mã nguồn mở, tự động để cải t
 
 ---
 
-## Q10: What is the difference between Lab Data and Field Data (RUM)?
+## Q10: What is the difference between Lab Data and Field Data (RUM)? - **LOW**
 
 en: Lab Data is performance data collected in a controlled environment with predefined device and network settings (e.g., Lighthouse). Field Data (Real User Monitoring or RUM) is performance data collected from real users visiting your site on their actual devices and network conditions (e.g., Chrome User Experience Report).
 vi: Dữ liệu phòng thí nghiệm (Lab Data) là dữ liệu hiệu suất được thu thập trong môi trường được kiểm soát với các cài đặt thiết bị và mạng được xác định trước (ví dụ: Lighthouse). Dữ liệu thực tế (Field Data hoặc RUM) là dữ liệu hiệu suất được thu thập từ người dùng thực truy cập trang web của bạn trên các thiết bị và điều kiện mạng thực tế của họ (ví dụ: Báo cáo trải nghiệm người dùng Chrome).
