@@ -67,11 +67,21 @@ function Parent() {
 > - **useMemo** dùng để ghi nhớ một **giá trị** để tránh việc tính toán lại tốn kém.
 > - **useCallback** dùng để ghi nhớ một **tham chiếu hàm** nhằm duy trì tính đồng nhất về tham chiếu.
 > - **Hiểu lầm thường gặp**: `useCallback` không phải sinh ra chủ yếu để tránh rò rỉ bộ nhớ (việc tạo hàm rất rẻ). Mục đích chính của nó là ngăn việc render lại không cần thiết của các component con đã được tối ưu hóa (sử dụng `React.memo`) vốn phụ thuộc vào sự ổn định của tham chiếu hàm.
+>
+> **Optimization Rules / Quy tắc tối ưu hóa:**
+>
+> en: 
+> - **Only `useCallback`**: If you use `useCallback` but DON'T wrap the child in `React.memo`, the child will **STILL re-render** whenever the parent does.
+> - **`useCallback` + `React.memo`**: The child only re-renders if the `useCallback` dependencies change (which forces a new function reference).
+>
+> vi:
+> - **Chỉ dùng `useCallback`**: Nếu bạn dùng `useCallback` nhưng KHÔNG bao bọc component con trong `React.memo`, component con **VẪN SẼ re-render** mỗi khi component cha re-render.
+> - **`useCallback` + `React.memo`**: Component con chỉ re-render nếu các dependencies của `useCallback` thay đổi (điều này bắt buộc tạo ra một tham chiếu hàm mới).
 
 ---
 
 ## Q3: What are Higher-Order Components (HOC)? - **HIGH**
-en: A higher-order component is a function that takes a component and returns a new component. It's a pattern derived from React's compositional nature for reusing component logic.
+en: A higher-order component is a function that takes a component and returns a new component. It is a pattern used for reusing **component logic**. It's a pattern derived from React's compositional nature for reusing component logic.
 vi: Một thành phần bậc cao (Higher-Order Component) là một hàm nhận vào một thành phần và trả về một thành phần mới. Đó là một mẫu thiết kế bắt nguồn từ tính chất cấu thành (compositional nature) của React để tái sử dụng logic của thành phần.
 
 #### Example / Ví dụ: `withLogger` HOC
@@ -181,9 +191,6 @@ function App() {
 
 ---
 
-
----
-
 ## Q7: What is the purpose of the React Profiler? - **MEDIUM**
 en: The Profiler measures how often a React application renders and what the "cost" of rendering is. Its purpose is to help identify parts of an application that are slow
 vi: Profiler đo lường tần suất ứng dụng React render và "chi phí" của việc render là bao nhiêu. Mục đích của nó là giúp xác định các phần của ứng dụng bị chậm
@@ -241,6 +248,152 @@ function UserProfile({ userId }) {
       <p>{user.email}</p>
     </div>
   );
+}
+```
+
+#### Additional Common Custom Hooks / Các Custom Hooks phổ biến khác:
+
+**1. `useLocalStorage`**
+en: Syncs state with the browser's Local Storage.
+vi: Đồng bộ hóa trạng thái (state) với Local Storage của trình duyệt.
+
+```javascript
+function useLocalStorage(key, initialValue) {
+  const [storedValue, setStoredValue] = useState(() => {
+    try {
+      const item = window.localStorage.getItem(key);
+      return item ? JSON.parse(item) : initialValue;
+    } catch (error) {
+      return initialValue;
+    }
+  });
+
+  const setValue = (value) => {
+    try {
+      setStoredValue(value);
+      window.localStorage.setItem(key, JSON.stringify(value));
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return [storedValue, setValue];
+}
+```
+
+**2. `useDebounce`**
+en: Delays updating a value until a specific time has passed since the last change (useful for search inputs).
+vi: Trì hoãn việc cập nhật một giá trị cho đến khi một khoảng thời gian cụ thể trôi qua kể từ lần thay đổi cuối cùng (hữu ích cho các ô tìm kiếm).
+
+```javascript
+function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => clearTimeout(handler); // Cleanup on change
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+```
+
+**3. `usePrevious`**
+en: Stores the value from the previous render.
+vi: Lưu trữ giá trị từ lần render trước đó.
+
+```javascript
+function usePrevious(value) {
+  const ref = useRef();
+  useEffect(() => {
+    ref.current = value;
+  }, [value]);
+  return ref.current;
+}
+```
+
+**4. `useToggle`**
+en: A simple hook to toggle a boolean state (true/false).
+vi: Một hook đơn giản để chuyển đổi trạng thái boolean (đúng/sai).
+
+```javascript
+function useToggle(initialValue = false) {
+  const [value, setValue] = useState(initialValue);
+  const toggle = useCallback(() => setValue(v => !v), []);
+  return [value, toggle];
+}
+```
+
+**5. `useWindowSize`**
+en: Tracks the dimensions of the browser window.
+vi: Theo dõi kích thước của cửa sổ trình duyệt.
+
+```javascript
+function useWindowSize() {
+  const [windowSize, setWindowSize] = useState({
+    width: window.innerWidth,
+    height: window.innerHeight,
+  });
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowSize({
+        width: window.innerWidth,
+        height: window.innerHeight,
+      });
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return windowSize;
+}
+```
+
+**6. `useOnClickOutside`**
+en: Detects clicks outside of a specific element (useful for modals/dropdowns).
+vi: Phát hiện các lần nhấp chuột bên ngoài một phần tử cụ thể (hữu ích cho modal/dropdown).
+
+```javascript
+function useOnClickOutside(ref, handler) {
+  useEffect(() => {
+    const listener = (event) => {
+      if (!ref.current || ref.current.contains(event.target)) {
+        return;
+      }
+      handler(event);
+    };
+    document.addEventListener('mousedown', listener);
+    document.addEventListener('touchstart', listener);
+    return () => {
+      document.removeEventListener('mousedown', listener);
+      document.removeEventListener('touchstart', listener);
+    };
+  }, [ref, handler]);
+}
+```
+
+**7. `useInterval`**
+en: A declarative version of `setInterval`.
+vi: Một phiên bản khai báo (declarative) của `setInterval`.
+
+```javascript
+function useInterval(callback, delay) {
+  const savedCallback = useRef();
+
+  useEffect(() => {
+    savedCallback.current = callback;
+  }, [callback]);
+
+  useEffect(() => {
+    if (delay !== null) {
+      const id = setInterval(() => savedCallback.current(), delay);
+      return () => clearInterval(id);
+    }
+  }, [delay]);
 }
 ```
 

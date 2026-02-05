@@ -135,9 +135,21 @@ function WindowWidth() {
 
 ---
 
-## Q12: How can you prevent a functional component from re-rendering unnecessarily? - **MEDIUM**
+## Q12: How can you prevent a functional component from re-rendering unnecessarily? - **HIGH**
 en: You can use `React.memo` to prevent unnecessary re-renders. It is a higher-order component that wraps your functional component, memoizing the result and only re-rendering if the props have changed (via shallow comparison).
 vi: Bạn có thể sử dụng `React.memo` để ngăn việc render lại không cần thiết. Đây là một higher-order component bao bọc thành phần hàm của bạn, giúp ghi nhớ kết quả và chỉ render lại nếu các props thay đổi (thông qua so sánh nông).
+
+> **Note: Should we use `React.memo` everywhere? / Lưu ý: Có nên dùng `React.memo` ở mọi nơi?**
+>
+> en: **No.** Using it everywhere can decrease performance because:
+> 1. **Comparison Overhead**: React must perform a shallow comparison of props on every parent render, which takes time.
+> 2. **Memory Usage**: React needs memory to store previous props and results.
+> 3. **Rule of Thumb**: Use it only for **expensive** components that render frequently with the same props. For simple components, the cost of comparison is often higher than the cost of re-rendering.
+>
+> vi: **Không.** Sử dụng nó ở mọi nơi có thể làm giảm hiệu năng vì:
+> 1. **Chi phí so sánh**: React phải thực hiện so sánh nông các props mỗi khi component cha render, việc này tốn thời gian.
+> 2. **Sử dụng bộ nhớ**: React cần bộ nhớ để lưu trữ các props và kết quả trước đó.
+> 3. **Quy tắc chung**: Chỉ sử dụng cho các component **tốn kém** (expensive) mà thường xuyên re-render với cùng một bộ props. Với các component đơn giản, chi phí so sánh thường cao hơn chi phí của việc render lại.
 
 ---
 
