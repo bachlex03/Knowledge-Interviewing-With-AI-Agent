@@ -97,7 +97,64 @@ vi: TTFB (Thời gian đến byte đầu tiên) đo thời gian giữa lúc trì
 
 ## Q7: What is the Critical Rendering Path (CRP)? - **HIGH**
 en: The Critical Rendering Path is the sequence of steps the browser goes through to convert HTML, CSS, and JavaScript into pixels on the screen. Optimizing CRP improves render performance.
+
+#### Steps in CRP / Các bước trong CRP:
+en:
+1.  **DOM (Document Object Model)**: The browser parses HTML to build the DOM tree.
+2.  **CSSOM (CSS Object Model)**: The browser parses CSS to build the CSSOM tree.
+3.  **Render Tree**: The DOM and CSSOM are combined into a Render Tree (contains only visible elements).
+4.  **Layout (Reflow)**: The browser calculates the size and position of each visible element.
+5.  **Paint**: The browser fills in pixels on the screen.
+
 vi: Đường dẫn render quan trọng (Critical Rendering Path - CRP) là chuỗi các bước mà trình duyệt trải qua để chuyển đổi HTML, CSS và JavaScript thành các pixel trên màn hình. Việc tối ưu hóa CRP giúp cải thiện hiệu suất render.
+
+#### Các bước trong CRP:
+vi:
+1.  **DOM (Document Object Model)**: Trình duyệt phân tích cú pháp HTML để xây dựng cây DOM.
+2.  **CSSOM (CSS Object Model)**: Trình duyệt phân tích cú pháp CSS để xây dựng cây CSSOM.
+3.  **Render Tree**: DOM và CSSOM được kết hợp thành cây Render (chỉ chứa các phần tử sẽ hiển thị).
+4.  **Layout (Reflow)**: Trình duyệt tính toán kích thước và vị trí của từng phần tử hiển thị.
+5.  **Paint**: Trình duyệt tiến hành vẽ (fill) các pixel trên màn hình.
+
+### Visualization (Minh họa)
+
+```mermaid
+graph TD
+    A[HTML] --> B(DOM Tree)
+    C[CSS] --> D(CSSOM Tree)
+    B --> E(Render Tree)
+    D --> E
+    E --> F(Layout/Reflow)
+    F --> G(Paint)
+    G --> H[Display Pixels]
+    
+    style A fill:#f9f,stroke:#333
+    style C fill:#ccf,stroke:#333
+    style G fill:#dfd,stroke:#333
+```
+
+#### Optimization Strategies / Chiến lược tối ưu hóa:
+en:
+- **Minimize HTML**: Minify and compress (Gzip/Brotli) the HTML document.
+- **Optimize CSS (The main blocker)**:
+    - **Inlining Critical CSS**: Include CSS for the "above-the-fold" content directly in the `<head>`.
+    - **Media Queries**: Use `media` attributes on `<link>` tags to prevent blocking rendering on devices they don't apply to.
+    - **Minify CSS**: Remove whitespace and unused rules.
+- **Optimize JavaScript**:
+    - **Async & Defer**: Use these attributes to prevent scripts from blocking DOM parsing.
+    - **Remove Unused JS**: Use tree-shaking and code-splitting.
+- **Resource Prioritization**: Use `<link rel="preload">` for fonts and critical assets.
+
+vi:
+- **Tối ưu hóa HTML**: Nén và làm gọn (Minify/Gzip/Brotli) tài liệu HTML.
+- **Tối ưu hóa CSS (Tác nhân chặn chính)**:
+    - **Inline Critical CSS**: Chèn trực tiếp CSS của phần "phía trên màn hình đầu tiên" (above-the-fold) vào trong thẻ `<head>`.
+    - **Media Queries**: Sử dụng thuộc tính `media` trong thẻ `<link>` để tránh việc chặn render trên các thiết bị không phù hợp.
+    - **Minify CSS**: Xóa bỏ các khoảng trắng và các quy tắc CSS không sử dụng.
+- **Tối ưu hóa JavaScript**:
+    - **Async & Defer**: Sử dụng các thuộc tính này để ngăn script chặn quá trình phân tích cú pháp DOM.
+    - **Xóa JS không sử dụng**: Sử dụng tree-shaking và code-splitting.
+- **Ưu tiên tài nguyên**: Sử dụng `<link rel="preload">` cho font chữ và các tài nguyên quan trọng.
 
 ---
 

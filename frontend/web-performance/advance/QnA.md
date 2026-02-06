@@ -2,13 +2,74 @@
 
 ## Q1: How can you optimize LCP (Largest Contentful Paint)?
 en: To optimize LCP, you should: (1) Ensure the LCP resource (like the hero image) is discoverable early in the HTML document, often using `<link rel="preload">` or `<img fetchpriority="high">`. (2) Optimize image formats (WebP/AVIF) and size. (3) Serve static assets via a CDN. (4) Reduce server response times (TTFB).
+
+#### Deep Dive: Why is a CDN good for LCP?
+en:
+- **Physical Proximity (Reduced Latency)**: CDNs have servers (edge locations) globally. Serving the LCP image from a closer server reduces the Round-Trip Time (RTT).
+- **Lower TTFB**: Edge servers dedicated to static assets respond faster than a single origin server.
+- **Connection Handshake**: Shorter distance means faster TCP/TLS handshakes, allowing the data download to start sooner.
+- **Scalability**: CDNs handle high traffic spikes, ensuring performance remains stable even under heavy load.
+
 vi: Để tối ưu hóa LCP, bạn nên: (1) Đảm bảo tài nguyên LCP (như hình ảnh hero) có thể được khám phá sớm trong tài liệu HTML, thường sử dụng `<link rel="preload">` hoặc `<img fetchpriority="high">`. (2) Tối ưu hóa định dạng (WebP/AVIF) và kích thước hình ảnh. (3) Phục vụ các tài sản tĩnh qua CDN. (4) Giảm thời gian phản hồi máy chủ (TTFB).
+
+#### Phân tích sâu: Tại sao CDN lại tốt cho LCP?
+vi:
+- **Khoảng cách vật lý (Giảm độ trễ)**: CDN có các máy chủ (edge locations) trên toàn cầu. Việc cung cấp hình ảnh LCP từ một máy chủ gần hơn sẽ giảm Thời gian Khứ hồi (RTT).
+- **TTFB thấp hơn**: Các máy chủ cạnh (edge servers) chuyên dùng cho tài sản tĩnh phản hồi nhanh hơn so với một máy chủ gốc duy nhất.
+- **Bắt tay kết nối (Connection Handshake)**: Khoảng cách ngắn hơn đồng nghĩa với việc bắt tay TCP/TLS nhanh hơn, cho phép việc tải dữ liệu bắt đầu sớm hơn.
+- **Khả năng mở rộng**: CDN xử lý các đợt tăng lưu lượng truy cập cao, đảm bảo hiệu suất ổn định ngay cả khi tải nặng.
+
+---
 
 ---
 
 ## Q2: How do you reduce TTI (Time to Interactive) and Total Blocking Time (TBT)?
 en: Reducing TTI and TBT involves minimizing long tasks (tasks > 50ms) on the main thread. Strategies include: (1) Code splitting and lazy loading JavaScript. (2) Deferring non-critical scripts. (3) Using Web Workers to move heavy computations off the main thread. (4) Removing unused code (Tree Shaking).
+
+#### Comparison: Code Splitting vs. Lazy Loading
+en:
+- **Code Splitting (The "What")**: The architectural process of breaking a single large JavaScript bundle into smaller, independent chunks (files). It is performed during the **build step** by bundlers like Webpack or Vite.
+- **Lazy Loading (The "When")**: The dynamic strategy of loading those split chunks **only when they are needed** at runtime (e.g., when a user navigates to a route or clicks a button).
+- **Relationship**: Code splitting is the *enabler*; Lazy loading is the *action*. You can split code without lazy loading them (loading all chunks in parallel), but you cannot lazy load code without splitting it first.
+- **Analogy**: Code splitting is like dividing a large book into chapters. Lazy loading is choosing to only read (download) a specific chapter when you actually get to it.
+
+#### Deep Dive: Why does this help TTI/TBT if it's all loaded eventually?
+en:
+1.  **Breaking up "Long Tasks"**: TBT is the sum of the "blocking portion" of every task that exceeds 50ms.
+    - **One Big Bundle**: Executing a 2MB script might create a single task that lasts **500ms**. TBT = 500ms - 50ms = **450ms**.
+    - **Split Chunks**: Executing ten 200KB scripts might create ten tasks of **50ms** each. TBT = 0ms + 0ms... = **0ms**. Even though the total time is the same, the main thread is never "blocked" for long, allowing it to respond to user clicks.
+2.  **TTI (Early Interaction)**: TTI marks when the main thread is quiet. By loading only what's necessary, the thread becomes quiet much sooner, allowing the user to interact while the rest of the chunks load in the background (or only when needed).
+3.  **Crawler Discovery vs. User Metrics**: 
+    - **For Users**: TTI/TBT are critical for feeling "snappiness." Users hate a frozen page.
+    - **For Crawlers**: They mainly care about the **HTML/Content**. Modern crawlers (Googlebot) can execute JS and discover lazy-loaded links, but they prioritize the initial render. Lazy loading non-essential UI logic doesn't hinder a crawler from indexing the main content, especially if you use SSR/SSG to provide the essential markup upfront.
+
 vi: Việc giảm TTI và TBT liên quan đến việc giảm thiểu các tác vụ dài (tác vụ > 50 mili giây) trên luồng chính. Các chiến lược bao gồm: (1) Tách mã (Code splitting) và tải chậm (lazy loading) JavaScript. (2) Trì hoãn các tập lệnh không quan trọng. (3) Sử dụng Web Workers để chuyển các tính toán nặng ra khỏi luồng chính. (4) Loại bỏ mã không sử dụng (Tree Shaking).
+
+#### So sánh: Code Splitting và Lazy Loading
+vi:
+- **Code Splitting (Cái gì)**: Quy trình kiến trúc nhằm chia nhỏ một gói JavaScript (bundle) lớn duy nhất thành các phần (chunks/files) nhỏ hơn và độc lập. Quá trình này được thực hiện trong **giai đoạn build** bởi các công cụ như Webpack hoặc Vite.
+- **Lazy Loading (Khi nào)**: Chiến lược động nhằm tải các phần đã được chia nhỏ đó **chỉ khi chúng thực sự cần thiết** trong quá trình chạy (ví dụ: khi người dùng điều hướng sang một route mới hoặc nhấp vào một nút bấm).
+- **Mối quan hệ**: Code splitting là *điều kiện cần*; Lazy loading là *hành động thực hiện*. Bạn có thể tách mã mà không cần tải chậm (tải tất cả các phần song song), nhưng bạn không thể tải chậm mã mà không tách nó ra trước.
+- **Ẩn dụ**: Code splitting giống như việc chia một cuốn sách dày thành nhiều chương. Lazy loading là việc chọn chỉ đọc (tải xuống) một chương cụ thể khi bạn thực sự đọc tới đó.
+
+#### Phân tích sâu: Tại sao việc này giúp giảm TTI/TBT dù cuối cùng vẫn phải tải hết?
+vi:
+1.  **Chia nhỏ "Tác vụ dài" (Long Tasks)**: TBT là tổng của "phần chặn" (blocking portion) của mọi tác vụ vượt quá 50ms.
+    - **Một Bundle lớn**: Thực thi một script 2MB có thể tạo ra một tác vụ kéo dài **500ms**. TBT = 500ms - 50ms = **450ms**.
+    - **Nhiều phần nhỏ**: Thực thi mười script 200KB có thể tạo ra mười tác vụ, mỗi tác vụ chỉ **50ms**. TBT = 0ms + 0ms... = **0ms**. Mặc dù tổng thời gian thực hiện là như nhau, nhưng luồng chính không bao giờ bị "khóa" quá lâu, cho phép nó phản hồi các lần nhấp chuột của người dùng.
+2.  **TTI (Tương tác sớm)**: TTI đánh dấu thời điểm luồng chính bắt đầu yên tĩnh. Bằng cách chỉ tải những gì cần thiết, luồng chính sẽ nhàn rỗi sớm hơn nhiều, cho phép người dùng tương tác trong khi các phần còn lại được tải ngầm (hoặc chỉ tải khi cần).
+3.  **Crawler Discovery và chỉ số người dùng**:
+    - **Với Người dùng**: TTI/TBT rất quan trọng để cảm nhận sự "mượt mà." Người dùng rất ghét một trang web bị đóng băng.
+    - **Với Crawler (Trình thu thập dữ liệu)**: Chúng chủ yếu quan tâm đến **HTML/Nội dung**. Các crawler hiện đại (như Googlebot) có thể thực thi JS và khám phá các liên kết (links) được tải chậm, nhưng chúng ưu tiên lần render đầu tiên. Việc tải chậm các logic UI không thiết yếu không ngăn cản crawler lập chỉ mục nội dung chính, đặc biệt là khi bạn sử dụng SSR/SSG để cung cấp HTML cần thiết ngay từ đầu.
+
+vi: Việc giảm TTI và TBT liên quan đến việc giảm thiểu các tác vụ dài (tác vụ > 50 mili giây) trên luồng chính. Các chiến lược bao gồm: (1) Tách mã (Code splitting) và tải chậm (lazy loading) JavaScript. (2) Trì hoãn các tập lệnh không quan trọng. (3) Sử dụng Web Workers để chuyển các tính toán nặng ra khỏi luồng chính. (4) Loại bỏ mã không sử dụng (Tree Shaking).
+
+#### So sánh: Code Splitting và Lazy Loading
+vi:
+- **Code Splitting (Cái gì)**: Quy trình kiến trúc nhằm chia nhỏ một gói JavaScript (bundle) lớn duy nhất thành các phần (chunks/files) nhỏ hơn và độc lập. Quá trình này được thực hiện trong **giai đoạn build** bởi các công cụ như Webpack hoặc Vite.
+- **Lazy Loading (Khi nào)**: Chiến lược động nhằm tải các phần đã được chia nhỏ đó **chỉ khi chúng thực sự cần thiết** trong quá trình chạy (ví dụ: khi người dùng điều hướng sang một route mới hoặc nhấp vào một nút bấm).
+- **Mối quan hệ**: Code splitting là *điều kiện cần*; Lazy loading là *hành động thực hiện*. Bạn có thể tách mã mà không cần tải chậm (tải tất cả các phần song song), nhưng bạn không thể tải chậm mã mà không tách nó ra trước.
+- **Ẩn dụ**: Code splitting giống như việc chia một cuốn sách dày thành nhiều chương. Lazy loading là việc chọn chỉ đọc (tải xuống) một chương cụ thể khi bạn thực sự đọc tới đó.
 
 ---
 
@@ -30,19 +91,19 @@ vi: Gợi ý tài nguyên giúp trình duyệt ưu tiên các tài nguyên. `dns
 
 ---
 
-## Q6: What is Tree Shaking?
+## Q6: What is Tree Shaking? - **HIGH**
 en: Tree Shaking is a term commonly used in the JavaScript context for dead-code elimination. It relies on the static structure of ES2015 module syntax (`import` and `export`). Bundlers like Webpack or Rollup remove unused exports from the final bundle.
 vi: Tree Shaking (Rung cây) là thuật ngữ thường được sử dụng trong ngữ cảnh JavaScript để loại bỏ mã chết (dead-code elimination). Nó dựa vào cấu trúc tĩnh của cú pháp module ES2015 (`import` và `export`). Các trình đóng gói (bundlers) như Webpack hoặc Rollup sẽ loại bỏ các export không được sử dụng khỏi gói cuối cùng.
 
 ---
 
-## Q7: How does HTTP/2 or HTTP/3 improve performance over HTTP/1.1?
+## Q7: How does HTTP/2 or HTTP/3 improve performance over HTTP/1.1? - **HIGH**
 en: HTTP/2 introduces multiplexing, allowing multiple requests and responses to be sent over a single TCP connection simultaneously. It also supports header compression and server push. HTTP/3 builds on QUIC (UDP) to solve head-of-line blocking issues in TCP and improve connection setup time.
 vi: HTTP/2 giới thiệu đa luồng (multiplexing), cho phép gửi nhiều yêu cầu và phản hồi qua một kết nối TCP duy nhất cùng một lúc. Nó cũng hỗ trợ nén tiêu đề và server push. HTTP/3 xây dựng trên giao thức QUIC (UDP) để giải quyết các vấn đề chặn đầu dòng (head-of-line blocking) trong TCP và cải thiện thời gian thiết lập kết nối.
 
 ---
 
-## Q8: What are Service Workers and how do they aid performance?
+## Q8: What are Service Workers and how do they aid performance? - **HIGH**
 en: Service Workers are scripts that run in the background, separate from the web page. They enable features like push notifications and background sync, but crucially for performance, they can intercept network requests and serve cached responses, enabling offline functionality and faster subsequent loads.
 vi: Service Workers là các tập lệnh chạy trong nền, tách biệt với trang web. Chúng kích hoạt các tính năng như thông báo đẩy và đồng bộ nền, nhưng quan trọng nhất đối với hiệu suất, chúng có thể chặn các yêu cầu mạng và phục vụ các phản hồi được lưu trong bộ nhớ đệm, cho phép chức năng ngoại tuyến và tải nhanh hơn trong các lần truy cập tiếp theo.
 
@@ -98,30 +159,6 @@ vi: Ảo hóa danh sách (List virtualization hoặc "windowing") chỉ render c
 
 ---
 
-## Q13: Implement a basic Debounce function for performance.
-en: Debouncing prevents a function from running too often by waiting for a pause in invocations. It's useful for search inputs or window resizing.
-
-```javascript
-function debounce(func, wait) {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-}
-
-// Usage:
-const handleResize = debounce(() => console.log('Resized!'), 300);
-window.addEventListener('resize', handleResize);
-```
-vi: Debouncing ngăn không cho một hàm chạy quá thường xuyên bằng cách chờ một khoảng dừng trong các lần gọi. Nó hữu ích cho các đầu vào tìm kiếm hoặc khi thay đổi kích thước cửa sổ.
-
----
-
 ## Q14: When should you use `useMemo` specifically for performance?
 en: `useMemo` should be used to memoize expensive calculations so they don't re-run on every render unless dependencies change. Do not use it for cheap operations, as the overhead of memoization might be higher than the calculation itself.
 
@@ -134,7 +171,7 @@ vi: `useMemo` nên được sử dụng để ghi nhớ (memoize) các tính to�
 
 ---
 
-## Q15: How can Web Workers improve main thread performance?
+## Q15: How can Web Workers improve main thread performance? - **HIGH**
 en: Web Workers run a script in a background thread, separate from the main execution thread of a web application. This allows for laborious processing (like image manipulation or sorting large arrays) to be performed without blocking the UI (rendering/interaction).
 
 ```javascript
@@ -195,21 +232,3 @@ vi: Tải chậm (Lazy loading) là một mẫu thiết kế trì hoãn việc k
 > vi: Lazy Loading không chỉ là "trì hoãn" việc tải; nó thường **tránh** việc đó hoàn toàn. Người dùng thường không cuộn xuống cuối trang. Nếu một hình ảnh hoặc thành phần không bao giờ được xem, nó sẽ không bao giờ được tải xuống, giúp tiết kiệm đáng kể băng thông và năng lực xử lý.
 >
 > **Chi tiết kỹ thuật:** Lazy Loading hiện đại dựa vào **Intersection Observer API**. API này theo dõi các phần tử một cách hiệu quả và chỉ kích hoạt callback khi chúng đi vào viewport (màn hình), tránh các tính toán cuộn thủ công tốn kém.
-
----
-
-## Q18: What is "Hydration" in React/Next.js?
-en: Hydration is the process of attaching event listeners to the static HTML that was rendered on the server (SSR). When a page loads, the user initially sees non-interactive HTML. React then "hydrates" this markup by validating the DOM matches the React tree and attaching events (like click handlers), making the page fully interactive.
-
-```mermaid
-sequenceDiagram
-    participant Browser
-    participant JS as React Bundle
-
-    Note over Browser: 1. Server HTML (Visible but Static)
-    Browser->>JS: 2. Download JS Bundle
-    JS->>Browser: 3. Execute JS
-    Note over Browser: 4. Attach Event Listeners
-    Note over Browser: ✅ Page is now Interactive (Hydrated)
-```
-vi: Hydration (Thủy hóa) là quá trình gắn các trình lắng nghe sự kiện (event listeners) vào HTML tĩnh đã được render trên máy chủ (SSR). Khi một trang tải, người dùng ban đầu thấy HTML không tương tác. React sau đó "thủy hóa" đánh dấu (markup) này bằng cách xác thực rằng DOM khớp với cây React và gắn các sự kiện (như trình xử lý nhấp chuột), làm cho trang trở nên hoàn toàn tương tác.
