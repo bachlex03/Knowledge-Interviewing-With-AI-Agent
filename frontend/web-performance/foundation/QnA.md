@@ -1,6 +1,6 @@
 # Web Performance Foundation Q&A
 
-## Q4: What are Core Web Vitals?
+## Q4: What are Core Web Vitals? - **HIGH**
 en: Core Web Vitals are a set of specific factors that Google considers important in a webpage's overall user experience. They currently consist of three metrics: LCP (loading), FID/INP (interactivity), and CLS (visual stability).
 vi: Core Web Vitals (Các chỉ số thiết yếu về trang web) là tập hợp các yếu tố cụ thể mà Google coi là quan trọng trong trải nghiệm người dùng tổng thể của một trang web. Hiện tại chúng bao gồm ba chỉ số: LCP (tải trang), FID/INP (tương tác) và CLS (ổn định hình ảnh).
 
@@ -42,7 +42,7 @@ vi:
 
 ---
 
-## Q2: What is TTI (Time to Interactive)?
+## Q2: What is TTI (Time to Interactive)? - **HIGH**
 ref: `https://vietnix.vn/time-to-interactive-la-gi/`
 en: TTI measures how long it takes for a page to become fully interactive. A page is considered fully interactive when it displays useful content (First Contentful Paint - FCP), event handlers are registered for most visible page elements, and the page responds to user interactions **within 50 milliseconds**.
 vi: TTI (Thời gian tương tác) đo thời gian cần thiết để một trang trở nên hoàn toàn tương tác. Một trang được coi là hoàn toàn tương tác khi nó hiển thị nội dung hữu ích (First Contentful Paint - FCP), các trình xử lý sự kiện đã được đăng ký cho hầu hết các phần tử trang hiển thị và trang phản hồi lại các tương tác của người dùng **trong vòng 50 mili giây**.
@@ -50,37 +50,64 @@ vi: TTI (Thời gian tương tác) đo thời gian cần thiết để một tra
 ---
 
 ## Q3: What is CLS (Cumulative Layout Shift) and why does it matter?
-ref: `https://vietnix.vn/cumulative-layout-shift/?utm_source=ggads&utm_medium=pmax&p=&gad_source=1&gad_campaignid=23385187609&gbraid=0AAAAABwedNKnOq-UyLnvoG7vmSpJSxsa5&gclid=Cj0KCQiAnJHMBhDAARIsABr7b85onAjO4ugA9pop6jYw0PleE_S1Lxg1PNDCyj6c6Z2j96-ccBOATRgaAqVSEALw_wcB`
-en: CLS measures visual stability. It quantifies how much visible content shifts unexpectedly during the page's lifespan. A low CLS score (0.1 or less) ensures a good user experience by preventing accidental clicks and jarring visual changes.
-vi: CLS (Điểm thay đổi bố cục tích lũy) đo lường độ ổn định hình ảnh. Nó định lượng mức độ dịch chuyển bất ngờ của nội dung hiển thị trong suốt vòng đời của trang. Điểm CLS thấp (0.1 trở xuống) đảm bảo trải nghiệm người dùng tốt bằng cách ngăn chặn các lần nhấp tình cờ và những thay đổi hình ảnh gây khó chịu.
+ref: `https://web.dev/articles/cls`
+en: CLS measures visual stability by quantifying how much visible content shifts unexpectedly during the page's lifespan. 
+- **Common Causes**: 
+    - Images or videos without dimensions.
+    - Ads, embeds, or iframes without dimensions.
+    - Dynamically injected content (e.g., banners, forms).
+    - Web fonts causing FOIT (Flash of Invisible Text) or FOUT (Flash of Unstyled Text).
+- **Calculation**: CLS = Impact Fraction × Distance Fraction. It measures the total of all individual layout shift scores for every unexpected layout shift that occurs during the entire lifespan of the page.
+- **How to Improve**: 
+    - Always include `width` and `height` attributes on images/videos or use CSS aspect-ratio.
+    - Pre-allocate space for dynamic elements or ads using placeholders.
+    - Optimize font loading (e.g., `font-display: swap`).
+    - Use CSS `transform` for animations instead of properties that trigger layout shifts (like `top`, `left`, `margin`).
+A good CLS score is 0.1 or less.
+
+vi: CLS (Điểm thay đổi bố cục tích lũy) đo lường độ ổn định hình ảnh bằng cách định lượng mức độ dịch chuyển bất ngờ của nội dung hiển thị trong suốt vòng đời của trang.
+- **Nguyên nhân phổ biến**:
+    - Hình ảnh hoặc video không khai báo kích thước.
+    - Quảng cáo, mã nhúng hoặc iframe không có kích thước cố định.
+    - Nội dung được chèn động (ví dụ: biểu ngữ, biểu mẫu).
+    - Font chữ web gây ra hiệu ứng FOIT (văn bản ẩn hiện) hoặc FOUT (văn bản chưa được định dạng).
+- **Cách tính**: CLS = Phân đoạn tác động (Impact Fraction) × Phân đoạn khoảng cách (Distance Fraction). Nó là tổng điểm của tất cả các lần thay đổi bố cục bất ngờ trong suốt vòng đời của trang.
+- **Cách cải thiện**:
+    - Luôn khai báo các thuộc tính `width` (chiều rộng) và `height` (chiều cao) cho hình ảnh/video hoặc sử dụng `aspect-ratio` trong CSS.
+    - Đặt trước không gian cho các thành phần động hoặc quảng cáo bằng cách sử dụng khung giữ chỗ (placeholders).
+    - Tối ưu hóa việc tải font chữ (ví dụ: `font-display: swap`).
+    - Sử dụng thuộc tính `transform` trong CSS cho hoạt ảnh thay vì các thuộc tính gây thay đổi bố cục (layout shift) như `top`, `left`, `margin`.
+Điểm CLS tốt là từ 0.1 trở xuống.
 
 ---
 
-## Q5: What is FCP (First Contentful Paint)?
+## Q5: What is FCP (First Contentful Paint)? - **HIGH**
+ref: `https://vietnix.vn/first-contentful-paint-la-gi/`
 en: FCP measures the time from when the page starts loading to when any part of the page's content is rendered on the screen. "Content" refers to text, images (including background images), `<svg>` elements, or non-white `<canvas>` elements.
 vi: FCP (Lần hiển thị nội dung đầu tiên) đo thời gian từ khi trang bắt đầu tải đến khi bất kỳ phần nào của nội dung trang được render trên màn hình. "Nội dung" ở đây đề cập đến văn bản, hình ảnh (bao gồm cả hình nền), các phần tử `<svg>` hoặc các phần tử `<canvas>` không phải màu trắng.
 
 ---
 
-## Q6: What is TTFB (Time to First Byte)?
+## Q6: What is TTFB (Time to First Byte)? - **HIGH**
+ref: `https://vietnix.vn/ttfb-la-gi/`
 en: TTFB measures the time between the browser requesting a page and when it receives the first byte of information from the server. It is a foundational metric for measuring connection setup time and web server responsiveness.
 vi: TTFB (Thời gian đến byte đầu tiên) đo thời gian giữa lúc trình duyệt yêu cầu một trang và khi nó nhận được byte thông tin đầu tiên từ máy chủ. Đây là một chỉ số nền tảng để đo thời gian thiết lập kết nối và khả năng phản hồi của máy chủ web.
 
 ---
 
-## Q7: What is the Critical Rendering Path (CRP)?
+## Q7: What is the Critical Rendering Path (CRP)? - **HIGH**
 en: The Critical Rendering Path is the sequence of steps the browser goes through to convert HTML, CSS, and JavaScript into pixels on the screen. Optimizing CRP improves render performance.
 vi: Đường dẫn render quan trọng (Critical Rendering Path - CRP) là chuỗi các bước mà trình duyệt trải qua để chuyển đổi HTML, CSS và JavaScript thành các pixel trên màn hình. Việc tối ưu hóa CRP giúp cải thiện hiệu suất render.
 
 ---
 
-## Q8: Explain the difference between DOMContentLoaded and the load event.
+## Q8: Explain the difference between DOMContentLoaded and the load event. - **LOW**
 en: The `DOMContentLoaded` event fires when the initial HTML document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading. The `load` event fires when the whole page has loaded, including all dependent resources such as stylesheets and images.
 vi: Sự kiện `DOMContentLoaded` kích hoạt khi tài liệu HTML ban đầu đã được tải và phân tích cú pháp hoàn toàn mà không cần chờ các stylesheet, hình ảnh và khung con (subframes) tải xong. Sự kiện `load` kích hoạt khi toàn bộ trang đã tải xong, bao gồm tất cả các tài nguyên phụ thuộc như stylesheet và hình ảnh.
 
 ---
 
-## Q9: What is Lighthouse?
+## Q9: What is Lighthouse? - **HIGH**
 en: Lighthouse is an open-source, automated tool for improving the quality of web pages. It has audits for performance, accessibility, progressive web apps, SEO, and more. It runs in Chrome DevTools, from the command line, or as a Node module.
 vi: Lighthouse là một công cụ mã nguồn mở, tự động để cải thiện chất lượng của các trang web. Nó có các bài kiểm tra audit cho hiệu suất, khả năng truy cập, ứng dụng web lũy tiến (PWA), SEO và nhiều thứ khác. Nó chạy trong Chrome DevTools, từ dòng lệnh hoặc dưới dạng module Node.
 
