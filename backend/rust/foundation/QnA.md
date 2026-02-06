@@ -1,14 +1,37 @@
 # Rust Foundation Q&A
 
-## Q1: What is Ownership in Rust?
+## Q1: What is Ownership in Rust? - **HIGH**
 en: Ownership is Rust's most unique feature for managing memory. It consists of three rules: 1. Each value has a variable called its owner. 2. There can only be one owner at a time. 3. When the owner goes out of scope, the value is dropped.
 vi: Ownership (Quyền sở hữu) là tính năng độc đáo nhất của Rust để quản lý bộ nhớ. Nó bao gồm ba quy tắc: 1. Mỗi giá trị có một biến được gọi là owner của nó. 2. Chỉ có thể có một owner tại một thời điểm. 3. Khi owner ra khỏi phạm vi (scope), giá trị sẽ bị hủy (dropped).
 
 ---
 
-## Q2: Explain Borrowing and the difference between shared and mutable references.
+## Q2: Explain Borrowing and the difference between shared and mutable references. - **HIGH**
 en: Borrowing allows you to access data without taking ownership. You can have either: 1. Any number of shared references (`&T`), OR 2. Exactly one mutable reference (`&mut T`). You cannot have both at the same time in the same scope.
+
 vi: Borrowing (Vay mượn) cho phép bạn truy cập dữ liệu mà không cần lấy quyền sở hữu. Bạn có thể có: 1. Bất kỳ số lượng tham chiếu chia sẻ nào (`&T`), HOẶC 2. Duy nhất một tham chiếu có thể thay đổi (`&mut T`). Bạn không thể có cả hai cùng lúc trong cùng một phạm vi.
+
+```rust
+fn main() {
+    let mut s = String::from("hello");
+
+    // 1. Shared Borrowing (Multiple allowed)
+    // 1. Tham chiếu chia sẻ (Cho phép nhiều tham chiếu)
+    let r1 = &s; 
+    let r2 = &s; 
+    println!("{} and {}", r1, r2); 
+
+    // 2. Mutable Borrowing (Only ONE allowed)
+    // 2. Tham chiếu thay đổi (Chỉ cho phép DUY NHẤT một)
+    let r3 = &mut s; 
+    r3.push_str(", world");
+    println!("{}", r3);
+
+    // 3. Conflict (The Error Case / Trường hợp LỖI)
+    // let r4 = &s;     
+    // let r5 = &mut s; // en: ERROR! / vi: LỖI!
+}
+```
 
 ---
 
