@@ -71,3 +71,22 @@ vi: Global Execution Context là môi trường mặc định nơi mã JavaScrip
 ## Q10: What is the purpose of `use strict`? - **LOW**
 en: `"use strict"` is a directive that enables strict mode in JavaScript. It helps catch common coding bloopers, prevents the use of certain "unsafe" features, and throws errors for practices that were previously tolerated.
 vi: `"use strict"` là một chỉ thị kích hoạt chế độ nghiêm ngặt (strict mode) trong JavaScript. Nó giúp phát hiện các lỗi lập trình phổ biến, ngăn chặn việc sử dụng một số tính năng "không an toàn" và đưa ra lỗi cho các cách làm mà trước đây được chấp nhận.
+
+---
+
+## Q11: What is the difference between a Statement and an Expression? - **MEDIUM**
+en: An **Expression** is a piece of code that produces a value (e.g., `2 + 2`, `scope`, `greet()`). A **Statement** is a piece of code that performs an action (e.g., `if`, `for`, `let x = 5`). A simple way to distinguish them is that expressions can be used as arguments to functions, while statements cannot.
+vi: Một **Expression (Biểu thức)** là một đoạn mã tạo ra một giá trị (ví dụ: `2 + 2`, `scope`, `greet()`). Một **Statement (Câu lệnh)** là một đoạn mã thực hiện một hành động (ví dụ: `if`, `for`, `let x = 5`). Một cách đơn giản để phân biệt chúng là các biểu thức có thể được sử dụng làm đối số cho hàm, trong khi các câu lệnh thì không.
+
+```javascript
+// Expression / Biểu thức
+5 + 5; // -> 10
+age >= 18; // -> true/false
+
+// Statement / Câu lệnh
+let x = 10;
+if (x > 5) {
+  console.log("X is greater than 5");
+}
+```
+

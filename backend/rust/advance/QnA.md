@@ -74,3 +74,26 @@ graph LR
     Mutex["Arc<Mutex<T>>"] -- Thread Safe Mutation --> Data3
     end
 ```
+
+---
+
+## Q11: What is the difference between `mut` and Shadowing in Rust?
+en: While both allow "changing" a value, they work differently:
+1. **Shadowing**: Creates a *new* variable with the same name. It can change the memory address and even the **data type**. The original variable still exists in memory until the end of its scope, but it's inaccessible.
+2. **`mut`**: Allows you to mutate the *existing* value in the *same* memory location. You **cannot** change the data type of the variable.
+
+vi: Mặc dù cả hai đều cho phép "thay đổi" một giá trị, nhưng chúng hoạt động khác nhau:
+1. **Shadowing (Che bóng)**: Tạo ra một biến *mới* hoàn toàn với cùng tên. Nó có thể thay đổi địa chỉ bộ nhớ và thậm chí cả **kiểu dữ liệu**. Biến ban đầu vẫn tồn tại trong bộ nhớ cho đến khi hết phạm vi (scope) của nó, nhưng không thể truy cập được nữa.
+2. **`mut` (Khả biến)**: Cho phép bạn sửa đổi giá trị *hiện tại* trong *cùng* một vị trí bộ nhớ. Bạn **không thể** thay đổi kiểu dữ liệu của biến đó.
+
+```rust
+// Shadowing: Can change type
+let x = "five"; 
+let x = 5; 
+
+// mut: Same type, same memory
+let mut y = 5;
+y = 6; 
+// y = "six"; // en: Error! / vi: Lỗi!
+```
+

@@ -96,3 +96,67 @@ sequenceDiagram
     V1--xS: s1 is now invalid
     V2->>S: s2 now owns "hello"
 ```
+
+---
+
+## Q11: What is Shadowing in Rust and how does it differ from Mutability?
+en: Shadowing allows a programmer to declare a new variable with the same name as a previous variable. The new variable shadows the previous one. This is different from `mut` because: 1. You can change the data type of the variable. 2. You don't need to make the variable mutable if you only want to transform its value and then keep it immutable.
+vi: Shadowing (Cơ chế che bóng) cho phép lập trình viên khai báo một biến mới có cùng tên với một biến trước đó. Biến mới sẽ che bóng biến cũ. Điều này khác với `mut` vì: 1. Bạn có thể thay đổi kiểu dữ liệu của biến. 2. Bạn không cần khai báo biến là `mut` nếu bạn chỉ muốn biến đổi giá trị của nó rồi sau đó giữ nguyên trạng thái không đổi (immutable).
+
+```rust
+fn main() {
+    let x = 5;
+    let x = x + 1; // en: Shadowing / vi: Che bóng
+    {
+        let x = x * 2; // en: Shadowing in inner scope / vi: Che bóng trong scope con
+        println!("Inner x: {}", x); // 12
+    }
+    println!("Outer x: {}", x); // 6
+    
+    // en: Changing type with shadowing
+    // vi: Thay đổi kiểu dữ liệu bằng shadowing
+    let spaces = "   ";
+    let spaces = spaces.len(); 
+}
+```
+
+---
+
+## Q12: What are Scalar and Compound types in Rust?
+en: Rust divides its data types into two main categories:
+1. **Scalar Types**: Represent a single value. There are four primary scalar types: integers (`i32`, `u64`, etc.), floating-point numbers (`f32`, `f64`), Booleans (`bool`), and characters (`char`).
+2. **Compound Types**: Can group multiple values into one type. Rust has two primitive compound types: **Tuples** (fixed-size, multiple types) and **Arrays** (fixed-size, same type).
+
+vi: Rust chia các kiểu dữ liệu của mình thành hai loại chính:
+1. **Scalar Types (Kiểu vô hướng)**: Đại diện cho một giá trị duy nhất. Có bốn kiểu vô hướng cơ bản: số nguyên (`i32`, `u64`, v.v.), số thực phẩy động (`f32`, `f64`), Boolean (`bool`), và ký tự (`char`).
+2. **Compound Types (Kiểu hỗn hợp)**: Có thể nhóm nhiều giá trị vào một kiểu. Rust có hai kiểu hỗn hợp nguyên thủy: **Tuples** (kích thước cố định, nhiều kiểu dữ liệu) và **Arrays** (mảng - kích thước cố định, cùng một kiểu dữ liệu).
+
+```rust
+// Scalar
+let x: i32 = 42;
+let is_active: bool = true;
+
+// Compound
+let tup: (i32, f64, u8) = (500, 6.4, 1);
+let arr: [i32; 3] = [1, 2, 3];
+```
+
+> **Note on `String` type**:
+> en: `String` is NOT a Scalar or primitive Compound type. It is a **Collection** type because it is a growable buffer on the heap.
+> vi: `String` KHÔNG phải là kiểu Scalar hay Compound nguyên thủy. Nó là kiểu **Collection (Bộ sưu tập)** vì nó là một vùng đệm có thể mở rộng trên heap.
+
+---
+
+## Q13: If `String` is stored on the heap, where is the `&str` (string slice) that points to it stored? Is it a scalar type?
+en: The `&str` (string slice) itself is stored on the **stack**. It is a "fat pointer" consisting of two parts: a pointer to the data and the length of the slice. While it represents a single "borrowed" reference, it's not strictly a single primitive scalar type because it's a composite of two values (pointer + length), but it behaves like a scalar value as it is passed by value.
+vi: Tự thân `&str` (string slice) được lưu trữ trên **stack**. Nó là một "fat pointer" (con trỏ béo) bao gồm hai phần: một con trỏ tới dữ liệu và chiều dài của slice đó. Mặc dù nó đại diện cho một tham chiếu "vay mượn" đơn lẻ, nó không hoàn toàn là một kiểu scalar nguyên thủy đơn giản vì nó là một cấu trúc gồm hai giá trị (con trỏ + chiều dài), nhưng nó hoạt động giống như một giá trị scalar vì được truyền đi theo giá trị.
+
+---
+
+## Q14: What happens to the heap memory when a `String` goes out of scope? Does Rust have a Garbage Collector?
+en: No, Rust does **not** have a Garbage Collector (GC). Instead, it uses a mechanism called **RAII** (Resource Acquisition Is Initialization). When a `String` (the owner) goes out of scope, Rust automatically calls a special function named `drop`, which deallocates the heap memory immediately.
+vi: Không, Rust **không** có Bộ thu gom rác (Garbage Collector - GC). Thay vào đó, nó sử dụng một cơ chế gọi là **RAII** (Resource Acquisition Is Initialization). Khi một `String` (chủ sở hữu) ra khỏi phạm vi, Rust tự động gọi một hàm đặc biệt tên là `drop`, hàm này sẽ giải phóng bộ nhớ heap ngay lập tức.
+
+
+
+
