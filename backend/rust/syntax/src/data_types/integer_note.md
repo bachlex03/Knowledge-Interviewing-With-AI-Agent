@@ -234,4 +234,58 @@ Việc chọn đúng phương thức phụ thuộc vào cách ứng dụng của
 -   **`checked_*` (Lựa chọn an toàn nhất)**: Dùng khi việc tràn số được coi là một **trạng thái lỗi** mà bạn phải xử lý (ví dụ: giao dịch tài chính, tồn kho).
 -   **`saturating_*` (Lựa chọn "Chạm trần/Sàn")**: Dùng khi bạn muốn giá trị dừng lại ở **giới hạn tối thiểu/tối đa** thay vì quay vòng (ví dụ: Máu/HP trong game, Độ sáng UI, Âm lượng).
 -   **`wrapping_*` (Lựa chọn "Quay vòng")**: Chỉ dùng khi logic **yêu cầu về mặt toán học** hành vi quay vòng (ví dụ: Mã hóa, Hàm băm, Bộ đệm vòng).
--   **`overflowing_*` (Lựa chọn "Chẩn đoán")**: Dùng khi bạn cần kết quả đã quay vòng **và** một cờ boolean để biết liệu việc quay vòng có xảy ra hay không (ví dụ: Kiểu số tùy chỉnh, Thư viện toán học chuyên biệt).
+-   **`overflowing_*` (Lựa chọn "Chẩn đoán")**: Dùng khi bạn cần kết quả đã quy vòng **và** một cờ boolean để biết liệu việc quy vòng có xảy ra hay không (ví dụ: Kiểu số tùy chỉnh, Thư viện toán học chuyên biệt).
+
+---
+
+## 8. Debug vs. Release Mode: Integer Overflow / Chế độ Debug so với Release: Tràn số nguyên
+
+**En:**
+Rust handles integer overflow differently depending on the build profile:
+
+- **Debug Mode**: Rust includes runtime checks. If an integer overflows, the program will **panic** (crash) to help you catch the bug.
+- **Release Mode**: To maximize performance, Rust removes these checks. Instead, it uses **Two's Complement Wrapping**.
+
+**Two's Complement Wrapping**: 
+Like an odometer, when a value hits its maximum, it simply flips back to the minimum (e.g., `255u8 + 1` becomes `0`).
+
+**Vi:**
+Rust xử lý việc tràn số nguyên khác nhau tùy thuộc vào cấu hình biên dịch (build profile):
+
+- **Chế độ Debug**: Rust bao gồm các bước kiểm tra khi chạy. Nếu một số nguyên bị tràn, chương trình sẽ **panic** (sập) để giúp bạn phát hiện lỗi.
+- **Chế độ Release**: Để tối ưu hóa hiệu suất, Rust loại bỏ các bước kiểm tra này. Thay vào đó, nó sử dụng cơ chế **Quay vòng số bù 2 (Two's Complement Wrapping)**.
+
+**Quay vòng số bù 2**: 
+Giống như bộ đếm quãng đường, khi một giá trị đạt đến mức tối đa, nó sẽ đơn giản là quay ngược lại giá trị tối thiểu (ví dụ: `255u8 + 1` trở thành `0`).
+
+---
+
+## 9. `if let None` vs. `.is_none()` / So sánh `if let None` và `.is_none()`
+
+**En:**
+While you **can** technically use `if let None = ...`, it is not common practice in Rust.
+
+- **`if let Some(val)`**: Use this when you need to **extract and use** the value inside.
+- **`.is_none()`**: Use this when you only need to **check** if a value is absent, without needing any data. This is the idiomatic (standard) way.
+
+```rust
+// Not idiomatic
+if let None = x.checked_add(1) { ... }
+
+// Idiomatic (Better)
+if x.checked_add(1).is_none() { ... }
+```
+
+**Vi:**
+Mặc dù về mặt kỹ thuật bạn **có thể** sử dụng `if let None = ...`, nhưng đây không phải là cách làm phổ biến trong Rust.
+
+- **`if let Some(val)`**: Dùng khi bạn cần **trích xuất và sử dụng** giá trị bên trong.
+- **`.is_none()`**: Dùng khi bạn chỉ cần **kiểm tra** xem giá trị có trống hay không, mà không cần lấy dữ liệu. Đây là cách viết chuẩn (idiomatic).
+
+```rust
+// Không chuẩn (Not idiomatic)
+if let None = x.checked_add(1) { ... }
+
+// Chuẩn Rust (Tốt hơn)
+if x.checked_add(1).is_none() { ... }
+```
