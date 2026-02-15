@@ -95,3 +95,107 @@ Trong Rust, `.collect()` là một phương thức linh hoạt giúp biến đ�
 - **Lợi ích**:
   - **Hiệu suất**: Dừng xử lý ngay khi đạt được yêu cầu (ví dụ: tìm 5 mục đầu tiên trong số một triệu mục).
   - **Kết nối chuỗi**: Cho phép xếp chồng các thao tác mà không cần tạo ra các danh sách tạm thời trung gian.
+
+---
+
+## 6. String vs. String Slice (&str) / String so với Lát cắt chuỗi (&str)
+
+**En:**
+The primary difference is **ownership**:
+- **`String`**: Owned, heap-allocated, growable.
+- **`&str`**: A borrowed reference (fat pointer) to a sequence of UTF-8 bytes.
+
+| Feature | `String` | `&str` |
+| :--- | :--- | :--- |
+| **Ownership** | Owner | Borrowed (Reference) |
+| **Allocation** | Heap-allocated | Points to existing memory |
+| **Mutability** | Growable / Modifiable | Immutable (usually) |
+
+**Vi:**
+Sự khác biệt chính là **quyền sở hữu**:
+- **`String`**: Được sở hữu, cấp phát trên heap, có thể mở rộng.
+- **`&str`**: Một tham chiếu đi mượn (fat pointer) đến một chuỗi các byte UTF-8.
+
+| Đặc điểm | `String` | `&str` |
+| :--- | :--- | :--- |
+| **Quyền sở hữu** | Chủ sở hữu | Đi mượn (Tham chiếu) |
+| **Cấp phát** | Cấp phát trên Heap | Trỏ đến vùng nhớ có sẵn |
+| **Khả năng thay đổi** | Có thể mở rộng | Bất biến (thông thường) |
+
+---
+
+## 7. Memory Allocation: Heap vs. Stack / Cấp phát bộ nhớ: Heap và Stack
+
+**En:**
+- **`String`**: Its metadata (pointer, length, capacity) is on the **stack**, but the actual character data is on the **heap**.
+- **`array` ([T; N])**: Allocated entirely on the **stack** by default. Its size must be known at compile time.
+- **Manual Heap Allocation**: You can move stack data (like an array) to the heap using `Box<T>`.
+
+**Vi:**
+- **`String`**: Siêu dữ liệu (con trỏ, độ dài, dung lượng) nằm trên **stack**, nhưng dữ liệu ký tự thực tế nằm trên **heap**.
+- **Mảng (`array` - [T; N])**: Theo mặc định được cấp phát hoàn toàn trên **stack**. Kích thước của nó phải được biết tại thời điểm biên dịch.
+- **Cấp phát Heap thủ công**: Bạn có thể di chuyển dữ liệu từ stack (như một mảng) lên heap bằng cách sử dụng `Box<T>`.
+
+---
+
+## 8. String Literals / Chuỗi Literals
+
+**En:**
+- **Type**: `&'static str`.
+- **Storage**: Hardcoded directly into the **compiled binary** (Read-Only Data segment).
+- **Lifetime**: `'static` (exists for the entire duration of the program).
+- **Nature**: They are immutable and not allocated on the stack or heap at runtime.
+
+**Vi:**
+- **Kiểu dữ liệu**: `&'static str`.
+- **Lưu trữ**: Được nhúng trực tiếp vào **tệp nhị phân đã biên dịch** (phân đoạn dữ liệu chỉ đọc).
+- **Vòng đời**: `'static` (tồn tại trong suốt thời gian chương trình chạy).
+- **Bản chất**: Chúng là bất biến và không được cấp phát trên stack hay heap khi chương trình đang chạy.
+
+---
+
+## 9. Length vs. Capacity / Độ dài so với Dung lượng
+
+**En:**
+Both are measured in **bytes**.
+- **Length (`len`)**: The number of bytes currently used by the string.
+- **Capacity (`capacity`)**: The total bytes allocated on the heap.
+- **Reallocation**: When `len == capacity`, adding data triggers a reallocation (usually doubling the capacity) to maintain performance.
+
+**Vi:**
+Cả hai đều được tính bằng **byte**.
+- **Độ dài (`len`)**: Số lượng byte hiện đang được chuỗi sử dụng.
+- **Dung lượng (`capacity`)**: Tổng số byte đã được cấp phát trên heap.
+- **Cấp phát lại**: Khi `độ dài == dung lượng`, việc thêm dữ liệu sẽ kích hoạt cấp phát lại (thường là gấp đôi dung lượng) để duy trì hiệu suất.
+
+---
+
+## 10. Deep Dive: Capacity Optimization / Đi sâu vào: Tối ưu hóa dung lượng
+
+**En:**
+- **`String::with_capacity(n)`**: Used to pre-allocate memory. Faster because it avoids multiple reallocations.
+- **Growth Strategy**: Rust uses an exponential growth strategy (amortized O(1)) to minimize expensive calls to the OS.
+- **`shrink_to_fit()`**: `String` never automatically releases memory. You must call this method to decrease capacity to match the current length.
+
+**Vi:**
+- **`String::with_capacity(n)`**: Được sử dụng để cấp phát bộ nhớ trước. Nhanh hơn vì tránh được nhiều lần cấp phát lại.
+- **Chiến lược tăng trưởng**: Rust sử dụng chiến lược tăng trưởng theo hàm mũ (amortized O(1)) để giảm thiểu các lần gọi tốn kém đến hệ điều hành.
+- **`shrink_to_fit()`**: `String` không bao giờ tự động giải phóng bộ nhớ. Bạn phải gọi phương thức này để giảm dung lượng khớp với độ dài hiện tại.
+
+---
+
+## 11. Slice as a Type (DST) / Slice như một Kiểu dữ liệu (DST)
+
+**En:**
+A **Slice** is a special kind of type known as a **DST (Dynamically Sized Type)**:
+- **The Unsized Type (`[T]` or `str`)**: Rust doesn't know its size at compile time, so you cannot create a variable of this type directly.
+- **The Slice Reference (`&[T]` or `&str`)**: This is what we use in code. It's a **Fat Pointer** containing the memory address AND the length.
+- **Flexibility**: Unlike arrays where size is part of the type (e.g., `[i32; 5]`), a slice reference can point to any number of elements, making it ideal for function parameters.
+
+**Vi:**
+**Slice (Lát cắt)** là một loại kiểu đặc biệt được gọi là **DST (Dynamically Sized Type - Kiểu có kích thước động)**:
+- **Kiểu không định cỡ (`[T]` hoặc `str`)**: Rust không biết kích thước của chúng tại thời điểm biên dịch, vì vậy bạn không thể tạo trực tiếp một biến thuộc kiểu này.
+- **Tham chiếu lát cắt (`&[T]` hoặc `&str`)**: Đây là những gì chúng ta sử dụng trong mã nguồn. Nó là một **Fat Pointer (Con trỏ béo)** chứa địa chỉ bộ nhớ VÀ độ dài.
+- **Sự linh hoạt**: Không giống như mảng có kích thước là một phần của kiểu dữ liệu (ví dụ: `[i32; 5]`), một tham chiếu lát cắt có thể trỏ đến bất kỳ số lượng phần tử nào, giúp nó trở nên lý tưởng cho các tham số của hàm.
+
+

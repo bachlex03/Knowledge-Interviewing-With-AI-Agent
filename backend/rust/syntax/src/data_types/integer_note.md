@@ -288,4 +288,35 @@ if let None = x.checked_add(1) { ... }
 
 // Chuẩn Rust (Tốt hơn)
 if x.checked_add(1).is_none() { ... }
+
+---
+
+## 10. Copy Trait vs. Shadowing / So sánh Copy Trait và Shadowing
+
+**En:**
+It is important to distinguish between **Copying** and **Shadowing**:
+
+- **Copying (Copy Trait)**: For simple types (integers, bools) that live on the **stack**, doing `let y = x;` creates a duplicate of the data. Both `x` and `y` remain valid and independent owners of their own values.
+- **Moving**: For complex types (like `String`) that live on the **heap**, doing `let s2 = s1;` transfers ownership. `s1` becomes invalid.
+- **Shadowing**: Reusing the **same variable name** in the same scope (e.g., `let x = 5; let x = x + 1;`). This hides the previous variable.
+
+| Term | Scenario | Result |
+| :--- | :--- | :--- |
+| **Copying** | `let y = x;` | Two distinct variables with the same value. |
+| **Moving** | `let s2 = s1;` | Original variable becomes invalid. |
+| **Shadowing** | `let x = 5; let x = 6;` | The first `x` is hidden by the second `x`. |
+
+**Vi:**
+Cần phân biệt rõ giữa **Sao chép (Copying)** và **Shadowing**:
+
+- **Sao chép (Copy Trait)**: Đối với các kiểu đơn giản (số nguyên, bool) nằm trên **stack**, việc thực hiện `let y = x;` sẽ tạo ra một bản sao của dữ liệu. Cả `x` và `y` đều hợp lệ và là những người sở hữu độc lập cho giá trị của chính chúng.
+- **Di chuyển (Moving)**: Đối với các kiểu phức tạp (như `String`) nằm trên **heap**, việc thực hiện `let s2 = s1;` sẽ chuyển quyền sở hữu. `s1` trở nên vô hiệu.
+- **Shadowing**: Việc tái sử dụng **cùng một tên biến** trong cùng một phạm vi (ví dụ: `let x = 5; let x = x + 1;`). Điều này che khuất biến trước đó.
+
+| Thuật ngữ | Kịch bản | Kết quả |
+| :--- | :--- | :--- |
+| **Sao chép (Copying)** | `let y = x;` | Hai biến riêng biệt có cùng giá trị. |
+| **Di chuyển (Moving)** | `let s2 = s1;` | Biến ban đầu trở nên vô hiệu. |
+| **Shadowing** | `let x = 5; let x = 6;` | Biến `x` đầu tiên bị che khuất bởi biến `x` thứ hai. |
+
 ```
