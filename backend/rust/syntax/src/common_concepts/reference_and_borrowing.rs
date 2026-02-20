@@ -70,7 +70,8 @@ fn demonstrate_borrowing_restrictions() {
     println!("   [Rule] You cannot have two mutable references at the same time.");
 
     let r1 = &mut s;
-    // let r2 = &mut s; // ERROR: cannot borrow `s` as mutable more than once
+    println!("   s: {}", s); // s is not accessible here
+                             // let r2 = &mut s; // ERROR: cannot borrow `s` as mutable more than once
 
     println!("   Reference r1 is active here: '{}'", r1);
     println!("   Any attempt to create r2 here would fail at compile time.");
