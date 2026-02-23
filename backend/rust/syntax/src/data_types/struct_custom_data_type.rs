@@ -122,10 +122,38 @@ fn demonstrate_unit_like_structs() {
     println!("5. Unit-Like Structs");
     println!("   Structs without any fields, useful for implementing traits\n");
 
+    // Basic instance
     struct AlwaysEqual;
-
     let _subject = AlwaysEqual;
     println!("   Created AlwaysEqual unit struct instance");
+
+    // Use-case: Marker structs for Behavior (Traits)
+    // Sometimes you want a type to represent a capability or a strategy
+    // without actually storing any data on the instance itself.
+    trait Formatter {
+        fn format(&self, input: &str) -> String;
+    }
+
+    struct UppercaseFormatter;
+    struct ShoutFormatter;
+
+    impl Formatter for UppercaseFormatter {
+        fn format(&self, input: &str) -> String {
+            input.to_uppercase()
+        }
+    }
+
+    impl Formatter for ShoutFormatter {
+        fn format(&self, input: &str) -> String {
+            format!("{}!!!", input.to_uppercase())
+        }
+    }
+
+    let up = UppercaseFormatter;
+    let shout = ShoutFormatter;
+
+    println!("   Uppercase: {}", up.format("hello rust"));
+    println!("   Shout:     {}", shout.format("hello rust"));
     println!();
 }
 
