@@ -82,3 +82,241 @@ if let Some(val) = 255u8.checked_add(1) {
     println!("Result: {}", val);
 }
 ```
+
+
+# Rust Integer Method & Formatting Notes / Ghi chú về Phương thức Số nguyên & Định dạng trong Rust
+
+## 1. Error E0689: Ambiguous Numeric Type / Lỗi kiểu số mơ hồ
+
+**Error / Chi tiết lỗi:**
+`error[E0689]: can't call method checked_add on ambiguous numeric type {integer}`
+
+**En:**
+- **Cause**: Rust needs the exact type (like `i32`, `u64`) to know which version of a method to call. If the type is just inferred as a generic "integer", methods like `checked_add` cannot be called.
+- **Solution**: Explicitly annotate the type of the variable.
+
+**Vi:**
+- **Nguyên nhân**: Rust cần biết chính xác kiểu dữ liệu (như `i32`, `u64`) để biết nên gọi phiên bản nào của phương thức. Nếu kiểu chỉ được suy luận là "số nguyên" chung chung, các phương thức như `checked_add` sẽ không thể được gọi.
+- **Giải pháp**: Ghi chú kiểu dữ liệu (type annotation) cho biến một cách tường minh.
+
+```rust
+// Wrong / Sai
+let x = 5;
+let result = x.checked_add(1);
+
+// Correct / Đúng
+let x: i32 = 5;
+let result = x.checked_add(1);
+```
+
+---
+
+## 2. Option Return Type & Type Mismatch / Kiểu trả về Option & Sai lệch kiểu
+
+**En:**
+- **Cause**: Methods like `checked_add` return `Option<T>` (e.g., `Option<i32>`) to handle potential overflows safely. You cannot assign this directly to a variable of type `i32`.
+- **Solution**: Use `Option<i32>` or handle the value using `.unwrap()`, `.unwrap_or()`, or pattern matching.
+
+**Vi:**
+- **Nguyên nhân**: Các phương thức như `checked_add` trả về kiểu `Option<T>` (ví dụ: `Option<i32>`) để xử lý an toàn trường hợp tràn số. Bạn không thể gán trực tiếp kết quả này vào một biến kiểu `i32`.
+- **Giải pháp**: Sử dụng kiểu `Option<i32>` hoặc xử lý giá trị bằng `.unwrap()`, `.unwrap_or()`, hoặc pattern matching.
+
+```rust
+// Error / Lỗi
+let x: i32 = 5;
+let y: i32 = x.checked_add(1); // Mismatch: Option<i32> vs i32
+
+// Correct / Đúng
+let y = x.checked_add(1); // y is Option<i32>
+```
+
+---
+
+## 3. Error E0277: Display vs Debug Formatting / Lỗi định dạng Display và Debug
+
+**Error / Chi tiết lỗi:**
+`error[E0277]: Option<i32> doesn't implement std::fmt::Display`
+
+**En:**
+- **Cause**: The `{}` placeholder uses the `Display` trait, which `Option` does not implement.
+- **Solution**: Use `{:?}` (Standard Debug) or `{:#?}` (Pretty-print Debug).
+
+**Vi:**
+- **Nguyên nhân**: Ký hiệu `{}` sử dụng trait `Display`, nhưng `Option` không thực thi trait này.
+- **Giải pháp**: Sử dụng `{:?}` (Debug tiêu chuẩn) hoặc `{:#?}` (Debug căn chỉnh đẹp).
+
+```rust
+let x = Some(6);
+
+// Error / Lỗi
+println!("{}", x);
+
+// Correct / Đúng
+println!("{:?}", x);   // Output: Some(6)
+println!("{:#?}", x);  // Output: Some(6) with indentation
+```
+
+---
+
+## 4. Debug vs Pretty-print Debug / So sánh Debug tiêu chuẩn và Debug căn chỉnh
+
+**En:**
+- `{:?}`: Compact, single-line output.
+- `{:#?}`: Pretty-print, multi-line output with indentation (easier to read for complex data).
+
+**Vi:**
+- `{:?}`: Gọn gàng, in trên một dòng duy nhất.
+- `{:#?}`: In đẹp, nhiều dòng kèm thụt lề (dễ đọc hơn đối với dữ liệu phức tạp).
+
+---
+
+## 5. Deep Dive into `.unwrap()` / Tìm hiểu sâu về `.unwrap()`
+
+**En:**
+In Rust, `unwrap()` is a common method used to extract the value contained inside an `Option<T>` or a `Result<T, E>`.
+
+### What it does:
+1.  **Successful Path**: If the `Option` is `Some(value)` or the `Result` is `Ok(value)`, `unwrap()` returns the inner `value`.
+2.  **Failure Path**: If the `Option` is `None` or the `Result` is `Err(e)`, `unwrap()` will cause the program to **panic** (crash immediately) with an error message.
+
+### Example in code:
+```rust
+let x = x.checked_add(i32::MAX).unwrap();
+```
+The `checked_add` method returns an `Option<i32>`. By calling `.unwrap()`, you are explicitly telling Rust: **"I am certain this addition will not overflow. If it does, crash the program."**
+
+**Vi:**
+Trong Rust, `unwrap()` là một phương thức phổ biến được sử dụng để lấy giá trị bên trong một `Option<T>` hoặc `Result<T, E>`.
+
+### Nó làm gì:
+1.  **Trường hợp thành công**: Nếu `Option` là `Some(value)` hoặc `Result` là `Ok(value)`, `unwrap()` sẽ trả về giá trị `value` bên trong.
+2.  **Trường hợp thất bại**: Nếu `Option` là `None` hoặc `Result` là `Err(e)`, `unwrap()` sẽ khiến chương trình bị **panic** (sập ngay lập tức) cùng với một thông báo lỗi.
+
+### Ví dụ trong mã:
+```rust
+let x = x.checked_add(i32::MAX).unwrap();
+```
+Phương thức `checked_add` trả về một `Option<i32>`. Việc gọi `.unwrap()` ở đây có nghĩa là bạn đang nói với Rust một cách rõ ràng: **"Tôi chắc chắn phép cộng này sẽ không bị tràn số. Nếu nó bị tràn, hãy làm sập chương trình."**
+
+### Best Practices for Handling Potential Failures / Thực hành tốt nhất khi xử lý lỗi tiềm ẩn
+
+**En:**
+Using `unwrap()` is generally discouraged in production code because it makes your application fragile. Better alternatives include:
+
+-   **`.expect("Custom message")`**: Similar to `unwrap()` but provides a more helpful error message upon crashing. Use this when failure is theoretically impossible but you want to document the assumption.
+-   **`match` or `if let`**: Allows you to handle the `None` case gracefully (e.g., logging an error or returning a default value).
+-   **`.unwrap_or(default_value)`**: Returns the success value or a provided fallback value if it fails.
+-   **The `?` operator**: Propagates the error to the caller, allowing for centralized error handling.
+
+**Vi:**
+Việc sử dụng `unwrap()` thường không được khuyến khích trong mã nguồn thực tế (production) vì nó làm ứng dụng của bạn dễ bị sập đột ngột. Các giải pháp thay thế tốt hơn bao gồm:
+
+-   **`.expect("Thông báo tùy chỉnh")`**: Tương tự như `unwrap()` nhưng cung cấp thông báo lỗi hữu ích hơn khi sập. Sử dụng cái này khi về mặt lý thuyết lỗi không thể xảy ra nhưng bạn muốn ghi lại giả định đó.
+-   **`match` hoặc `if let`**: Cho phép bạn xử lý trường hợp `None` một cách an toàn (ví dụ: ghi log lỗi hoặc trả về một giá trị mặc định).
+-   **`.unwrap_or(giá trị_mặc_định)`**: Trả về giá trị thành công hoặc một giá trị dự phòng nếu thất bại.
+-   **Toán tử `?`**: Đưa lỗi lên cấp cao hơn (caller), cho phép xử lý lỗi tập trung.
+
+---
+
+## 7. Best Practices for specialized overflow handling methods / Thực hành tốt nhất cho các phương thức xử lý tràn số chuyên biệt
+
+**En:**
+Choosing the right method depends on how your application should behave when it hits the limits of a data type:
+
+-   **`checked_*` (The Safest Choice)**: Use when overflow is an **error condition** that you must handle (e.g., financial transactions, inventory).
+-   **`saturating_*` (The "Cap" Choice)**: Use when you want the value to stay at its **min/max** limit instead of wrapping (e.g., Game HP, UI Brightness, Volume).
+-   **`wrapping_*` (The "Modulus" Choice)**: Use only when the logic **mathematically requires** wrapping (e.g., Cryptography, Hash functions, Circular buffers).
+-   **`overflowing_*` (The "Diagnostic" Choice)**: Use when you need the wrapped result **and** a boolean flag to know if a wrap occurred (e.g., Custom numeric types, Specialized math libraries).
+
+**Vi:**
+Việc chọn đúng phương thức phụ thuộc vào cách ứng dụng của bạn nên hành xử khi chạm đến giới hạn của kiểu dữ liệu:
+
+-   **`checked_*` (Lựa chọn an toàn nhất)**: Dùng khi việc tràn số được coi là một **trạng thái lỗi** mà bạn phải xử lý (ví dụ: giao dịch tài chính, tồn kho).
+-   **`saturating_*` (Lựa chọn "Chạm trần/Sàn")**: Dùng khi bạn muốn giá trị dừng lại ở **giới hạn tối thiểu/tối đa** thay vì quay vòng (ví dụ: Máu/HP trong game, Độ sáng UI, Âm lượng).
+-   **`wrapping_*` (Lựa chọn "Quay vòng")**: Chỉ dùng khi logic **yêu cầu về mặt toán học** hành vi quay vòng (ví dụ: Mã hóa, Hàm băm, Bộ đệm vòng).
+-   **`overflowing_*` (Lựa chọn "Chẩn đoán")**: Dùng khi bạn cần kết quả đã quy vòng **và** một cờ boolean để biết liệu việc quy vòng có xảy ra hay không (ví dụ: Kiểu số tùy chỉnh, Thư viện toán học chuyên biệt).
+
+---
+
+## 8. Debug vs. Release Mode: Integer Overflow / Chế độ Debug so với Release: Tràn số nguyên
+
+**En:**
+Rust handles integer overflow differently depending on the build profile:
+
+- **Debug Mode**: Rust includes runtime checks. If an integer overflows, the program will **panic** (crash) to help you catch the bug.
+- **Release Mode**: To maximize performance, Rust removes these checks. Instead, it uses **Two's Complement Wrapping**.
+
+**Two's Complement Wrapping**: 
+Like an odometer, when a value hits its maximum, it simply flips back to the minimum (e.g., `255u8 + 1` becomes `0`).
+
+**Vi:**
+Rust xử lý việc tràn số nguyên khác nhau tùy thuộc vào cấu hình biên dịch (build profile):
+
+- **Chế độ Debug**: Rust bao gồm các bước kiểm tra khi chạy. Nếu một số nguyên bị tràn, chương trình sẽ **panic** (sập) để giúp bạn phát hiện lỗi.
+- **Chế độ Release**: Để tối ưu hóa hiệu suất, Rust loại bỏ các bước kiểm tra này. Thay vào đó, nó sử dụng cơ chế **Quay vòng số bù 2 (Two's Complement Wrapping)**.
+
+**Quay vòng số bù 2**: 
+Giống như bộ đếm quãng đường, khi một giá trị đạt đến mức tối đa, nó sẽ đơn giản là quay ngược lại giá trị tối thiểu (ví dụ: `255u8 + 1` trở thành `0`).
+
+---
+
+## 9. `if let None` vs. `.is_none()` / So sánh `if let None` và `.is_none()`
+
+**En:**
+While you **can** technically use `if let None = ...`, it is not common practice in Rust.
+
+- **`if let Some(val)`**: Use this when you need to **extract and use** the value inside.
+- **`.is_none()`**: Use this when you only need to **check** if a value is absent, without needing any data. This is the idiomatic (standard) way.
+
+```rust
+// Not idiomatic
+if let None = x.checked_add(1) { ... }
+
+// Idiomatic (Better)
+if x.checked_add(1).is_none() { ... }
+```
+
+**Vi:**
+Mặc dù về mặt kỹ thuật bạn **có thể** sử dụng `if let None = ...`, nhưng đây không phải là cách làm phổ biến trong Rust.
+
+- **`if let Some(val)`**: Dùng khi bạn cần **trích xuất và sử dụng** giá trị bên trong.
+- **`.is_none()`**: Dùng khi bạn chỉ cần **kiểm tra** xem giá trị có trống hay không, mà không cần lấy dữ liệu. Đây là cách viết chuẩn (idiomatic).
+
+```rust
+// Không chuẩn (Not idiomatic)
+if let None = x.checked_add(1) { ... }
+
+// Chuẩn Rust (Tốt hơn)
+if x.checked_add(1).is_none() { ... }
+
+---
+
+## 10. Copy Trait vs. Shadowing / So sánh Copy Trait và Shadowing
+
+**En:**
+It is important to distinguish between **Copying** and **Shadowing**:
+
+- **Copying (Copy Trait)**: For simple types (integers, bools) that live on the **stack**, doing `let y = x;` creates a duplicate of the data. Both `x` and `y` remain valid and independent owners of their own values.
+- **Moving**: For complex types (like `String`) that live on the **heap**, doing `let s2 = s1;` transfers ownership. `s1` becomes invalid.
+- **Shadowing**: Reusing the **same variable name** in the same scope (e.g., `let x = 5; let x = x + 1;`). This hides the previous variable.
+
+| Term | Scenario | Result |
+| :--- | :--- | :--- |
+| **Copying** | `let y = x;` | Two distinct variables with the same value. |
+| **Moving** | `let s2 = s1;` | Original variable becomes invalid. |
+| **Shadowing** | `let x = 5; let x = 6;` | The first `x` is hidden by the second `x`. |
+
+**Vi:**
+Cần phân biệt rõ giữa **Sao chép (Copying)** và **Shadowing**:
+
+- **Sao chép (Copy Trait)**: Đối với các kiểu đơn giản (số nguyên, bool) nằm trên **stack**, việc thực hiện `let y = x;` sẽ tạo ra một bản sao của dữ liệu. Cả `x` và `y` đều hợp lệ và là những người sở hữu độc lập cho giá trị của chính chúng.
+- **Di chuyển (Moving)**: Đối với các kiểu phức tạp (như `String`) nằm trên **heap**, việc thực hiện `let s2 = s1;` sẽ chuyển quyền sở hữu. `s1` trở nên vô hiệu.
+- **Shadowing**: Việc tái sử dụng **cùng một tên biến** trong cùng một phạm vi (ví dụ: `let x = 5; let x = x + 1;`). Điều này che khuất biến trước đó.
+
+| Thuật ngữ | Kịch bản | Kết quả |
+| :--- | :--- | :--- |
+| **Sao chép (Copying)** | `let y = x;` | Hai biến riêng biệt có cùng giá trị. |
+| **Di chuyển (Moving)** | `let s2 = s1;` | Biến ban đầu trở nên vô hiệu. |
+| **Shadowing** | `let x = 5; let x = 6;` | Biến `x` đầu tiên bị che khuất bởi biến `x` thứ hai. |
+
+```
