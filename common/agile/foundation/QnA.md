@@ -122,3 +122,25 @@ vi: Mục tiêu chính của buổi Sprint Retrospective là gì?
 
 en: **Answer**: The purpose of the Sprint Retrospective is to plan ways to increase quality and effectiveness. The Scrum Team inspects how the last Sprint went with regards to individuals, interactions, processes, tools, and their Definition of Done.
 vi: **Trả lời**: Mục đích của Sprint Retrospective (Họp cải tiến Sprint) là lập kế hoạch các cách để tăng chất lượng và hiệu quả công việc. Nhóm Scrum kiểm tra lại Sprint vừa qua đã diễn ra như thế nào về mặt con người, tương tác, quy trình, công cụ và Định nghĩa về sự Hoàn thành của họ.
+
+---
+
+### Question 11
+en: Compare Agile and Waterfall models across key dimensions like Requirements, Testing, and Customer Involvement.
+vi: So sánh mô hình Agile và Waterfall qua các khía cạnh chính như Yêu cầu, Kiểm thử và Sự tham gia của khách hàng.
+
+en: **Answer**: 
+| Dimension | Waterfall | Agile |
+| :--- | :--- | :--- |
+| **Requirements** | Fixed at the beginning. | Evolving and flexible. |
+| **Testing** | Occurs after the Build phase. | Integrated throughout the cycle. |
+| **Customer Involvement** | Mainly at start and end. | Continuous throughout the project. |
+| **Risk** | High (errors found late). | Low (errors found early in iterations). |
+
+vi: **Trả lời**:
+| Khía cạnh | Waterfall | Agile |
+| :--- | :--- | :--- |
+| **Yêu cầu** | Cố định ngay từ đầu. | Phát triển và linh hoạt. |
+| **Kiểm thử** | Xảy ra sau giai đoạn Xây dựng. | Tích hợp trong suốt chu kỳ. |
+| **Sự tham gia của KH** | Chủ yếu ở đầu và cuối. | Liên tục trong suốt dự án. |
+| **Rủi ro** | Cao (lỗi được tìm thấy muộn). | Thấp (lỗi được tìm thấy sớm trong các vòng lặp). |
