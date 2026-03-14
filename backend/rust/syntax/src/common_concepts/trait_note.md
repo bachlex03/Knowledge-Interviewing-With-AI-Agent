@@ -201,6 +201,30 @@ let username = <Form as UsernameWidget>::get(&form);
 
 ---
 
+## 8. Box<dyn Trait> (Heterogeneous Collections)
+
+In Rust, `Vec` requires all elements to be of the exact same size at compile time. However, trait objects like `dyn Display` are Dynamically Sized Types (DSTs), and different structs implementing the trait have varying sizes.
+
+Trong Rust, `Vec` bắt buộc tất cả các phần tử phải có kích thước hoàn toàn giống nhau tại thời điểm biên dịch. Tuy nhiên, các trait object như `dyn Display` là Kiểu dữ liệu không có kích thước cố định (DST - Dynamically Sized Type), và các struct khác nhau khi triển khai trait này sẽ có kích thước khác nhau.
+
+### Why use `Box::new()`?
+
+```rust
+let mixed_collection: Vec<Box<dyn Display>> = vec![
+    Box::new(42),       // i32
+    Box::new("Hello"),  // &str
+];
+```
+
+- **Heap Allocation (EN)**: `Box::new()` allocates memory on the heap to store the actual value.
+- **Cấp phát trên Heap (VI)**: `Box::new()` cấp phát bộ nhớ trên heap để lưu trữ giá trị thực tế.
+- **Pointer Size (EN)**: The `Box` itself is just a smart pointer living on the stack. **All pointers in Rust have the exact same size**, regardless of the size of the data they point to on the heap.
+- **Kích thước con trỏ (VI)**: Bản thân `Box` chỉ là một smart pointer (con trỏ thông minh) nằm trên stack. **Tất cả các con trỏ trong Rust đều có kích thước hoàn toàn giống nhau**, bất kể kích thước của dữ liệu trên heap mà chúng trỏ tới là bao nhiêu.
+- **Heterogeneous Collections (EN)**: Because every `Box` has an identical size, the compiler allows placing them together safely inside a single `Vec`. This is the standard pattern for creating collections of different types that share a common trait.
+- **Bộ sưu tập không đồng nhất (VI)**: Vì mọi `Box` đều có kích thước y hệt nhau, trình biên dịch cho phép xếp chúng an toàn vào chung một `Vec` duy nhất. Đây là mẫu thiết kế tiêu chuẩn để tạo ra các bộ sưu tập chứa nhiều kiểu dữ liệu khác nhau nhưng cùng chung một trait.
+
+---
+
 ## Summary
 
 - **Implementing `Display`** defines how your data is shown to the public. It requires handling a mutable formatter and returning a `fmt::Result`.
@@ -210,6 +234,7 @@ let username = <Form as UsernameWidget>::get(&form);
 - **Defining Supertraits** (`trait A: B`) creates a dependency where behavior 'A' requires behavior 'B'. This allows for specialized, hierarchical trait design.
 - **Implementation Blocks** (`impl`) allow you to define methods where you can use **Pattern Matching** (e.g., `let &Inches(val) = self`) to concisely extract and process internal data.
 - **Fully Qualified Syntax** (`<Type as Trait>::method`) resolves ambiguity when multiple traits implement methods with the same name for the same type.
+- **Heterogeneous Collections** (`Vec<Box<dyn Trait>>`) use `Box::new()` to place dynamically sized trait objects on the heap, leaving identically-sized smart pointers on the stack to satisfy `Vec`'s strict memory layout constraints.
 
 - **Triển khai `Display`** định nghĩa cách dữ liệu hiển thị cho người dùng. Nó đòi hỏi xử lý buffer và trả về `fmt::Result`.
 - **Derive `PartialEq` và `PartialOrd`** cung cấp cho các kiểu dữ liệu tùy chỉnh khả năng so sánh tức thì, cần thiết cho việc sắp xếp hoặc logic điều kiện (ví dụ: `if a < b`).
@@ -218,3 +243,4 @@ let username = <Form as UsernameWidget>::get(&form);
 - **Định nghĩa Supertraits** (`trait A: B`) tạo ra một sự phụ thuộc nơi hành vi 'A' yêu cầu phải có hành vi 'B'. Điều này cho phép thiết kế các trait theo thứ bậc và chuyên biệt hóa.
 - **Khối triển khai** (`impl`) cho phép định nghĩa các phương thức mà bạn có thể dùng **Khớp mẫu** (ví dụ: `let &Inches(val) = self`) để trích xuất và xử lý dữ liệu nội bộ một cách ngắn gọn.
 - **Fully Qualified Syntax** (`<Type as Trait>::method`) giải quyết sự nhập nhằng khi có nhiều trait cùng triển khai các phương thức trùng tên cho cùng một kiểu dữ liệu.
+- **Bộ sưu tập không đồng nhất (Heterogeneous Collections)** (`Vec<Box<dyn Trait>>`) sử dụng `Box::new()` để đặt các trait object có kích thước động lên heap, chỉ giữ lại các smart pointer có kích thước giống hệt nhau trên stack nhằm thỏa mãn ràng buộc về bộ nhớ của `Vec`.

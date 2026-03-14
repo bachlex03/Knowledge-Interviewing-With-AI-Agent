@@ -89,25 +89,34 @@ Agent calling: [Agent 'name]
 
 ## QUICK REFERENCE
 
-### Available Master Agents (0)
+### Available Master Agents (1)
 
 | Agent | Domain & Focus |
 |-------|----------------|
 | `technical-interviewer` | Senior Software Engineer conducting technical interviews. |
 
-### Key Skills (2)
+### Key Skills (3)
 
 | Skill | Purpose |
 |-------|---------|
+| `bloom-generator` | (No SKILL.md content) |
 | `format-question-and-answer` | Enforce bilingual (EN/VI) Q&A formatting |
 | `skill-creator` | Guide for creating effective skills |
+
+### Available Workflows (4)
+
+| Workflow | Description |
+|----------|-------------|
+| `/question-generation` | Technical interviewer will ask candidate foundation knowledges + advance knowledge of relative topic |
+| `/search` | (No description) |
+| `/sync-agent-doc` | Check and sync agents, skills, workflows to agent docs to "GEMINI.md" and "ARCHITECTURE.md |
+| `/update-workflow-or-skill` | If this workflow is called means that user need update workflow or skill that related together |
 
 ### Script Locations
 
 | Script | Path |
 |--------|------|
 | (None) | No scripts implemented yet |
-
 
 ---
 
