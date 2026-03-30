@@ -27,7 +27,7 @@ Antigravity Kit is a modular system consisting of:
 
 ---
 
-## 🤖 Agents (0)
+## 🤖 Agents (1)
 
 Specialist AI personas for different domains.
 
@@ -37,7 +37,7 @@ Specialist AI personas for different domains.
 
 ---
 
-## 🧠 Skills (0)
+## 🧠 Skills (3)
 
 Domain-specific knowledge modules. Skills are loaded on-demand based on task context.
 
@@ -104,12 +104,13 @@ Domain-specific knowledge modules. Skills are loaded on-demand based on task con
 ### Other
 | Skill | Description |
 |-------|-------------|
+| `bloom-generator` | (No SKILL.md content) |
 | `format-question-and-answer` | Enforce bilingual (EN/VI) Q&A formatting |
 | `skill-creator` | Guide for creating effective skills |
 
 ---
 
-## 🔄 Workflows (1)
+## 🔄 Workflows (4)
 
 Slash command procedures. Invoke with `/command`.
 
@@ -157,7 +158,7 @@ skill-name/
 | Metric | Value |
 |--------|-------|
 | **Total Agents** | 1 |
-| **Total Skills** | 2 |
+| **Total Skills** | 3 |
 | **Total Workflows** | 4 |
 | **Coverage** | ~10% |
 
