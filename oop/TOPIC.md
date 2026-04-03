@@ -1,2 +1,0 @@
-# Topic related to OOP
-

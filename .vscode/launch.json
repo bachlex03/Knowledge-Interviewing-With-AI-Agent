@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "d:/projects/Knowledge-Interviewing-With-AI-Agent/DSA/easy/1_Two_Sum",
-      "program": "d:/projects/Knowledge-Interviewing-With-AI-Agent/DSA/easy/1_Two_Sum/build/Debug/outDebug",
+      "cwd": "d:/projects/Knowledge-Interviewing-With-AI-Agent/DSA/c++/easy",
+      "program": "d:/projects/Knowledge-Interviewing-With-AI-Agent/DSA/c++/easy/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
