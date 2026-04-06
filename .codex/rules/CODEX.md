@@ -6,37 +6,39 @@ trigger: always_on
 
 This file defines the repo-local operating rules for Codex in this workspace.
 
-## Mandatory Context
+## Core Policy
 
-1. Read `.agent/ARCHITECTURE.md` before making changes that involve agents, skills, workflows, or workspace orchestration.
-2. When a request targets an agent, workflow, or skill, read the relevant file before implementation.
-3. For skills, read `SKILL.md` first, then only open the specific bundled resources needed for the request.
+1. Treat this repository as having local instruction files under `.codex/` and `.agent/`.
+2. When a request involves agents, workflows, skills, or prompt formatting, read the relevant local rule or skill file before editing anything.
+3. Prefer the smallest applicable context. Do not read unrelated files unless they are needed for the task.
 
-## Rule Priority
+## Priority Order
 
-Use this precedence when multiple instruction sources apply:
+When multiple instruction sources apply, use this order:
 
-1. `.codex/rules/CODEX.md`
-2. Agent file in `.agent/agents/`
-3. Skill file in `.codex/skills/` or `.agent/skills/`
+1. `SYSTEM` and `DEVELOPER` instructions from the current session
+2. `.codex/rules/CODEX.md`
+3. The relevant agent, workflow, or skill file
+4. Other repo documentation only when needed for implementation
 
-## Request Classification
+## Request Handling
 
-Classify the request before acting.
-
-- Question or explanation requests: answer directly after reading only the relevant context.
-- Implementation requests: read the relevant agent, workflow, and skill files first, then make changes.
+- Question or explanation requests: answer directly, using only the context needed to be accurate.
+- Implementation requests: inspect the relevant agent, workflow, and skill files first, then make the requested change.
+- If a requested agent, workflow, or skill does not exist, say so clearly and stop instead of inventing behavior.
 
 ## Language Handling
 
 When the user prompt is not in English:
 
 1. Translate internally if needed for reasoning.
-2. Keep code, filenames, variables, and code comments in English.
+2. Keep code, filenames, variables, and comments in English unless the existing file already uses another language.
 
-## Workflow And Skill Execution Output
+## Output Convention
 
-When explicitly executing a workflow, agent, or skill-driven process, use concise trace output in this form:
+When explicitly executing a workflow, agent, or skill-driven process, use concise trace output only if the user is asking for that execution flow.
+
+Suggested format:
 
 ```text
 Workflow processing: [workflow-name]
@@ -48,41 +50,16 @@ Agent calling: [agent-name]
 -> Using skills: [skill-1], [skill-2]
 ```
 
-Do not use this trace format for normal coding tasks unless the user is asking about workflows, agents, or skill execution.
+Do not use this trace format for normal coding tasks.
 
-## Validation Rules
+## Validation
 
-1. If a requested workflow, agent, or skill does not exist, warn the user and stop before implementation.
-2. Keep quick-reference sections accurate. If the documented list is stale, update the docs before relying on it.
+1. Keep local rule references accurate.
+2. If a doc or rule file is stale and the task depends on it, update the doc before relying on it.
 
-## Quick Reference
-
-### Agents
-
-| Agent | Domain And Focus |
-|-------|------------------|
-| `technical-interviewer` | Senior software engineer conducting technical interviews |
-
-### Skills
-
-| Skill | Purpose |
-|-------|---------|
-| `bloom-generator` | Generate Bloom's Taxonomy interview or study questions |
-| `format-question-and-answer` | Format technical content in bilingual English and Vietnamese |
-| `skill-creator` | Create or update repo-local Codex skills |
-
-### Workflows
-
-| Workflow | Description |
-|----------|-------------|
-| `/question-generation` | Generate technical interview questions for a topic |
-| `/search` | Search files and repository content |
-| `/sync-agent-doc` | Sync agent, skill, workflow, and architecture docs |
-| `/update-workflow-or-skill` | Update related workflows or skills together |
-
-### Rule Files
+## Local Rule Files
 
 | File | Purpose |
 |------|---------|
 | `.codex/rules/CODEX.md` | Core repo-local Codex rules |
-| `.codex/rules/prompt-response.md` | Response-format rules for bilingual interview content |
+| `.codex/rules/prompt-response.md` | Prompt-format rules for bilingual interview content |
