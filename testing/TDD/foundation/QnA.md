@@ -83,7 +83,7 @@ vi: Lý do TDD là một phương pháp tuyệt vời?
 **Answer:**
 en:
 vi:
-**Thay đổi tư duy**: Ở phía backend khi viết code em tư duy như là developer và khi viết unit test em sẽ tư duy như là một tester, nghĩ là em sẽ phải hình dung ra những trường hợp có thể xảy ra, những trường hợp edge cases gây ra bug. Ngoài ra, em thường đặt mình là "người sử dụng chức năng đó" thay vì "người viết ra nó" để người khác dễ dàng hiểu và sử dụng tại vì unit tests cũng là tài liệu kỹ thuật.
+**Thay đổi tư duy**: Ở phía backend khi viết code em tư duy như là developer và khi viết unit test em sẽ tư duy như là một tester, nghĩ là em sẽ phải hình dung ra những trường hợp có thể xảy ra, những trường hợp edge cases gây ra bug. Ngoài ra, em thường đặt mình là "người sử dụng chức năng đó" thay vì "người viết ra nó", khi mà em chuyển công việc thì người khác thay thể em thì người ta có thể dễ dàng maintain và hiểu được nghiệp vụ của chức năng đó tại vì unit tests cũng là tài liệu kỹ thuật.
 **Ngăn chặn "Over-engineering (YAGNI - You Aren't Gonna Need It)"**: TDD ép chúng ta phải viết lượng code vừa đủ để pass test hiện tại, khi đó chúng ta sẽ không mất thời gian để viết ra những logic thừa thãi.
 **Đảm bảo 100% Code có thể Test được (Testable)**: Khi chúng ta viết code trước thì sẽ dễ gây ra tình trạng code xong xuôi rồi mới nhận ra hàm này dính chặt với database, không thể Mock/Stub để test được. Với TDD, chúng ta viết test trước nên đoạn code sẽ 100% test được.
 
@@ -106,6 +106,28 @@ vi: Giải thích tầm quan trọng của "Mã nguồn tối thiểu" (Minimum 
 **Answer:**
 en: Writing only the code necessary to pass the test prevents over-engineering and keeps the implementation strictly bound to requirements.
 vi: Việc chỉ viết code tối thiểu cần thiết để vượt qua unit test giúp ngăn ngừa viết những đoạn code thừa thãi hay còn gọi là over-engineering điều này giúp giữ cho việc triển khai bám sát các yêu cầu.
+
+#### Q6:
+
+**Question:**
+en:
+vi: Như thế nào là một unit test tốt.
+
+**Answer:**
+en:
+vi: Khi mà em viết unit test thì em tuân thủ theo nguyên tắc FIRST và SOLID (S - Single Responsibility và O - Open/Closed và D - Dependency Inversion):
+
+Cụ thể hơn với nguyên tắc SOLID:
+**S - Single Responsibility**: asdasda.
+**O - Open/Closed**: asdasda.
+**D - Dependency Inversion**: asdasda.
+
+Còn đối với nguyên tắc FIRST:
+**F - Fast**: asdasda.
+**I - Independent**: asdasda.
+**R - Repeatable**: asdasda.
+**S - Self-Validating**: asdasda.
+**T - Timely**: asdasda.
 
 ---
 

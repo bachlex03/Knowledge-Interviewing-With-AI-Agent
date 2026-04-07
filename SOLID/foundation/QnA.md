@@ -7,26 +7,27 @@ en: What does each letter in the SOLID acronym stand for?
 vi: Mỗi chữ cái trong từ viết tắt SOLID đại diện cho điều gì?
 
 **Answer:**
-en: **S**: Single Responsibility Principle, **O**: Open/Closed Principle, **L**: Liskov Substitution Principle, **I**: Interface Segregation Principle, **D**: Dependency Inversion Principle.
-vi: **S**: Nguyên tắc đơn trách nhiệm, **O**: Nguyên tắc Đóng/Mở, **L**: Nguyên tắc thay thế Liskov, **I**: Nguyên tắc phân tách giao diện, **D**: Nguyên tắc đảo ngược phụ thuộc.
+en: **S**: Single Responsibility Principle (SRP) - "A class should do one thing." **O**: Open/Closed Principle (OCP) - "Add behavior without changing code." **L**: Liskov Substitution Principle (LSP) - "Subclasses must be usable as parents." **I**: Interface Segregation Principle (ISP) - "Smaller, specific interfaces over one large one." **D**: Dependency Inversion Principle (DIP) - "Depend on abstractions, not concretions."
+vi: **S**: Nguyên tắc đơn trách nhiệm (SRP) - "Một lớp chỉ nên làm một việc." **O**: Nguyên tắc Đóng/Mở (OCP) - "Thêm hành vi mới mà không cần sửa đổi mã nguồn cũ." **L**: Nguyên tắc thay thế Liskov (LSP) - "Các lớp con phải có thể sử dụng thay thế hoàn toàn cho lớp cha." **I**: Nguyên tắc phân tách giao diện (ISP) - "Nên dùng nhiều giao diện nhỏ, chuyên biệt thay vì một giao diện lớn." **D**: Nguyên tắc đảo ngược phụ thuộc (DIP) - "Phụ thuộc vào trừu tượng (Interface), không phụ thuộc vào lớp cụ thể (Implementation)."
 
-#### Q2: What is the definition of the Single Responsibility Principle (SRP)?
+#### Q2: What is the core definition of the Single Responsibility Principle (SRP)?
 **Question:**
-en: What is the primary definition of the Single Responsibility Principle (SRP) as stated by Robert C. Martin?
-vi: Định nghĩa chính của Nguyên tắc đơn trách nhiệm (SRP) theo Robert C. Martin là gì?
+en: What is the primary definition of the Single Responsibility Principle (SRP) as defined by Robert C. Martin?
+vi: Định nghĩa cốt lõi của Nguyên tắc đơn trách nhiệm (SRP) theo Robert C. Martin là gì?
 
 **Answer:**
-en: "A class should have one, and only one, reason to change."
-vi: "Một lớp chỉ nên có một, và chỉ một, lý do để thay đổi."
+en: "A class should have one, and only one, reason to change." This means every class should focus on a single piece of functionality or responsibility—if a requirements change affecting one part of the system forces a class to change, that class shouldn't have to change for unrelated requirements.
+vi: "Một lớp chỉ nên có một, và chỉ một, lý do để thay đổi." Điều này có nghĩa là mỗi lớp nên tập trung vào một chức năng hoặc trách nhiệm duy nhất—nếu một thay đổi yêu cầu ảnh hưởng đến một phần của hệ thống bắt buộc một lớp phải thay đổi, thì lớp đó không nên phải thay đổi vì những yêu cầu không liên quan khác.
+
 
 #### Q3: Define the Open/Closed Principle (OCP).
 **Question:**
-en: Define the Open/Closed Principle (OCP).
-vi: Định nghĩa Nguyên tắc Đóng/Mở (OCP).
+en: What is the practical definition of the Open/Closed Principle (OCP)?
+vi: Định nghĩa thực tế của Nguyên tắc Đóng/Mở (OCP) là gì?
 
 **Answer:**
-en: Software entities (classes, modules, functions, etc.) should be open for extension, but closed for modification.
-vi: Các thực thể phần mềm (lớp, mô-đun, hàm, v.v.) nên được mở để mở rộng, nhưng đóng đối với việc sửa đổi.
+en: "Software entities (classes, modules, functions, etc.) should be open for extension but closed for modification." This allows us to scale a system's features by adding new modules instead of rewriting old ones, which preserves stability and prevents new bugs in existing features.
+vi: "Các thực thể phần mềm (lớp, mô-đun, hàm, v.v.) nên được mở để mở rộng nhưng đóng đối với việc sửa đổi." Điều này cho phép chúng ta phát triển các tính năng của hệ thống bằng cách thêm các mô-đun mới thay vì viết lại các mô-đun cũ, giúp bảo vệ sự ổn định và ngăn ngừa các lỗi mới phát sinh trong các tính năng hiện có.
 
 #### Q4: What is the core rule of the Liskov Substitution Principle (LSP)?
 **Question:**
@@ -34,17 +35,19 @@ en: What is the core rule of the Liskov Substitution Principle (LSP)?
 vi: Quy tắc cốt lõi của Nguyên tắc thay thế Liskov (LSP) là gì?
 
 **Answer:**
-en: Objects of a superclass should be replaceable with objects of its subclasses without breaking the application.
-vi: Các đối tượng của lớp cha phải có khả năng được thay thế bằng các đối tượng của lớp con mà không làm hỏng ứng dụng.
+en: "Subtypes must be substitutable for their base types." This means that objects of a child class must behave exactly like objects of the parent class from the perspective of the client code. Breaking this rule (e.g., throwing a NotSupportedException in a child class) causes unexpected crashes and forces the use of messy type-checking.
+vi: "Các kiểu con phải có khả năng thay thế cho các kiểu cơ sở của chúng." Điều này có nghĩa là các đối tượng của lớp con phải hoạt động giống hệt như các đối tượng của lớp cha từ góc nhìn của mã nguồn sử dụng (client code). Vi phạm quy tắc này (ví dụ: ném ra NotSupportedException trong lớp con) sẽ gây ra các lỗi không mong muốn và buộc phải sử dụng các cách kiểm tra kiểu dữ liệu phức tạp.
+
 
 #### Q5: State the purpose of the Interface Segregation Principle (ISP).
 **Question:**
-en: State the primary purpose of the Interface Segregation Principle (ISP).
-vi: Nêu mục đích chính của Nguyên tắc phân tách giao diện (ISP).
+en: What is the main problem that ISP addresses and how does it solve it?
+vi: Vấn đề chính mà ISP giải quyết là gì và nó giải quyết vấn đề đó như thế nào?
 
 **Answer:**
-en: Clients should not be forced to depend upon interfaces that they do not use.
-vi: Các đối tượng sử dụng (clients) không nên bị buộc phải phụ thuộc vào các giao diện mà họ không sử dụng.
+en: ISP addresses "Fat Interfaces" by stating that "No client should be forced to depend on methods it does not use." It solves this by splitting large, generic interfaces into smaller, specialized ones, so that a class only needs to implement the specific behaviors it actually requires.
+vi: ISP giải quyết vấn đề "Giao diện béo" (Fat Interfaces) bằng cách khẳng định rằng "Không một client nào bị buộc phải phụ thuộc vào các phương thức mà nó không sử dụng." Nó giải quyết điều này bằng cách chia các giao diện lớn, tổng quát thành các giao diện nhỏ và chuyên biệt hơn, để một lớp chỉ cần thực thi các hành vi cụ thể mà nó thực sự yêu cầu.
+
 
 #### Q6: Identify the origin of the SOLID acronym.
 **Question:**
@@ -52,26 +55,27 @@ en: Who introduced the SOLID acronym and in which book were these principles pop
 vi: Ai là người đã giới thiệu từ viết tắt SOLID và những nguyên tắc này đã được phổ biến trong cuốn sách nào?
 
 **Answer:**
-en: The acronym was introduced by Michael Feathers around 2004, but the principles were established by Robert C. Martin (Uncle Bob) in his books like "Agile Software Development, Principles, Patterns, and Practices."
-vi: Từ viết tắt được Michael Feathers giới thiệu vào khoảng năm 2004, nhưng các nguyên tắc này được khởi xướng bởi Robert C. Martin (Uncle Bob) trong các cuốn sách như "Agile Software Development, Principles, Patterns, and Practices."
+en: The acronym was popularized by Robert C. Martin (Uncle Bob) in his 2000 paper "Design Principles and Design Patterns," though the acronym itself was coined later by Michael Feathers. These principles are the theoretical foundation for Agile software development and clean code practices.
+vi: Từ viết tắt này đã được Robert C. Martin (Uncle Bob) phổ biến trong bài báo năm 2000 "Design Principles and Design Patterns," mặc dù chính từ viết tắt này được Michael Feathers đặt ra sau đó. Những nguyên tắc này là nền tảng lý thuyết cho việc phát triển phần mềm theo phương pháp Agile và các thực hành viết mã sạch (clean code).
 
 #### Q7: List two signs of "Bad Design" that SOLID aims to fix.
 **Question:**
-en: List two of the four characteristics of "Bad Design" (Rigidity, Fragility, Immobility, Viscosity) that SOLID aims to address.
-vi: Liệt kê hai trong bốn đặc điểm của "Thiết kế tồi" (Cứng nhắc, Dễ vỡ, Bất động, Nhớt) mà SOLID hướng tới giải quyết.
+en: List two characteristics of "Bad Design" that SOLID principles aim to address.
+vi: Liệt kê hai đặc điểm của "Thiết kế tồi" mà các nguyên tắc SOLID hướng tới giải quyết.
 
 **Answer:**
-en: 1. **Rigidity**: The design is hard to change. 2. **Fragility**: The design is easy to break.
-vi: 1. **Tính cứng nhắc (Rigidity)**: Thiết kế khó thay đổi. 2. **Tính dễ vỡ (Fragility)**: Thiết kế dễ bị hỏng (lỗi).
+en: 1. **Rigidity**: Every change causes a cascade of changes in other modules. 2. **Fragility**: A change in one place causes the system to break in unrelated places. SOLID helps code stay maintainable even as requirements change.
+vi: 1. **Tính cứng nhắc (Rigidity)**: Mỗi thay đổi nhỏ đều kéo theo một loạt các thay đổi ở các mô-đun khác. 2. **Tính dễ vỡ (Fragility)**: Một thay đổi ở một nơi làm hệ thống bị hỏng ở những nơi hoàn toàn không liên quan. SOLID giúp mã nguồn duy trì được khả năng bảo trì ngay cả khi các yêu cầu thay đổi.
+
 
 #### Q8: Name the principle that prevents "Fragility" caused by cascading changes.
 **Question:**
-en: Which SOLID principle primarily prevents "Fragility" caused by modification that breaks unrelated parts of the system?
-vi: Nguyên tắc SOLID nào chủ yếu ngăn chặn "Tính dễ vỡ" do việc sửa đổi làm hỏng các phần không liên quan của hệ thống?
+en: Which SOLID principles primarily prevent "Fragility" in a software system?
+vi: Những nguyên tắc SOLID nào chủ yếu ngăn chặn "Tính dễ vỡ" trong một hệ thống phần mềm?
 
 **Answer:**
-en: The Open/Closed Principle (OCP) and Single Responsibility Principle (SRP).
-vi: Nguyên tắc Đóng/Mở (OCP) và Nguyên tắc đơn trách nhiệm (SRP).
+en: The Open/Closed Principle (OCP) and Single Responsibility Principle (SRP). By splitting classes into single roles and extending them instead of modifying them, we isolate changes and prevent them from breaking unrelated features.
+vi: Nguyên tắc Đóng/Mở (OCP) và Nguyên tắc đơn trách nhiệm (SRP). Bằng cách chia nhỏ các lớp thành các vai trò đơn nhất và mở rộng chúng thay vì sửa đổi trực tiếp, chúng ta cô lập được các thay đổi và ngăn chúng làm hỏng các tính năng không liên quan.
 
 #### Q9: Define a "client" in the context of Interface Segregation.
 **Question:**
@@ -79,17 +83,19 @@ en: In the context of the Interface Segregation Principle (ISP), what does the t
 vi: Trong ngữ cảnh của Nguyên tắc phân tách giao diện (ISP), thuật ngữ "client" ám chỉ điều gì?
 
 **Answer:**
-en: A "client" is any piece of code (class or module) that uses or depends on a particular interface.
-vi: "Client" là bất kỳ đoạn mã nào (lớp hoặc mô-đun) sử dụng hoặc phụ thuộc vào một giao diện cụ thể.
+en: A "client" refers to any class or module that consumes (calls) an interface. ISP protects these clients from being forced to implement or depend on methods they don't actually need, which reduces unnecessary compilation and deployment dependencies.
+vi: "Client" ám chỉ bất kỳ lớp hoặc mô-đun nào sử dụng (gọi) một giao diện. ISP bảo vệ các client này khỏi việc bị buộc phải thực thi hoặc phụ thuộc vào các phương thức mà chúng thực sự không cần, giúp giảm thiểu các phụ thuộc không cần thiết khi biên dịch và triển khai.
+
 
 #### Q10: Identify the difference between high-level and low-level modules in DIP.
 **Question:**
-en: According to the Dependency Inversion Principle (DIP), what is a high-level module?
-vi: Theo Nguyên tắc đảo ngược phụ thuộc (DIP), mô-đun cấp cao là gì?
+en: In the context of Dependency Inversion, what is the difference between high-level modules and low-level modules?
+vi: Trong ngữ cảnh của Đảo ngược phụ thuộc, sự khác biệt giữa mô-đun cấp cao và mô-đun cấp thấp là gì?
 
 **Answer:**
-en: High-level modules contain the core business logic and policy of the application, while low-level modules handle detailed operations (like database or network access).
-vi: Các mô-đun cấp cao chứa logic nghiệp vụ cốt lõi và các chính sách của ứng dụng, trong khi các mô-đun cấp thấp xử lý các hoạt động chi tiết (như truy cập cơ sở dữ liệu hoặc mạng).
+en: High-level modules define the "Policy" (the business goals, like "place an order"), while low-level modules define the "Detail" (how to do it, like "save to SQL database"). DIP says high-level policies should not depend on low-level details; instead, both should depend on an interface (Abstraction).
+vi: Các mô-đun cấp cao định nghĩa "Chính sách" (các mục tiêu nghiệp vụ, ví dụ: "đặt hàng"), trong khi các mô-đun cấp thấp định nghĩa "Chi tiết" (cách thức thực hiện, ví dụ: "lưu vào cơ sở dữ liệu SQL"). DIP cho rằng các chính sách cấp cao không nên phụ thuộc vào các chi tiết cấp thấp; thay vào đó, cả hai nên phụ thuộc vào một giao diện (Sự trừu tượng).
+
 
 ---
 
@@ -100,8 +106,8 @@ en: Explain why the Single Responsibility Principle (SRP) helps in reducing code
 vi: Giải thích tại sao Nguyên tắc đơn trách nhiệm (SRP) giúp giảm thiểu sự liên kết (coupling) trong mã nguồn.
 
 **Answer:**
-en: By limiting a class to one responsibility, changes to one feature won't affect unrelated functions, making the system more modular and less prone to side effects.
-vi: Bằng cách giới hạn một lớp chỉ có một trách nhiệm, các thay đổi đối với một tính năng sẽ không ảnh hưởng đến các chức năng không liên quan, làm cho hệ thống trở nên mô-đun hơn và ít bị ảnh hưởng bởi các tác dụng phụ.
+en: SRP forces each class to have only one reason to change, which naturally limits its dependencies. When a class does too many things, it becomes a "magnet" for dependencies from various parts of the system. By splitting responsibilities, we ensure that changes in one business rule (e.g., tax calculation) don't require us to re-test or re-deploy unrelated logic (e.g., report generation). This isolation reduces the "ripple effect" where a change in one place breaks several others.
+vi: SRP bắt buộc mỗi lớp chỉ có một lý do duy nhất để thay đổi, điều này giúp giới hạn các phụ thuộc của nó một cách tự nhiên. Khi một lớp làm quá nhiều việc, nó trở thành một "thỏi nam châm" thu hút các phụ thuộc từ nhiều phần khác nhau của hệ thống. Bằng cách chia nhỏ các trách nhiệm, chúng ta đảm bảo rằng các thay đổi trong một quy tắc nghiệp vụ (ví dụ: tính thuế) không bắt chúng ta phải kiểm thử lại hoặc triển khai lại các logic không liên quan (ví dụ: tạo báo cáo). Sự cô lập này giúp giảm "hiệu ứng gợn sóng" (ripple effect) - nơi mà một thay đổi ở một nơi có thể làm hỏng nhiều nơi khác.
 
 #### Q2: Describe how OCP facilitates adding new features.
 **Question:**
@@ -109,8 +115,8 @@ en: Describe how the Open/Closed Principle (OCP) facilitates adding new features
 vi: Mô tả cách Nguyên tắc Đóng/Mở (OCP) tạo điều kiện thuận lợi cho việc thêm các tính năng mới vào một hệ thống.
 
 **Answer:**
-en: Instead of editing existing tested code (which might introduce bugs), you add new functionality by creating new classes that inherit from or implement common abstractions.
-vi: Thay vì chỉnh sửa mã nguồn đã được kiểm thử (điều có thể gây ra lỗi), bạn thêm chức năng mới bằng cách tạo các lớp mới kế thừa hoặc thực thi các trừu tượng chung.
+en: OCP encourages a "plugin" architecture. By using abstractions (interfaces or base classes), you can extend system behavior by adding new code (new classes) rather than modifying existing, battle-tested code. This is crucial for stability: if you don't touch the existing code, you don't risk introducing regressions (new bugs in old features). It shifts the development focus from "how do I change this?" to "how do I add this?".
+vi: OCP khuyến khích kiến trúc kiểu "plugin". Bằng cách sử dụng các trừu tượng (giao diện hoặc lớp cơ sở), bạn có thể mở rộng hành vi của hệ thống bằng cách thêm mã mới (các lớp mới) thay vì sửa đổi mã hiện có đã được kiểm thử kỹ lưỡng. Điều này cực kỳ quan trọng đối với sự ổn định: nếu bạn không chạm vào mã hiện có, bạn sẽ không gặp rủi ro gây ra lỗi hồi quy (regressions - lỗi mới trong các tính năng cũ). Nó chuyển trọng tâm phát triển từ "tôi phải sửa cái này như thế nào?" sang "tôi phải thêm cái này như thế nào?".
 
 #### Q3: Discuss the importance of LSP for polymorphism.
 **Question:**
@@ -118,8 +124,9 @@ en: Discuss the importance of the Liskov Substitution Principle (LSP) for ensuri
 vi: Thảo luận về tầm quan trọng của Nguyên tắc thay thế Liskov (LSP) trong việc đảm bảo tính đa hình đáng tin cậy.
 
 **Answer:**
-en: It ensures that any code written to work with a base class will work correctly with any subclass, maintaining predictable behavior across an inheritance hierarchy.
-vi: Nó đảm bảo rằng bất kỳ mã nguồn nào được viết để hoạt động với lớp cha sẽ hoạt động chính xác với bất kỳ lớp con nào, duy trì hành vi có thể dự đoán được trong suốt hệ thống kế thừa.
+en: LSP is about "trust." It ensures that any subclass can stand in for its parent without the client code knowing the difference. If a subclass violates the contract of the parent (e.g., by throwing an unexpected exception or ignoring a precondition), polymorphism breaks down. Without LSP, you end up with "if/else" or "instanceof" checks everywhere to handle specific subclass quirks, which defeats the whole purpose of using inheritance and makes the code fragile and hard to maintain.
+vi: LSP nói về sự "tin cậy". Nó đảm bảo rằng bất kỳ lớp con nào cũng có thể thay thế cho lớp cha của nó mà mã nguồn client không nhận ra sự khác biệt. Nếu một lớp con vi phạm "hợp đồng" của lớp cha (ví dụ: ném ra một ngoại lệ không mong đợi hoặc bỏ qua một điều kiện tiên quyết), tính đa hình sẽ bị phá vỡ. Nếu không có LSP, bạn sẽ kết thúc với các kiểm tra "if/else" hoặc "instanceof" ở khắp mọi nơi để xử lý các đặc điểm riêng của lớp con, điều này làm mất đi mục đích của việc sử dụng kế thừa và làm cho mã nguồn trở nên dễ vỡ và khó bảo trì.
+
 
 #### Q4: Explain the problem that Interface Segregation (ISP) aims to solve.
 **Question:**
@@ -127,8 +134,8 @@ en: Explain the problem of "Fat Interfaces" that Interface Segregation (ISP) aim
 vi: Giải thích vấn đề "Giao diện béo" (Fat Interfaces) mà Nguyên tắc phân tách giao diện (ISP) hướng tới giải quyết.
 
 **Answer:**
-en: Fat interfaces contain too many methods, forcing subclasses to implement methods they don't need, leading to empty method bodies or runtime errors.
-vi: Các giao diện béo chứa quá nhiều phương thức, buộc các lớp con phải thực thi các phương thức mà chúng không cần, dẫn đến các thân phương thức rỗng hoặc lỗi thời gian chạy.
+en: "Fat Interfaces" occur when we pack too many methods into a single interface. This forces implementers to provide empty implementations or throw `NotImplementedException` for methods they don't actually need. This creates "unintended dependencies": if a method in the fat interface changes, all implementations must be updated and recompiled, even those that don't use that method. ISP solves this by breaking them into smaller, client-specific roles.
+vi: "Giao diện béo" xảy ra khi chúng ta đóng gói quá nhiều phương thức vào một giao diện duy nhất. Điều này buộc những lớp thực thi phải cung cấp các bản thực thi rỗng hoặc ném ra `NotImplementedException` cho các phương thức mà chúng thực sự không cần. Điều này tạo ra các "phụ thuộc không mong muốn": nếu một phương thức trong giao diện béo thay đổi, tất cả các bản thực thi đều phải được cập nhật và biên dịch lại, ngay cả những lớp không sử dụng phương thức đó. ISP giải quyết vấn đề này bằng cách chia chúng thành các vai trò nhỏ hơn, cụ thể cho từng client.
 
 #### Q5: Describe the essence of Dependency Inversion (DIP).
 **Question:**
@@ -136,8 +143,9 @@ en: Describe the essence of the Dependency Inversion Principle (DIP).
 vi: Mô tả bản chất của Nguyên tắc đảo ngược phụ thuộc (DIP).
 
 **Answer:**
-en: High-level modules should not depend on low-level modules; both should depend on abstractions. Abstractions should not depend on details; details should depend on abstractions.
-vi: Các mô-đun cấp cao không nên phụ thuộc vào các mô-đun cấp thấp; cả hai nên phụ thuộc vào các trừu tượng. Các trừu tượng không nên phụ thuộc vào các chi tiết; các chi tiết nên phụ thuộc vào các trừu tượng.
+en: DIP is about decoupling high-level policy (what the app does) from low-level details (how it does it). In traditional design, high-level code calls low-level code directly. DIP flips this: high-level code defines an abstraction (Interface), and low-level code implements it. This makes the high-level policy independent and reusable. If you want to switch from a SQL database to a NoSQL one, you just swap the implementation—the core business logic doesn't change because it depends on the "idea" (abstraction) of a database, not the "detail."
+vi: DIP nói về việc tách biệt chính sách cấp cao (ứng dụng làm gì) khỏi các chi tiết cấp thấp (cách thức thực hiện). Trong thiết kế truyền thống, mã cấp cao gọi trực tiếp mã cấp thấp. DIP đảo ngược điều này: mã cấp cao định nghĩa một sự trừu tượng (Interface), và mã cấp thấp thực thi nó. Điều này làm cho chính sách cấp cao trở nên độc lập và có thể tái sử dụng. Nếu bạn muốn chuyển từ cơ sở dữ liệu SQL sang NoSQL, bạn chỉ cần hoán đổi bản thực thi—logic nghiệp vụ cốt lõi không thay đổi vì nó phụ thuộc vào "ý tưởng" (trừu tượng) về một cơ sở dữ liệu, chứ không phải "chi tiết".
+
 
 #### Q6: Explain "Interface Pollution" in the context of ISP.
 **Question:**
@@ -193,24 +201,35 @@ en: Demonstrate SRP by refactoring a class that both processes payments and logs
 vi: Minh họa SRP bằng cách tái cấu trúc một lớp vừa xử lý thanh toán vừa ghi log vào tệp.
 
 **Answer:**
-en: Split the payment logic into its own class and use a separate logger class.
-vi: Chia logic thanh toán thành lớp riêng và sử dụng một lớp ghi log riêng biệt.
+en: A class should have only one reason to change. If we need to change the logging format (e.g., from TXT to JSON), we shouldn't have to touch the payment logic class. By separating them, we make both classes smaller, more specialized, and easier to test in isolation.
+vi: Một lớp chỉ nên có một lý do duy nhất để thay đổi. Nếu chúng ta cần thay đổi định dạng ghi log (ví dụ: từ TXT sang JSON), chúng ta không nên phải chạm vào lớp chứa logic thanh toán. Bằng cách tách biệt chúng, chúng ta làm cho cả hai lớp nhỏ hơn, chuyên biệt hơn và dễ dàng kiểm thử độc lập hơn.
 
 ```csharp
-// Before violation
+// Before: Violates SRP because it has two responsibilities (Payment and Logging)
 public class PaymentService {
-    public void Process() { /* ... */ }
-    public void LogToFile(string msg) { /* ... */ }
+    public void Process(decimal amount) {
+        // ... payment logic ...
+        LogToFile($"Processed payment of {amount}");
+    }
+    private void LogToFile(string msg) { /* File I/O logic here */ }
 }
 
-// After SRP
+// After: Each class has a single responsibility
 public class PaymentProcessor {
-    public void Process() { /* ... */ }
+    private readonly ILogger _logger;
+    public PaymentProcessor(ILogger logger) { _logger = logger; }
+
+    public void Process(decimal amount) {
+        // ... payment logic ...
+        _logger.Log($"Processed payment of {amount}");
+    }
 }
-public class FileLogger {
-    public void Log(string msg) { /* ... */ }
+
+public class FileLogger : ILogger {
+    public void Log(string msg) { /* Log to file logic */ }
 }
 ```
+
 
 #### Q2: Apply OCP to a discount calculation system.
 **Question:**
@@ -218,18 +237,35 @@ en: Apply the Open/Closed Principle (OCP) to a discount calculation system that 
 vi: Áp dụng Nguyên tắc Đóng/Mở (OCP) cho một hệ thống tính chiết khấu cần hỗ trợ các loại chiết khấu mới một cách dễ dàng.
 
 **Answer:**
-en: Use an interface `DiscountStrategy` and implement specific discount classes instead of using `if/else` or `switch` statements in a central class.
-vi: Sử dụng một giao diện `DiscountStrategy` và thực thi các lớp chiết khấu cụ thể thay vì sử dụng các câu lệnh `if/else` hoặc `switch` trong một lớp trung tâm.
+en: To follow OCP, we avoid using a big `switch` or `if/else` block inside the calculator. Instead, we use the Strategy Pattern. This way, if someone wants to add a "Black Friday" discount, they just create a new class—they don't have to touch the existing `DiscountCalculator` at all, ensuring we don't break existing discount logic.
+vi: Để tuân thủ OCP, chúng ta tránh sử dụng các khối `switch` hoặc `if/else` lớn bên trong bộ tính toán. Thay vào đó, chúng ta sử dụng Strategy Pattern. Bằng cách này, nếu ai đó muốn thêm chiết khấu "Black Friday", họ chỉ cần tạo một lớp mới—họ hoàn toàn không phải chạm vào lớp `DiscountCalculator` hiện có, đảm bảo chúng ta không làm hỏng logic chiết khấu cũ.
 
 ```csharp
-public interface IDiscount {
-    double Apply(double price);
+// Before: Violates OCP. Every new discount type requires modifying this class.
+public class DiscountCalculator {
+    public decimal Calculate(decimal price, string type) {
+        if (type == "Flat") return price - 10;
+        if (type == "Percent") return price * 0.9m;
+        return price;
+    }
 }
 
-public class FlatDiscount : IDiscount {
-    public double Apply(double price) => price - 10.0;
+// After: Open for extension, closed for modification.
+public interface IDiscountStrategy {
+    decimal ApplyDiscount(decimal price);
+}
+
+public class FlatDiscount : IDiscountStrategy {
+    public decimal ApplyDiscount(decimal price) => price - 10;
+}
+
+public class PriceCalculator {
+    public decimal Calculate(decimal price, IDiscountStrategy strategy) {
+        return strategy.ApplyDiscount(price);
+    }
 }
 ```
+
 
 #### Q3: Show an LSP violation and its fix.
 **Question:**
@@ -237,14 +273,26 @@ en: Provide a code example of a Liskov Substitution Principle (LSP) violation (e
 vi: Cung cấp một ví dụ mã nguồn về vi phạm Nguyên tắc thay thế Liskov (LSP) (ví dụ: Hình vuông - Hình chữ nhật) và cách khắc phục.
 
 **Answer:**
-en: A Square should not inherit from Rectangle if it cannot satisfy the requirement that Width and Height are independent. Better to have them both implement a `Shape` interface.
-vi: Một Hình vuông không nên kế thừa từ Hình chữ nhật nếu nó không thể đáp ứng yêu cầu rằng Chiều rộng và Chiều cao độc lập nhau. Tốt hơn là để cả hai thực thi một giao diện `Shape`.
+en: The classic violation occurs when a subclass overrides parent methods in a way that breaks expectations. A `Square` isn't truly a `Rectangle` in software because a Square's width and height must always be equal. If we pass a Square to a function expecting a Rectangle, and that function sets Width to 10 and Height to 5, the Square will be in an invalid state. The fix is to separate them or have them share a more general interface.
+vi: Vi phạm điển hình xảy ra khi một lớp con ghi đè các phương thức của lớp cha theo cách phá vỡ các kỳ vọng ban đầu. Một `Square` không thực sự là một `Rectangle` trong phần mềm vì chiều rộng và chiều cao của Hình vuông phải luôn bằng nhau. Nếu chúng ta truyền một Square vào một hàm mong đợi một Rectangle, và hàm đó thiết lập Width là 10 và Height là 5, thì Square sẽ rơi vào trạng thái không hợp lệ. Giải pháp là tách chúng ra hoặc để chúng chia sẻ một giao diện chung tổng quát hơn.
 
 ```csharp
-// Violation: Square overrides Width to also set Height
-// Fix: Use IShape interface with GetArea()
-public interface IShape { double GetArea(); }
+// Violation: Square behavior breaks Rectangle expectations
+public class Rectangle {
+    public virtual int Width { get; set; }
+    public virtual int Height { get; set; }
+}
+public class Square : Rectangle {
+    public override int Width { set { base.Width = base.Height = value; } }
+    public override int Height { set { base.Height = base.Width = value; } }
+}
+
+// Fix: Use an abstraction that doesn't imply side effects
+public interface IShape {
+    int GetArea();
+}
 ```
+
 
 #### Q4: Refactor a "Fat Interface" into smaller ones (ISP).
 **Question:**
@@ -252,17 +300,30 @@ en: Refactor an interface `Worker` that has `work()` and `eat()` for use by both
 vi: Tái cấu trúc một giao diện `Worker` có `work()` và `eat()` để sử dụng cho cả Con người và Robot (áp dụng ISP).
 
 **Answer:**
-en: Split `Worker` into `Workable` and `Eatable`. Robots only implement `Workable`.
-vi: Chia `Worker` thành `Workable` và `Eatable`. Robot chỉ thực thi `Workable`.
+en: Robots don't eat, so forcing them to implement `Eat()` is "Interface Pollution." If we ever change the parameters of `Eat()`, we'd be forced to update the `Robot` class even though it doesn't care about eating. By splitting the interface, we ensure classes only implement what they actually use.
+vi: Robot không ăn, vì vậy việc bắt chúng thực thi `Eat()` là "Ô nhiễm giao diện". Nếu chúng ta thay đổi tham số của `Eat()`, chúng ta sẽ buộc phải cập nhật lớp `Robot` mặc dù nó không quan tâm đến việc ăn uống. Bằng cách chia nhỏ giao diện, chúng ta đảm bảo các lớp chỉ thực thi những gì chúng thực sự sử dụng.
 
 ```csharp
+// Before: Fat interface forces Robot to implement Eat()
+public interface IWorker {
+    void Work();
+    void Eat();
+}
+
+// After: Split into role-specific interfaces
 public interface IWorkable { void Work(); }
 public interface IEatable { void Eat(); }
 
+public class Human : IWorkable, IEatable {
+    public void Work() { /* coding... */ }
+    public void Eat() { /* lunch break... */ }
+}
+
 public class Robot : IWorkable {
-    public void Work() { /* working */ }
+    public void Work() { /* charging and working... */ }
 }
 ```
+
 
 #### Q5: Apply DIP to decouple a high-level `App` from a `Database`.
 **Question:**
@@ -270,21 +331,29 @@ en: Apply the Dependency Inversion Principle (DIP) to decouple a high-level `App
 vi: Áp dụng Nguyên tắc đảo ngược phụ thuộc (DIP) để tách biệt lớp `Application` cao cấp khỏi lớp `PostgreSQLDatabase` cụ thể.
 
 **Answer:**
-en: The `Application` should depend on a `DatabaseRepository` interface, which `PostgreSQLDatabase` then implements.
-vi: Lớp `Application` nên phụ thuộc vào một giao diện `DatabaseRepository`, sau đó `PostgreSQLDatabase` sẽ thực thi giao diện này.
+en: If `Application` directly instantiates `PostgreSQLDatabase`, it is tightly coupled. If we want to unit test the application using a mock database, or switch to MongoDB later, it becomes difficult. DIP allows us to "invert" this: the Application defines the `repository` it needs, and the Database follows that definition.
+vi: Nếu `Application` trực tiếp khởi tạo `PostgreSQLDatabase`, nó sẽ bị liên kết chặt chẽ. Nếu chúng ta muốn kiểm thử đơn vị ứng dụng bằng cơ sở dữ liệu giả (mock), hoặc chuyển sang MongoDB sau này, việc đó sẽ trở nên khó khăn. DIP cho phép chúng ta "đảo ngược" điều này: Application định nghĩa `repository` mà nó cần, và Database sẽ tuân theo định nghĩa đó.
 
 ```csharp
-public interface IDatabaseRepository {
-    void Save(object data);
+// After DIP: Application depends on Abstraction
+public interface IRepository {
+    void Save(string data);
 }
 
 public class Application {
-    private readonly IDatabaseRepository _db;
-    public Application(IDatabaseRepository db) {
-        _db = db;
+    private readonly IRepository _repo;
+    // We inject the dependency via constructor (Constructor Injection)
+    public Application(IRepository repo) {
+        _repo = repo;
     }
+    public void Run() { _repo.Save("Important Data"); }
+}
+
+public class MySqlRepository : IRepository {
+    public void Save(string data) { /* save to MySQL */ }
 }
 ```
+
 
 #### Q6: Refactor a class that violates ISP (Multi-function Printer).
 **Question:**
@@ -292,18 +361,26 @@ en: Refactor an interface `SmartDevice` that has `print()`, `scan()`, and `fax()
 vi: Tái cấu trúc một giao diện `SmartDevice` có `print()`, `scan()`, và `fax()` để tuân theo Nguyên tắc phân tách giao diện (ISP).
 
 **Answer:**
-en: Break the interface into `Printer`, `Scanner`, and `Fax`.
-vi: Chia giao diện thành `Printer`, `Scanner`, và `Fax`.
+en: A "Basic Printer" usually cannot scan or fax. If it implements `SmartDevice`, it has to include empty or error-throwing methods. By splitting `SmartDevice` into independent interfaces like `IPrinter`, `IScanner`, and `IFax`, we allow each device to implement only the capabilities it actually possesses.
+vi: Một "Máy in cơ bản" thường không thể quét hoặc fax. Nếu nó thực thi `SmartDevice`, nó phải bao gồm các phương thức rỗng hoặc ném ra lỗi. Bằng cách chia nhỏ `SmartDevice` thành các giao diện độc lập như `IPrinter`, `IScanner`, và `IFax`, chúng ta cho phép mỗi thiết bị chỉ thực thi các khả năng mà nó thực sự sở hữu.
 
 ```csharp
+// Better: Segregated interfaces
 public interface IPrinter { void Print(); }
 public interface IScanner { void Scan(); }
 public interface IFax { void Fax(); }
 
-public class BasicPrinter : IPrinter {
-    public void Print() { }
+public class MultiFunctionDevice : IPrinter, IScanner, IFax {
+    public void Print() { /* printing... */ }
+    public void Scan() { /* scanning... */ }
+    public void Fax() { /* faxing... */ }
+}
+
+public class EconomyPrinter : IPrinter {
+    public void Print() { /* only printing */ }
 }
 ```
+
 
 #### Q7: Demonstrate OCP using the "Strategy Pattern."
 **Question:**
@@ -311,20 +388,25 @@ en: Demonstrate how to use the "Strategy Pattern" to apply the Open/Closed Princ
 vi: Minh họa cách sử dụng "Strategy Pattern" để áp dụng Nguyên tắc Đóng/Mở (OCP) cho một thuật toán sắp xếp.
 
 **Answer:**
-en: Define a `SortStrategy` interface, allowing the `Sorter` class to accept any new sorting algorithm without modification.
-vi: Định nghĩa một giao diện `SortStrategy`, cho phép lớp `Sorter` chấp nhận bất kỳ thuật toán sắp xếp mới nào mà không cần sửa đổi.
+en: If we put multiple sorting algorithms inside one `Sorter` class, we have to modify that class every time we add a new algorithm. With the Strategy Pattern, the `Sorter` class remains closed for modification because it depends on an `ISortStrategy` interface. We can add as many new sorting classes as we want without ever changing the `Sorter` code.
+vi: Nếu chúng ta đặt nhiều thuật toán sắp xếp bên trong một lớp `Sorter`, chúng ta phải sửa đổi lớp đó mỗi khi muốn thêm một thuật toán mới. Với Strategy Pattern, lớp `Sorter` vẫn đóng đối với việc sửa đổi vì nó phụ thuộc vào giao diện `ISortStrategy`. Chúng ta có thể thêm bao nhiêu lớp sắp xếp mới tùy ý mà không bao giờ phải thay đổi mã nguồn của lớp `Sorter`.
 
 ```csharp
 public interface ISortStrategy {
-    T[] Sort<T>(T[] data);
+    void Sort(int[] data);
 }
-public class BubbleSort : ISortStrategy {
-    public T[] Sort<T>(T[] data) => data;
-}
+
 public class QuickSort : ISortStrategy {
-    public T[] Sort<T>(T[] data) => data;
+    public void Sort(int[] data) { /* logic for QuickSort */ }
+}
+
+public class Sorter {
+    private ISortStrategy _strategy;
+    public void SetStrategy(ISortStrategy strategy) { _strategy = strategy; }
+    public void ExecuteSort(int[] data) { _strategy.Sort(data); }
 }
 ```
+
 
 #### Q8: Correct a DIP violation for manual instantiation.
 **Question:**
@@ -332,16 +414,20 @@ en: Provide a fix for a class `UserService` that manually instantiates a `UserRe
 vi: Cung cấp giải pháp khắc phục cho một lớp `UserService` tự khởi tạo một `UserRepository` bên trong hàm tạo của nó (vi phạm DIP).
 
 **Answer:**
-en: Use Dependency Injection to pass the repository interface into the constructor.
-vi: Sử dụng Tiêm phụ thuộc (Dependency Injection) để truyền giao diện repository vào hàm tạo.
+en: Hardcoding `new UserRepository()` inside `UserService` creates a tight coupling to a concrete class. This makes it impossible to swap repositories for testing or other environments. The fix is to use Dependency Injection: the `UserService` asks for an `IUserRepository` through its constructor, allowing an external "container" or caller to provide the concrete implementation.
+vi: Việc gán cứng `new UserRepository()` bên trong `UserService` tạo ra một sự liên kết chặt chẽ với một lớp cụ thể. Điều này khiến việc hoán đổi repository để kiểm thử hoặc cho các môi trường khác trở nên bất khả thi. Giải pháp là sử dụng Tiêm phụ thuộc (Dependency Injection): `UserService` yêu cầu một `IUserRepository` thông qua hàm tạo của nó, cho phép một "container" hoặc người gọi bên ngoài cung cấp bản thực thi cụ thể.
 
 ```csharp
-// Before: _repo = new UserRepository();
-// After fix:
-public UserService(IUserRepository repo) {
-    _repo = repo;
+// Fix: Inject the dependency
+public class UserService {
+    private readonly IUserRepository _repository;
+
+    public UserService(IUserRepository repository) {
+        _repository = repository; // Dependency is "Injected"
+    }
 }
 ```
+
 
 #### Q9: Use SRP to extract logic from a UI Controller.
 **Question:**
@@ -349,8 +435,9 @@ en: In a web application, use SRP to refactor a controller method that handles v
 vi: Trong một ứng dụng web, sử dụng SRP để tái cấu trúc một phương thức controller xử lý việc xác thực, lưu cơ sở dữ liệu và thông báo qua email.
 
 **Answer:**
-en: Move validation to a Validator class, database saving to a Service or Repository class, and email notifications to a Notifier class.
-vi: Di chuyển việc xác thực sang một lớp Validator, lưu cơ sở dữ liệu sang một lớp Service hoặc Repository, và thông báo email sang một lớp Notifier.
+en: A controller's job should be to route requests, not to contain business logic. By extracting validation to a `Validator`, persistence to a `Repository`, and notifications to a `Service`, we make the code modular. Now, we can change the database schema without touching the controller, or unit test the validation logic without spinning up a web server.
+vi: Công việc của một controller nên là điều hướng các yêu cầu, chứ không phải chứa logic nghiệp vụ. Bằng cách tách việc xác thực sang một `Validator`, việc lưu trữ sang một `Repository`, và các thông báo sang một `Service`, chúng ta làm cho mã nguồn trở nên mô-đun. Giờ đây, chúng ta có thể thay đổi schema cơ sở dữ liệu mà không cần chạm vào controller, hoặc kiểm thử đơn vị logic xác thực mà không cần khởi chạy máy chủ web.
+
 
 #### Q10: Apply LSP to a hierarchy involving File systems (Read-only vs Read-Write).
 **Question:**
@@ -358,5 +445,6 @@ en: Apply LSP to a hierarchy where you have `ReadOnlyFile` and `ReadWriteFile`. 
 vi: Áp dụng LSP cho một phân cấp nơi bạn có `ReadOnlyFile` và `ReadWriteFile`. Tại sao `ReadWriteFile` kế thừa từ `ReadOnlyFile` thường tốt hơn là ngược lại?
 
 **Answer:**
-en: If `ReadOnlyFile` inherits from `ReadWriteFile`, it would have to throw errors for the `write()` method, violating LSP. If `ReadWriteFile` inherits from `ReadOnlyFile`, it simply adds `write()` while satisfying all `ReadOnly` requirements.
-vi: Nếu `ReadOnlyFile` kế thừa từ `ReadWriteFile`, nó sẽ phải ném lỗi cho phương thức `write()`, vi phạm LSP. Nếu `ReadWriteFile` kế thừa từ `ReadOnlyFile`, nó chỉ đơn giản là thêm `write()` trong khi vẫn đáp ứng tất cả các yêu cầu về `ReadOnly`.
+en: LSP states that a subtype must be substitutable for its base type. A `ReadWriteFile` can do everything a `ReadOnlyFile` can (read content). However, a `ReadOnlyFile` cannot do everything a `ReadWriteFile` can (it can't write). If `ReadOnlyFile` inherits from `ReadWriteFile`, it would have to throw a `NotSupportedException` in the `Write()` method, which breaks the contract and violates LSP. Proper inheritance reflects real capabilities without breaking base type expectations.
+vi: LSP phát biểu rằng một kiểu con phải có khả năng thay thế cho kiểu cơ sở của nó. Một `ReadWriteFile` có thể làm mọi thứ mà một `ReadOnlyFile` có thể làm (đọc nội dung). Tuy nhiên, một `ReadOnlyFile` không thể làm mọi thứ mà một `ReadWriteFile` có thể làm (nó không thể ghi). Nếu `ReadOnlyFile` kế thừa từ `ReadWriteFile`, nó sẽ phải ném ra `NotSupportedException` trong phương thức `Write()`, điều này phá vỡ hợp đồng và vi phạm LSP. Kế thừa đúng đắn phản ánh các khả năng thực tế mà không phá vỡ kỳ vọng của kiểu cơ sở.
+
