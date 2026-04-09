@@ -46,6 +46,19 @@ vi: Phân loại các tình huống mà TDD có thể khó khăn hoặc không t
 en: 1. Legacy code with tight coupling. 2. Experimental UI/UX research. 3. Highly complex mathematics where the result is not easily predictable.
 vi: 1. Mã nguồn cũ với liên kết chặt chẽ. 2. Nghiên cứu UI/UX thử nghiệm. 3. Các bài toán toán học cực kỳ phức tạp nơi kết quả không dễ dự đoán trước.
 
+#### Q6: Analyze the pros and cons of prioritizing End-to-End (E2E) tests over Integration tests.
+**Question:**
+en: Analyze the pros and cons of prioritizing End-to-End (E2E) tests over Integration tests.
+vi: Phân tích các ưu và nhược điểm của việc ưu tiên các kiểm thử E2E (Đầu cuối) hơn so với kiểm thử Tích hợp (Integration tests).
+
+**Answer:**
+en: 
+- **Pros**: E2E tests provide the highest confidence that the system works exactly as a user would experience it. They catch complex system configuration and network issues.
+- **Cons**: E2E tests are notoriously slow, highly flaky (prone to false negatives due to network or UI rendering hiccups), and very hard to debug because a failure could originate from anywhere in the stack. Integration tests are faster, more stable, and isolate failures to specific boundaries.
+vi: 
+- **Ưu điểm**: Kiểm thử E2E cung cấp độ tin cậy cao nhất rằng hệ thống hoạt động chính xác như trải nghiệm thực tế của người dùng. Chúng bắt được các lỗi do cấu hình hệ thống hoặc nhẽo mạng phức tạp.
+- **Nhược điểm**: E2E test nổi tiếng là quá chậm, cực kỳ không ổn định (flaky - dễ báo lỗi giả do mạng nghẽn hoặc UI giật lag), và rất khó để gỡ lỗi vì khi thất bại thì ngọn nguồn có thể xuất phát từ bất kỳ đâu trong stack. Kiểm thử tích hợp thì nhanh hơn, ổn định hơn và khoanh vùng lỗi vào các ranh giới dịch vụ rõ rệt.
+
 ---
 
 ### Level 5: Evaluating
@@ -93,3 +106,12 @@ vi: Đánh giá hiệu quả của TDD trong kiến trúc Microservices.
 **Answer:**
 en: TDD is highly effective as it helps define clear boundaries and contracts for each service via unit and contract tests, ensuring reliability before integration.
 vi: TDD cực kỳ hiệu quả vì nó giúp xác định các ranh giới và hợp đồng rõ ràng cho mỗi dịch vụ thông qua các kiểm thử đơn vị và hợp đồng, đảm bảo tính tin cậy trước khi tích hợp.
+
+#### Q6: Evaluate the effectiveness of introducing Smoke Tests directly into a Continuous Deployment (CD) pipeline.
+**Question:**
+en: Evaluate the effectiveness of introducing Smoke Tests directly into a Continuous Deployment (CD) pipeline.
+vi: Đánh giá hiệu quả của việc đưa trực tiếp các Kiểm thử Khói (Smoke tests) vào đường ống Triển khai Liên tục (Continuous Deployment - CD).
+
+**Answer:**
+en: Integrating Smoke tests as an automatic gate in a CD pipeline is highly effective. They act as an immediate "sanity check" right after a deployment to production or staging. If the Smoke test fails (e.g., the website returns a 500 status), the pipeline can immediately rollback the deployment before users are significantly impacted. They save time and maximize availability without the heavy overhead of running a full suite of tests.
+vi: Việc tích hợp Smoke test đóng vai trò như một màng lọc chốt chặn tự động trong pipeline CD là một chiêu thức cực kỳ hiệu quả. Chúng hành động như một bài "kiểm tra tỉnh táo - sanity check" chớp nhoáng ngay khi vừa mới triển khai mã lên staging hoặc production. Nếu Kiểm thử khói sụp đổ (ví dụ: website trả về lỗi 500 status), thì ống dẫn pipeline có thể chớp nhoáng cuộn ngược (rollback) lại lệnh triển khai trước khi người dùng thực bị thiệt hại. Chúng tiết kiệm thời gian và tối đa hóa độ khả dụng mà không phải chịu gánh nặng nề của việc chạy tổng thể một bộ E2E khổng lồ.

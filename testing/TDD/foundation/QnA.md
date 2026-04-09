@@ -46,6 +46,22 @@ vi: Định nghĩa "Kiểm thử đơn vị" (Unit Testing) trong ngữ cảnh c
 en: Unit testing is the practice of testing the smallest possible parts of an application (units), such as functions or methods, in isolation to ensure they work correctly.
 vi: Unit tests là việc kiểm thử các phần nhỏ nhất có thể của một ứng dụng (các đơn vị), chẳng hạn như các hàm hoặc phương thức hoặc 1 class, trong sự cô lập để đảm bảo chúng hoạt động chính xác.
 
+#### Q8: Define Integration Testing, End-to-End (E2E) Testing, and Smoke Testing.
+
+**Question:**
+en: Define Integration Testing, End-to-End (E2E) Testing, and Smoke Testing.
+vi: Định nghĩa Kiểm thử tích hợp (Integration Testing), Kiểm thử đầu cuối (End-to-End/E2E Testing), và Kiểm thử khói (Smoke Testing).
+
+**Answer:**
+en: 
+- **Integration Testing**: Verifies that different modules or services work properly together.
+- **E2E Testing**: Tests the entire application flow from start to finish, simulating real user scenarios.
+- **Smoke Testing**: A quick, basic suite of tests run to verify that the most critical functions of a system work, ensuring it is stable enough for further testing.
+vi: 
+- **Integration Testing**: Kiểm thử tích hợp xác minh rằng các mô-đun hoặc dịch vụ khác nhau hoạt động trơn tru cùng nhau.
+- **E2E Testing**: Kiểm thử đầu cuối kiểm tra toàn bộ luồng ứng dụng từ đầu đến cuối, mô phỏng các kịch bản thực tế của người dùng.
+- **Smoke Testing**: Kiểm thử khói là một bộ kiểm thử cơ bản, chạy chớp nhoáng để xác minh rằng các chức năng quan trọng nhất của hệ thống vẫn hoạt động, đảm bảo đủ độ ổn định để kiểm thử xa hơn.
+
 ---
 
 ### Level 2: Understanding
@@ -166,6 +182,16 @@ vi:
 - **Đảm bảo nguyên tắc D (Dependency Inversion):** Giúp cô lập unit test và đảm bảo tính độc lập. Cụ thể hơn, là không phụ thuộc vào trực tiếp yếu tố biến động như Datetime.Now, database, file system, network, ... thay vào đó là phụ thuộc vào các abstraction (interface, abstract class, ...) khi đó mình có thể Mock/Stub các dependency đó.
 - **Đảm bảo nguyên tắc FIRST:**
 
+#### Q8: Explain how Integration, E2E, and Smoke tests fit into the Test Automation Pyramid compared to Unit tests.
+
+**Question:**
+en: Explain how Integration, E2E, and Smoke tests fit into the Test Automation Pyramid compared to Unit tests.
+vi: Giải thích cách mà các kiểm thử Tích hợp (Integration), Đầu cuối (E2E) và Khói (Smoke test) nằm trong Tháp tự động hóa kiểm thử (Test Automation Pyramid) so với Unit tests.
+
+**Answer:**
+en: In the Test Pyramid, Unit tests form the large base (fast, cheap, numerous). Integration tests form the middle layer (slower, fewer, testing intersections). E2E tests form the top (slowest, expensive, testing full flows). Smoke tests are usually a small subset of E2E or Integration tests run universally to check system health.
+vi: Trong Tháp kiểm thử, Unit test tạo thành đáy tháp rộng lớn (nhanh, rẻ, số lượng nhiều). Kiểm thử tích hợp nằm ở tầng giữa (chậm hơn, ít hơn, kiểm tra các điểm giao tiếp). Kiểm thử E2E nằm trên đỉnh tháp (chậm nhất, đắt đỏ, kiểm tra toàn bộ luồng ứng dụng). Kiểm thử khói thường là một phần tập test nhỏ của kiểm thử E2E hoặc tích hợp được chạy khắp nơi để chẩn đoán "sức khỏe" hệ thống.
+
 ---
 
 ### Level 3: Applying
@@ -256,3 +282,21 @@ it("notifies user", () => {
   expect(mockEmail.send).toHaveBeenCalled();
 });
 ```
+
+#### Q6: Provide an example of what a Smoke Test might look like for a web application.
+
+**Question:**
+en: Provide an example of what a Smoke Test might look like for a web application.
+vi: Đưa ra một ví dụ về Kiểm thử khói (Smoke Test) có thể biểu diễn như thế nào đối với một ứng dụng API/Web.
+
+**Answer:**
+en: A smoke test would simply check if the main application URL returns a 200 OK status code, without testing the deep actual UI interaction logic.
+vi: Một kiểm thử khói sẽ chỉ đơn giản là gọi kiểm tra xem URL web hoặc API chính của ứng dụng có trả về mã 200 OK hay không, mà chưa cần đi sâu test kịch bản logic bên trong.
+
+```javascript
+test("Smoke Test: App is up and running", async () => {
+  const response = await fetch("https://myapp.com/api/health-check");
+  expect(response.status).toBe(200);
+});
+```
+
