@@ -182,6 +182,15 @@ vi: Từ khóa `null` có ý nghĩa gì trong C#?
 en: `null` represents the deliberate absence of any object value. It is the default value for reference types.
 vi: `null` biểu thị tình trạng rỗng (không trỏ đến đối tượng nào). Đây là giá trị mặc định của các kiểu tham chiếu.
 
+#### Q_LEVEL1_888: What is a Task?
+**Question:**
+en: What is `Task` in C#?
+vi: `Task` trong C# là gì?
+
+**Answer:**
+en: A `Task` represents an asynchronous operation that can return a value or simply execute code concurrently without blocking the main execution thread.
+vi: `Task` đại diện cho một tác vụ quản lý tiến trình bất đồng bộ, có thể trả về giá trị hoặc đơn giản là thực thi mã nhánh song song mà không chặn cứng luồng chạy chính.
+
 ---
 
 ### Level 2: Understanding
@@ -321,6 +330,15 @@ vi: Dependency Injection (DI - Tiêm phụ thuộc) là gì?
 en: A powerful IoC core rule implementation where required external services are injected from constructors, encouraging massive loose coupling design choices.
 vi: DI là một biến thể Inversion of Control chèn phụ thuộc của 1 lớp từ thế giới bên ngoài (qua constructor / framework service container), giúp tạo nên cấu hình kết nối lỏng tuyệt đỉnh hoàn mỹ trên diện rộng.
 
+#### Q_LEVEL2_777: Task vs Thread.
+**Question:**
+en: What is the main structural difference between `Task` and `Thread`?
+vi: Sự khác biệt bản chất cấu trúc giữa `Task` và `Thread` là gì?
+
+**Answer:**
+en: A `Thread` is an expensive low-level OS construct demanding heavy memory allocations. A `Task` is a higher-level framework abstraction utilizing the optimized Thread Pool to multiplex tasks over fewer actual threads.
+vi: `Thread` là cấu trúc lõi cấp thấp của hệ điều hành, tiêu tốn rất nhiều tài nguyên bộ nhớ Stack khi tạo mới. `Task` là gói tác vụ cấp cao của mô hình C# tận dụng kho Thread Pool để tái sử dụng luồng, cho hiệu năng khổng lồ nhạy bén.
+
 ---
 
 ### Level 3: Applying
@@ -430,4 +448,26 @@ var extractedEvens = dbInts.Where(record => record > 40 && record % 2 == 0)
                            .OrderBy(record => record)
                            .ToList(); 
 // List has 50, 112
+```
+
+#### Q_LEVEL3_555: Demonstrate Task.WhenAll.
+**Question:**
+en: Demonstrate how to wait for multiple independent asynchronous tasks to complete concurrently using `Task.WhenAll`.
+vi: Minh họa cách gom và đợi nhiều tác vụ bất đồng bộ độc lập chạy song song cùng lúc bằng lệnh `Task.WhenAll`.
+
+**Answer:**
+en: `Task.WhenAll` creates a master task representing all provided tasks, completing successfully only when every individual task finishes processing efficiently in parallel.
+vi: `Task.WhenAll` tạo ra một tác vụ siêu việt giám sát mảng các tasks, cho phép chạy song song hết tốc lực và chỉ hạ cờ khi mọi tác vụ con bên trong đã hoàn tất.
+
+```csharp
+public async Task ProcessMultipleTasksAsync()
+{
+    var fetchUserTask = FetchDataAsync("api/user");
+    var fetchOrdersTask = FetchDataAsync("api/orders");
+
+    // Both independent network requests run concurrently without blocking each other
+    await Task.WhenAll(fetchUserTask, fetchOrdersTask);
+
+    Console.WriteLine("Both payloads successfully resolved!");
+}
 ```

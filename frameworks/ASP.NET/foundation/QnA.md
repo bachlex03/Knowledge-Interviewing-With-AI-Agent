@@ -119,15 +119,6 @@ vi: Action Method là gì?
 en: An Action is a public method on a Controller that responds to an HTTP request routed to it.
 vi: Action là một phương thức public cấu hình bên trong Controller sẽ thực thi khi có một HTTP request ánh xạ route tới nó.
 
-#### Q_LEVEL1_905: What is MVC?
-**Question:**
-en: What does MVC stand for and represent?
-vi: MVC là viết tắt của gì và đại diện cho kiến trúc nào?
-
-**Answer:**
-en: Model-View-Controller separates an application into three main groups of components: Models (data), Views (UI), and Controllers (logic).
-vi: Model-View-Controller cấu trúc tách biệt ứng dụng thành: Model (dữ liệu), View (giao diện), và Controller (điều hướng logic).
-
 #### Q_LEVEL1_536: What is Routing?
 **Question:**
 en: What is Routing?
