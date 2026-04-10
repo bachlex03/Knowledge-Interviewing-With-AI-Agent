@@ -2,106 +2,139 @@
 
 ### Level 4: Analyzing
 
-#### Q1: Analyze the difference between guards and interceptors.
+#### Q_LEVEL4_142: Analyze circular dependency problems.
 
 **Question:**
-en: Analyze the difference between guards and interceptors.
-vi: Phân tích sự khác nhau giữa guards và interceptors.
+en: Analyze why circular dependencies happen in NestJS modules or providers.
+vi: Phân tích vì sao **circular dependency** xảy ra trong module hoặc provider NestJS.
 
 **Answer:**
-en: Guards decide whether a request can proceed, so they are best for authentication and authorization. Interceptors wrap execution, so they are better for logging, response shaping, timing, and caching.
-vi: Guards quyết định request có được tiếp tục hay không, nên phù hợp nhất cho xác thực và phân quyền. Interceptors bao bọc quá trình thực thi, nên phù hợp hơn cho logging, định dạng response, đo thời gian và cache.
+en: Circular dependencies happen when two modules or providers depend on each other directly. This often reveals unclear boundaries or mixed responsibilities. `forwardRef()` can unblock the application, but the better long-term solution is usually to extract shared logic into a separate provider or redesign the module boundary.
+vi: **Vấn đề:** **Circular dependency** xảy ra khi hai module hoặc provider phụ thuộc trực tiếp vào nhau. Điều này thường cho thấy boundary chưa rõ hoặc trách nhiệm bị trộn lẫn. **Giải pháp:** `forwardRef()` có thể gỡ kẹt tạm thời, nhưng về lâu dài nên tách logic chung ra provider riêng hoặc thiết kế lại ranh giới module.
 
-#### Q2: Compare services and controllers in terms of responsibility.
+#### Q_LEVEL4_253: Analyze provider scope performance.
 
 **Question:**
-en: Compare services and controllers in terms of responsibility.
-vi: So sánh services và controllers về mặt trách nhiệm.
+en: Analyze the performance impact of request-scoped providers in NestJS.
+vi: Phân tích tác động hiệu năng của **request-scoped provider** trong NestJS.
 
 **Answer:**
-en: Controllers manage transport concerns such as routes and request/response handling, while services contain reusable business rules. Mixing them increases coupling and makes testing harder.
-vi: Controllers xử lý các vấn đề liên quan đến transport như route và request/response, còn services chứa các quy tắc nghiệp vụ có thể tái sử dụng. Trộn hai phần này với nhau làm tăng độ phụ thuộc và khiến việc test khó hơn.
+en: Request-scoped providers create a new instance per request, which increases allocation and dependency resolution cost. They are useful for request-specific context but should not be used by default for high-throughput services.
+vi: **Vấn đề:** **Request-scoped provider** tạo instance mới cho mỗi request, làm tăng chi phí cấp phát và resolve dependency. **Giải pháp:** Chỉ dùng khi thật sự cần context theo request; với service throughput cao, ưu tiên **singleton provider** và truyền context rõ ràng.
 
-#### Q3: Analyze why exception filters are useful.
+```csharp
+public class RequestContext
+{
+    public string CorrelationId { get; init; } = "";
+}
+
+public class OrderService
+{
+    // Prefer passing request-specific context explicitly
+    // instead of making the whole service request-scoped.
+    public void CreateOrder(RequestContext context)
+    {
+        Console.WriteLine($"Trace: {context.CorrelationId}");
+    }
+}
+```
+
+#### Q_LEVEL4_364: Analyze guard pipe interceptor order.
 
 **Question:**
-en: Analyze why exception filters are useful.
-vi: Phân tích vì sao exception filter hữu ích.
+en: Analyze the execution order of guards, pipes, interceptors, and filters in NestJS.
+vi: Phân tích thứ tự chạy của **guards**, **pipes**, **interceptors** và **filters** trong NestJS.
 
 **Answer:**
-en: Exception filters centralize error handling, make responses consistent, and allow custom mapping from application errors to HTTP status codes. This keeps controllers and services cleaner.
-vi: Exception filter tập trung hóa xử lý lỗi, làm cho response nhất quán và cho phép ánh xạ lỗi ứng dụng sang mã trạng thái HTTP tùy chỉnh. Điều này giúp controller và service gọn hơn.
+en: Guards run before a request reaches the handler to decide access. Pipes transform and validate parameters before handler execution. Interceptors wrap handler execution and can transform results. Filters catch exceptions after errors are thrown. Understanding this order prevents placing validation, authorization, or response logic in the wrong layer.
+vi: **Guard** chạy trước để quyết định quyền truy cập. **Pipe** biến đổi và validate parameter trước khi handler chạy. **Interceptor** bọc quanh handler và có thể biến đổi kết quả. **Filter** bắt exception sau khi lỗi được throw. Hiểu thứ tự này giúp không đặt authorization, validation hoặc response mapping sai tầng.
 
-#### Q4: Analyze the role of pipes in application flow.
+#### Q_LEVEL4_475: Analyze monolith module boundaries.
 
 **Question:**
-en: Analyze the role of pipes in application flow.
-vi: Phân tích vai trò của pipes trong luồng xử lý ứng dụng.
+en: Analyze how to design module boundaries in a large NestJS monolith.
+vi: Phân tích cách thiết kế ranh giới module trong một NestJS monolith lớn.
 
 **Answer:**
-en: Pipes transform and validate input before it reaches the handler. They enforce data quality at the boundary, preventing invalid or malformed data from spreading deeper into the application.
-vi: Pipes chuyển đổi và validate dữ liệu đầu vào trước khi nó tới handler. Chúng đảm bảo chất lượng dữ liệu ở ranh giới đầu vào, ngăn dữ liệu sai hoặc không hợp lệ lan sâu vào ứng dụng.
+en: Good module boundaries follow business capabilities rather than technical layers alone. A large NestJS monolith should avoid one giant shared module and instead expose deliberate exports, keep internal providers private, and use clear contracts between features.
+vi: **Vấn đề:** Monolith lớn dễ biến thành một khối phụ thuộc chéo nếu module boundary yếu. **Giải pháp:** Chia module theo năng lực nghiệp vụ, export có chủ đích, giữ provider nội bộ private và dùng contract rõ giữa các feature.
 
-#### Q5: Analyze a scalable NestJS module structure.
+#### Q_LEVEL4_586: Analyze validation and security risk.
 
 **Question:**
-en: Analyze a scalable NestJS module structure.
-vi: Phân tích cấu trúc module NestJS có khả năng mở rộng.
+en: Analyze the security risks of weak DTO validation in NestJS APIs.
+vi: Phân tích rủi ro bảo mật khi DTO validation yếu trong API NestJS.
 
 **Answer:**
-en: A scalable module keeps one business domain per module, separates API, business logic, and infrastructure concerns, and uses shared providers only when necessary. This reduces coupling and improves maintainability.
-vi: Một module có khả năng mở rộng sẽ giữ một miền nghiệp vụ cho mỗi module, tách API, logic nghiệp vụ và hạ tầng thành các phần riêng, và chỉ dùng shared providers khi cần thiết. Điều này giảm phụ thuộc chặt và tăng khả năng bảo trì.
+en: Weak validation can allow unexpected fields, invalid types, injection payloads, and mass assignment bugs. In production, `ValidationPipe` should often use options such as whitelist, forbidNonWhitelisted, and transform carefully with explicit DTO rules.
+vi: **Vấn đề:** Validation yếu có thể cho phép field lạ, sai kiểu dữ liệu, payload injection hoặc lỗi **mass assignment**. **Giải pháp:** Trong production nên cấu hình `ValidationPipe` với `whitelist`, `forbidNonWhitelisted` và `transform` một cách cẩn trọng, kèm DTO rule rõ ràng.
 
 ---
 
 ### Level 5: Evaluating
 
-#### Q1: Evaluate whether business logic should live in controllers or services.
+#### Q_LEVEL5_697: Evaluate NestJS for enterprise backend.
 
 **Question:**
-en: Evaluate whether business logic should live in controllers or services.
-vi: Đánh giá việc logic nghiệp vụ nên nằm trong controller hay service.
+en: Evaluate whether NestJS is a good choice for an enterprise backend.
+vi: Đánh giá NestJS có phải lựa chọn tốt cho backend doanh nghiệp hay không.
 
 **Answer:**
-en: Business logic should usually live in services. Controllers should stay thin so they remain focused on HTTP concerns, while services become easier to test, reuse, and evolve.
-vi: Logic nghiệp vụ thường nên nằm trong service. Controller nên giữ gọn để tập trung vào các vấn đề HTTP, còn service sẽ dễ test, tái sử dụng và phát triển hơn.
+en: NestJS is strong for enterprise teams because it provides structure, dependency injection, testing support, modular architecture, and TypeScript-first development. The trade-off is more framework complexity than minimal libraries like Express. It is usually a good fit when maintainability and team consistency matter.
+vi: NestJS mạnh trong môi trường doanh nghiệp vì có cấu trúc rõ, **dependency injection**, hỗ trợ test, kiến trúc module và ưu tiên **TypeScript**. Đánh đổi là framework phức tạp hơn thư viện tối giản như Express. Nó thường phù hợp khi bảo trì dài hạn và sự nhất quán trong team là ưu tiên.
 
-#### Q2: Critique the idea of putting all reusable logic in a single shared service.
+#### Q_LEVEL5_708: Evaluate NestJS versus Express.
 
 **Question:**
-en: Critique the idea of putting all reusable logic in a single shared service.
-vi: Phê bình ý tưởng đặt toàn bộ logic tái sử dụng vào một shared service duy nhất.
+en: Evaluate when to choose NestJS over Express.
+vi: Đánh giá khi nào nên chọn NestJS thay vì Express.
 
 **Answer:**
-en: This often creates a god service with unclear responsibilities and strong coupling between unrelated features. A better approach is to split shared logic by domain or concern.
-vi: Cách này thường tạo ra một god service với trách nhiệm không rõ ràng và độ phụ thuộc chặt giữa các tính năng không liên quan. Cách tốt hơn là tách logic dùng chung theo miền nghiệp vụ hoặc theo mối quan tâm.
+en: Choose NestJS when the team needs opinionated structure, dependency injection, modules, decorators, and consistent testing patterns. Choose Express when the service is small, the team wants minimal abstraction, or the architecture is already enforced elsewhere.
+vi: Nên chọn NestJS khi team cần cấu trúc có định hướng, **dependency injection**, module, decorator và pattern test nhất quán. Nên chọn Express khi service nhỏ, team muốn abstraction tối thiểu hoặc kiến trúc đã được kiểm soát ở nơi khác.
 
-#### Q3: Defend the use of DTOs and validation in a NestJS API.
+#### Q_LEVEL5_819: Defend global validation configuration.
 
 **Question:**
-en: Defend the use of DTOs and validation in a NestJS API.
-vi: Bảo vệ việc sử dụng DTO và validation trong một API NestJS.
+en: Defend using global validation configuration in a production NestJS API.
+vi: Bảo vệ việc dùng cấu hình validation global trong API NestJS production.
 
 **Answer:**
-en: DTOs and validation create a clear contract at the boundary of the application. They reduce bad input, improve documentation, and make refactoring safer.
-vi: DTO và validation tạo ra một hợp đồng rõ ràng ở ranh giới ứng dụng. Chúng giảm dữ liệu đầu vào sai, cải thiện tài liệu hóa và làm cho việc refactor an toàn hơn.
+en: Global validation reduces duplicated validation setup, ensures consistent request hygiene, and prevents controllers from receiving unexpected input. It should still be combined with explicit DTOs and careful exception formatting to avoid leaking sensitive details.
+vi: Validation global giảm lặp cấu hình, đảm bảo request được kiểm tra nhất quán và tránh controller nhận input bất ngờ. Tuy vậy vẫn cần DTO rõ ràng và format exception cẩn thận để không lộ thông tin nhạy cảm.
 
-#### Q4: Evaluate the trade-off of using custom decorators heavily in NestJS.
+```csharp
+public static class GlobalValidationPolicy
+{
+    public static void ValidateNoUnexpectedFields(
+        IDictionary<string, object> input,
+        HashSet<string> allowedFields)
+    {
+        foreach (var field in input.Keys)
+        {
+            if (!allowedFields.Contains(field))
+                throw new ArgumentException($"Unexpected field: {field}");
+        }
+    }
+}
+```
+
+#### Q_LEVEL5_930: Critique overusing decorators.
 
 **Question:**
-en: Evaluate the trade-off of using custom decorators heavily in NestJS.
-vi: Đánh giá đánh đổi khi sử dụng nhiều custom decorator trong NestJS.
+en: Critique the overuse of decorators and framework magic in NestJS.
+vi: Phê bình việc lạm dụng **decorator** và framework magic trong NestJS.
 
 **Answer:**
-en: Custom decorators can reduce repetition and improve readability when used carefully. Overusing them can hide behavior, make debugging harder, and increase cognitive load for new team members.
-vi: Custom decorator có thể giảm lặp lại và cải thiện khả năng đọc nếu dùng cẩn thận. Nhưng dùng quá nhiều có thể che giấu hành vi, làm debug khó hơn và tăng độ phức tạp nhận thức cho thành viên mới.
+en: Decorators make NestJS concise, but overusing them can hide control flow and make debugging harder. A healthy codebase keeps decorators for framework integration and leaves business logic in explicit services, plain functions, and well-tested classes.
+vi: **Decorator** giúp NestJS gọn hơn, nhưng lạm dụng có thể che giấu luồng xử lý và làm debug khó hơn. Codebase tốt nên dùng decorator cho phần tích hợp framework, còn business logic nên nằm trong service, function rõ ràng và class được test kỹ.
 
-#### Q5: Judge when you should split a NestJS feature into multiple modules.
+#### Q_LEVEL5_141: Evaluate microservices support.
 
 **Question:**
-en: Judge when you should split a NestJS feature into multiple modules.
-vi: Đánh giá khi nào nên tách một feature NestJS thành nhiều module.
+en: Evaluate NestJS microservices support for a distributed system.
+vi: Đánh giá hỗ trợ **microservices** của NestJS cho hệ thống phân tán.
 
 **Answer:**
-en: Split the feature when the responsibilities, dependencies, or release cadence diverge enough that a single module becomes hard to understand or maintain. The split should reduce coupling, not just increase file count.
-vi: Nên tách feature khi trách nhiệm, dependency hoặc nhịp phát hành đã khác nhau đủ nhiều khiến một module duy nhất trở nên khó hiểu hoặc khó bảo trì. Việc tách ra phải giúp giảm phụ thuộc chứ không chỉ tăng số lượng file.
+en: NestJS provides a consistent programming model for transports such as TCP, Redis, RabbitMQ, Kafka, and gRPC, which helps teams reuse patterns. However, distributed systems still require careful handling of retries, idempotency, tracing, schema evolution, and data consistency. NestJS helps structure the code but does not remove distributed-system complexity.
+vi: NestJS cung cấp mô hình lập trình nhất quán cho các transport như TCP, Redis, RabbitMQ, Kafka và gRPC, giúp team tái sử dụng pattern. Tuy nhiên hệ thống phân tán vẫn cần xử lý retry, **idempotency**, tracing, schema evolution và data consistency. NestJS giúp tổ chức code, nhưng không làm biến mất độ phức tạp của distributed system.
