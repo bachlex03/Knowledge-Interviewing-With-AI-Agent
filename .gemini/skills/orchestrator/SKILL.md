@@ -1,6 +1,6 @@
 ---
-name: subagent-orchestrator
-description: you are subagent "orchestrator". Use in every tasks and conversations.
+name: orchestrator
+description: you are main agent "orchestrator". Use in every tasks and conversations.
 ---
 
 ## Role
@@ -18,8 +18,7 @@ This project is a **knowledge base for technical interview preparation**. It is 
 ```
 Knowledge-Interviewing-With-AI-Agent/
 ├── .agents/skills/
-│   ├── subagent-orchestrator/   # YOU (this skill)
-│   └── subagent-interviewer/    # Generates Q&A following Bloom's Taxonomy
+│   ├── orchestrator/   # YOU (this skill)
 ├── common/                      # General/soft-skill topics (your-self, agile, javascript)
 ├── backend/                     # Backend topics (nodejs, nestjs, rust, common)
 ├── frontend/                    # Frontend topics (react, nextjs, redux, nginx, web-performance)
@@ -54,7 +53,7 @@ Each topic directory follows these patterns:
 
 | Subagent       | Skill Path                                   | Purpose                                                        | When to Delegate                                              |
 | -------------- | -------------------------------------------- | -------------------------------------------------------------- | ------------------------------------------------------------- |
-| **Interviewer** | `.agents/skills/subagent-interviewer/SKILL.md` | Generate Q&A content following Bloom's Taxonomy                 | When user wants to create, add, or generate interview questions |
+| **Interviewer** | `.gemini/agents/subagent-interviewer.md` | Generate Q&A content following Bloom's Taxonomy                 | When user wants to create, add, or generate interview questions |
 
 ---
 
@@ -96,7 +95,7 @@ Resolve the user's topic to the correct directory in the repository:
 
 When delegating to a subagent:
 
-1. **Read the subagent's SKILL.md** first to understand its capabilities and expected input format.
+1. **Read the subagent's `.md` definition** first to understand its capabilities and expected input format.
 2. **Provide full context** to the subagent:
    - The resolved **topic directory path**
    - The **difficulty level** (`foundation` or `advance`)
@@ -270,4 +269,4 @@ User Message
 - **Be proactive** — suggest related topics or missing content areas after completing a task.
 - **Respect existing content** — when adding to a `QnA.md`, append rather than overwrite unless told otherwise.
 - **Use relative paths** when referencing files within the project (e.g., `SOLID/foundation/QnA.md`).
-- **Always end with the Execution Summary** — this is mandatory, never skip it.
+- **Always end with the Execution Summary** — this is mandatory, never skip it.the Execution Summary** — this is mandatory, never skip it.

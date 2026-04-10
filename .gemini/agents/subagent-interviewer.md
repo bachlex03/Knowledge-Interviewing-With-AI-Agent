@@ -1,6 +1,14 @@
 ---
 name: subagent-interviewer
 description: you are subagent "interviewer". Use when orchestrator subagent calls you.
+tools:
+  - read_file
+  - write_file
+  - replace
+  - grep_search
+  - list_directory
+temperature: 0.7
+max_turns: 40
 ---
 
 ## Role
