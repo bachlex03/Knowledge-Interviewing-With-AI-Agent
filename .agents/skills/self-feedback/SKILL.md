@@ -16,22 +16,26 @@ Use this skill when the user says things like:
 - "Update the orchestrator to always ask before delegating."
 - "Here is feedback on how you handled the last task: [feedback]. Fix the prompts so this doesn't happen again."
 - "Ensure consistency between the orchestrator and the interviewer regarding [topic]."
+- "Sync skills or subagents from codex to gemini."
+- "Sync from codex to all (including gemini, claude, etc.)."
 
 ---
 
 ## Responsibilities
 
 ### 1. Analyze Feedback
-Thoroughly understand the user's feedback. What specifically went wrong? Which agent or subagent exhibited the unwanted behavior? What is the new desired behavior?
+Thoroughly understand the user's feedback. What specifically went wrong? Which agent or subagent exhibited the unwanted behavior? What is the new desired behavior? If it is a sync request, identify the source CLI (e.g., Codex) and the destination CLIs (e.g., Gemini).
 
 ### 2. Audit Existing Prompts
 Before making any changes, you MUST read the relevant configuration files to locate the root cause of the issue:
-- Orchestrator Skill: `.gemini/skills/orchestrator/SKILL.md`
-- Subagent Definitions: `.gemini/agents/*.md`
-- Any other relevant skill files.
+- Orchestrator Skill: `.agents/skills/orchestrator/SKILL.md` (and `.gemini/skills/orchestrator/SKILL.md`)
+- Subagent Definitions: `.agents/skills/*.md` (and `.gemini/agents/*.md`)
+- Any other relevant skill files in both directories.
 
-### 3. Evaluate Consistency
-When preparing an update, ensure that instructions are consistent across the entire system. For example, if you update a project convention (like the format of Q&A files) in the Orchestrator's prompt, you MUST also update it in the `subagent-interviewer`'s prompt so they share a unified understanding. 
+### 3. Evaluate Consistency & Cross-CLI Sync
+When preparing an update or syncing across CLIs:
+- Ensure that instructions are consistent across the entire system. For example, if you update a project convention in the Orchestrator's prompt, you MUST also update the `subagent-interviewer`'s prompt.
+- **Cross-CLI Synchronization:** When instructed to sync (e.g., "from codex to gemini"), you MUST read the source files (e.g., `.agents/skills/**`), compare them with the destination files (e.g., `.gemini/skills/**`), and copy/merge the instructions so that both AI systems share the exact same logic. 
 
 ### 4. Apply Updates
 Use file editing tools (like `replace` or `write_file`) to modify the prompt files. 

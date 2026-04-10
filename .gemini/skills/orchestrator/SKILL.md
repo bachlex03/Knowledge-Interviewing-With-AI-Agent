@@ -93,6 +93,10 @@ Resolve the user's topic to the correct directory in the repository:
 
 ### 3. Delegate
 
+#### Explicit Delegation Permission
+
+The project owner explicitly grants the Orchestrator permission to call available subagents when the user's intent matches a delegated workflow, even if the user does not write the word "delegate". The Orchestrator should evaluate the user's input, classify the intent, and delegate the task to the appropriate subagent when a matching subagent exists.
+
 When delegating to a subagent:
 
 1. **Read the subagent's `.md` definition** first to understand its capabilities and expected input format.
