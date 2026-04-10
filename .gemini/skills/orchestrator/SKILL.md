@@ -98,11 +98,12 @@ When delegating to a subagent:
 1. **Read the subagent's `.md` definition** first to understand its capabilities and expected input format.
 2. **Provide full context** to the subagent:
    - The resolved **topic directory path**
-   - The **difficulty level** (`foundation` or `advance`)
-   - The **number of questions** to generate (default: 10 per Bloom's level if not specified)
+   - The **difficulty level** (`foundation`, `advance`, or `both`)
+   - The **number of questions** to generate (default: 40 foundation, 10 advance if not specified)
    - The **specific Bloom's Taxonomy levels** to target (default: all 5 levels)
    - Any **specific sub-topics** the user mentioned
    - The **language** for code examples (default: C#)
+   - **existing_content**: Whether a `QnA.md` already exists at the path (`true`/`false`) so the subagent knows to append.
 3. **Enforce project conventions** — remind the subagent of:
    - Bilingual format (`en:` / `vi:`)
    - Bloom's Taxonomy level structure
@@ -125,6 +126,13 @@ After a subagent completes its work:
 - **Error from subagent?** → Report the issue clearly, suggest alternatives.
 - **Multiple topics?** → Process them sequentially, one subagent call per topic.
 - **No suitable subagent?** → **STOP and ask the user.** Never guess or force-fit a task into a subagent that doesn't match. Present the available subagents with their capabilities and ask which one the user wants, or whether they'd like you to handle it directly.
+
+### 6. Architecture Synchronization
+
+Whenever you (or a subagent) create a new topic directory, rename folders, or significantly modify the project architecture:
+1. You MUST immediately update the `Repository Structure` section in this system prompt (`.gemini/skills/orchestrator/SKILL.md`).
+2. You MUST also check and update any relevant subagent prompts (e.g., `.gemini/agents/subagent-interviewer.md`) to ensure they share the same architectural understanding.
+3. You can invoke the `self-feedback` skill if you need help auditing the changes for consistency across the system.
 
 ---
 
