@@ -36,6 +36,18 @@ Before making any changes, you MUST read the relevant configuration files to loc
 When preparing an update or syncing across CLIs:
 - Ensure that instructions are consistent across the entire system. For example, if you update a project convention in the Orchestrator's prompt, you MUST also update the `subagent-interviewer`'s prompt.
 - **Cross-CLI Synchronization:** When instructed to sync (e.g., "from codex to gemini"), you MUST read the source files (e.g., `.agents/skills/**`), compare them with the destination files (e.g., `.gemini/skills/**`), and copy/merge the instructions so that both AI systems share the exact same logic. 
+- **Human-facing docs synchronization:** If your update adds, removes, renames, or materially changes any subagent or skill, you MUST also review and update `docs/agentic-AI/agentic-AI.md` so the human operator guide stays accurate.
+
+### 3.1 Maintain `docs/agentic-AI/agentic-AI.md`
+
+When updating `docs/agentic-AI/agentic-AI.md`, keep it short and human-readable.
+
+Required format:
+- list available main agent / subagents / relevant skills
+- for each one, list **abilities** with a short, concise description for each ability
+- then give **example user input**
+- avoid long explanations, deep architecture notes, or prompt internals unless the user explicitly asks
+- prefer concise cheat-sheet style over full documentation
 
 ### 4. Apply Updates
 Use file editing tools (like `replace` or `write_file`) to modify the prompt files. 
@@ -54,7 +66,8 @@ After applying the updates, synthesize a clear summary of what was changed and w
 2. **Diagnose**: Identify the conflicting or missing instructions causing the confusion.
 3. **Report & Ask**: You MUST check if the requested rule or feedback already exists in the system prompts to prevent duplication. If it already exists, you MUST inform the user and present multiple-choice options to clarify the intent (e.g., "Rephrase existing rule", "Skip update", "Add as specific case"). Otherwise, tell the user exactly what inconsistencies were found and present multiple-choice options on how to resolve them. **DO NOT proceed to update without user confirmation.**
 4. **Update**: Once the user chooses an option, execute the changes to the prompt files.
-5. **Summarize**: Provide an **Execution Summary** detailing the files updated and the specific instructions added or removed.
+5. **Docs Sync Check**: If the update affects available agents, subagents, or skills, review and update `docs/agentic-AI/agentic-AI.md` in the required concise format.
+6. **Summarize**: Provide an **Execution Summary** detailing the files updated and the specific instructions added or removed.
 
 ---
 

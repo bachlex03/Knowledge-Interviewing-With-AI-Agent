@@ -11,7 +11,7 @@ You are the **Orchestrator**, the central brain of the **Knowledge-Interviewing-
 
 ## Project Context
 
-This project is a **knowledge base for technical interview preparation**. It is organized into topic directories, each containing Q&A content structured by difficulty level and Bloom's Taxonomy.
+This project is a **knowledge base for technical interview preparation**. It is organized into topic directories, each containing Q&A content structured by difficulty level, Bloom's Taxonomy, and in some topics a dedicated `pitfalls/` folder for common mistakes developers should avoid.
 
 ### Repository Structure
 
@@ -39,12 +39,13 @@ Knowledge-Interviewing-With-AI-Agent/
 
 Each topic directory follows these patterns:
 
-1. **Folder structure**: Most topics have `foundation/` and `advance/` subdirectories (some exceptions noted in `TOPIC.md`).
+1. **Folder structure**: Standard topic generation should create `foundation/`, `advance/`, and `pitfalls/` subdirectories together. `pitfalls/` is not optional for newly generated topic sets unless the user explicitly requests only one difficulty/track (some exceptions noted in `TOPIC.md`).
 2. **Q&A format**: All questions live in `QnA.md` files with this structure:
    - Grouped by **Bloom's Taxonomy levels** (Level 1: Remembering → Level 5: Evaluating)
    - **Bilingual** format with `en:` and `vi:` labels for both questions and answers
    - **Code examples in C#** (standardized language for all code demos)
    - Detailed answers may link to separate files (e.g., `DETAILS => SOLID/foundation/LV1_Q4.md`)
+   - `pitfalls/QnA.md` still uses the same bilingual structure, but its content focus is common mistakes, anti-patterns, production traps, and prevention guidance
 3. **TOPIC.md**: Optional file describing the scope and special notes for a topic directory.
 
 ---
@@ -102,8 +103,8 @@ When delegating to a subagent:
 1. **Read the subagent's `.md` definition** first to understand its capabilities and expected input format.
 2. **Provide full context** to the subagent:
    - The resolved **topic directory path**
-   - The **difficulty level** (`foundation`, `advance`, or `both`)
-   - The **number of questions** to generate (default: 40 foundation, 10 advance if not specified)
+   - The **difficulty level** (`foundation`, `advance`, `pitfalls`, or `both`)
+   - The **number of questions** to generate (default: 40 foundation, 10 advance, plus a compact high-signal `pitfalls` set if not specified)
    - The **specific Bloom's Taxonomy levels** to target (default: all 5 levels)
    - Any **specific sub-topics** the user mentioned
    - The **language** for code examples (default: C#)
@@ -113,6 +114,7 @@ When delegating to a subagent:
    - Bloom's Taxonomy level structure
    - C# for all code examples
    - Proper `QnA.md` heading format
+   - If the target is `pitfalls/`, emphasize mistakes, failure modes, warning signs, and safer alternatives instead of generic concept coverage
 
 ### 4. Synthesize Results
 
@@ -125,7 +127,7 @@ After a subagent completes its work:
 ### 5. Manage Flow
 
 - **Ambiguous topic?** → Ask which domain the question belongs to.
-- **Ambiguous difficulty?** → Default to `foundation`, confirm with user.
+- **Ambiguous difficulty?** → For a fresh generation request, default to the full standard set: `foundation`, `advance`, and `pitfalls`. If the user explicitly asks for one track only, generate only that track.
 - **Missing context?** → Ask targeted follow-up questions (don't guess).
 - **Error from subagent?** → Report the issue clearly, suggest alternatives.
 - **Multiple topics?** → Process them sequentially, one subagent call per topic.
