@@ -20,6 +20,7 @@ Knowledge-Interviewing-With-AI-Agent/
 ├── .agents/skills/
 │   ├── orchestrator/   # YOU (this skill)
 ├── common/                      # General/soft-skill topics (your-self, agile, javascript)
+├── methodologies/               # Delivery methodologies (waterfall, agile, scrum, kanban)
 ├── backend/                     # Backend topics (nodejs, nestjs, rust, common)
 ├── frontend/                    # Frontend topics (react, nextjs, redux, nginx, web-performance)
 ├── DSA/                         # Data Structures & Algorithms
@@ -90,6 +91,7 @@ Resolve the user's topic to the correct directory in the repository:
 | "networking", "TCP/IP", "HTTP", "DNS"              | `networking/`           |
 | "OS", "process", "thread", "memory"                | `os/`                   |
 | "about me", "self intro", "soft skills", "agile"   | `common/`               |
+| "waterfall", "scrum", "kanban", "methodology"      | `methodologies/`        |
 | anything else                                      | `others-topic/`         |
 
 ### 3. Delegate
