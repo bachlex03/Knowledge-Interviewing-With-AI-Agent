@@ -24,6 +24,16 @@ vi: ECMAScript là gì?
 en: ECMAScript is the language specification that defines the standard behavior of JavaScript. JavaScript engines implement that specification with some environment-specific APIs.
 vi: ECMAScript là bộ đặc tả chuẩn mô tả cách JavaScript phải hoạt động. Các JavaScript engine sẽ triển khai đặc tả đó rồi bổ sung thêm API riêng của môi trường chạy.
 
+#### Q_LEVEL1_369: What is a JavaScript runtime?
+
+**Question:**
+en: What is a JavaScript runtime?
+vi: **JavaScript runtime** là gì?
+
+**Answer:**
+en: A JavaScript runtime is the environment where JavaScript code executes. It usually includes a JavaScript engine plus extra APIs and features, such as the DOM in browsers or file system and process APIs in Node.js.
+vi: **JavaScript runtime** là môi trường nơi code JavaScript được thực thi. Nó thường bao gồm JavaScript engine cùng với các API và tính năng bổ sung, như DOM trong trình duyệt hoặc API file system và process trong Node.js.
+
 #### Q_LEVEL1_103: Name JavaScript primitive data types.
 
 **Question:**
@@ -193,6 +203,9 @@ vi: Event loop là gì?
 **Answer:**
 en: The event loop is the mechanism that coordinates the call stack, callback queues, and asynchronous tasks. It allows JavaScript to handle non-blocking operations even though the main thread executes one task at a time.
 vi: Event loop là cơ chế điều phối giữa call stack, hàng đợi callback, và các tác vụ bất đồng bộ. Nhờ nó mà JavaScript có thể xử lý tác vụ không chặn dù luồng chính chỉ chạy từng tác vụ một.
+
+**DETAILS =>** common/javascript/foundation/Q_LEVEL1_119.md
+**RESOUCES:** [#1]
 
 #### Q_LEVEL1_120: What is strict mode?
 

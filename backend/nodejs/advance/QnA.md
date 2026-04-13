@@ -36,6 +36,18 @@ public static class CpuOffload
 }
 ```
 
+#### Q_LEVEL4_331: Compare single thread, child process, Worker Threads, and cluster.
+
+**Question:**
+en: Compare the main NodeJS thread, child processes, Worker Threads, and cluster.
+vi: So sánh main thread của NodeJS, **child processes**, **Worker Threads** và **cluster**.
+
+**Answer:**
+en: The main NodeJS thread is best for normal request handling and asynchronous I/O, but it should not be blocked by long CPU-heavy work. Worker Threads are best for CPU-bound tasks that need parallel execution with lower communication cost inside one process. Child processes are better when you need stronger isolation, separate runtimes, or to run external commands. Cluster runs multiple NodeJS worker processes to use multiple CPU cores for handling incoming traffic, but it does not make a single request faster; it mainly improves throughput and process-level resilience.
+vi: Main thread của NodeJS phù hợp nhất cho xử lý request thông thường và async I/O, nhưng không nên bị chặn bởi tác vụ nặng CPU kéo dài. **Worker Threads** phù hợp cho công việc **CPU-bound** cần chạy song song với chi phí giao tiếp thấp hơn trong cùng một process. **Child processes** phù hợp hơn khi cần cách ly mạnh hơn, runtime riêng hoặc chạy lệnh/chương trình bên ngoài. **Cluster** chạy nhiều process NodeJS worker để tận dụng nhiều lõi CPU khi xử lý traffic vào, nhưng nó không làm một request đơn lẻ nhanh hơn; nó chủ yếu tăng throughput và khả năng chịu lỗi ở mức process.
+
+**DETAILS =>** backend/nodejs/advance/Q_LEVEL4_331.md
+
 #### Q_LEVEL4_386: Analyze memory leak investigation.
 
 **Question:**
