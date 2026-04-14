@@ -92,6 +92,8 @@ vi: Đánh giá NodeJS có phù hợp cho backend service nặng CPU hay không.
 en: NodeJS is usually not the first choice for sustained CPU-heavy work because the main JavaScript thread can become a bottleneck. It can still work if CPU tasks are isolated with Worker Threads, queues, native modules, or separate services. The decision depends on team expertise, latency targets, operational complexity, and whether most workload is CPU-bound or I/O-bound.
 vi: NodeJS thường không phải lựa chọn đầu tiên cho workload CPU-heavy kéo dài vì main thread JavaScript dễ thành nút cổ chai. Tuy vậy vẫn có thể dùng nếu cô lập tác vụ bằng **Worker Threads**, queue, native module hoặc service riêng. Quyết định nên dựa vào năng lực team, mục tiêu latency, độ phức tạp vận hành và tỷ lệ workload CPU-bound so với I/O-bound.
 
+**DETAILS =>** backend/nodejs/advance/Q_LEVEL5_619.md
+
 #### Q_LEVEL5_724: Evaluate TypeScript adoption.
 
 **Question:**

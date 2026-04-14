@@ -402,6 +402,18 @@ vi: **Memory leak** xảy ra khi ứng dụng vẫn giữ reference tới dữ l
 
 **DETAILS =>** /backend/nodejs/foundation/Q_LEVEL2_734.md
 
+#### Q_LEVEL2_789: Explain using PM2 with NodeJS applications.
+
+**Question:**
+en: Why do teams use PM2 with NodeJS applications?
+vi: Vì sao các team dùng **PM2** với ứng dụng NodeJS?
+
+**Answer:**
+en: PM2 is a process manager for NodeJS applications. Teams use it to keep apps running, restart crashed processes, manage multiple instances, handle logs, and simplify deployment or startup scripts. It is especially useful for long-running server processes in environments where you want basic process supervision and operational convenience.
+vi: **PM2** là một process manager cho ứng dụng NodeJS. Các team dùng nó để giữ app luôn chạy, tự khởi động lại khi process bị crash, quản lý nhiều instance, xử lý log và đơn giản hóa việc deploy hoặc script khởi động. Nó đặc biệt hữu ích cho các server process chạy lâu dài khi cần giám sát process cơ bản và sự tiện lợi trong vận hành.
+
+**DETAILS =>** /backend/nodejs/foundation/Q_LEVEL2_789.md
+
 ---
 
 ### Level 3: Applying
