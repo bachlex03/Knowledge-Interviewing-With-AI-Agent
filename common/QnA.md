@@ -1,5 +1,13 @@
 # Common Q&A
 
+[?][source of truth là sao?]
+
+[?][mô hình TCP/IP?]
+
+[?][Giao thức FTP, kết nối TCP ?]
+
+[?][XSS, CSRF]
+
 [?][Tại sao sao phải dùng sticky session? chúng ta có thể dùng Redis hoặc memory cached, các instance khác nhau có thể truy cập cùng 1 Redis mà?]
 
 - trong kiến trúc hệ thống hiện đại, việc sử dụng Redis/Memcached (gọi là Distributed Session) là phương pháp được ưu tiên hơn nhiều so với Sticky Session
@@ -56,6 +64,8 @@ Authorization: Bearer <JWT>           ← "Đây là cách xác thực"
 * Body format là JSON (Content-Type)
 * Cần xác thực Bearer token (Authorization)
 * Không cần hỏi thêm bất cứ điều gì bên ngoài
+
+[?][Khi người ta gọi 2 khái niệm session và cookie thành một từ "session cookie", ý người ta là gì?]
 
 ### Level 2: Understanding
 
@@ -149,13 +159,29 @@ vi:
 #### Q_LEVEL2_102: JWT vs Session vs Cookie
 
 **Question:**
-en: Compare JWT and session cookie.
-vi: Hãy so sánh JWT vs Session vs Cookie
+en: ...
+vi: JWT là gì? Cookie là gì? Session là gì? Ưa điểm? nhược điểm? Lúc nào nên ứng dụng, lúc nào không? Có ảnh hướng hiệu năng, tài nguyên máy tính không? Và ảnh hướng như thế nào nếu có. Nếu không ảnh hưởng tới tài nguyên máy tính thì ảnh hưởng tới gì?. Ví dụ.
 
 **Answer:**
-en: JWT usually stores authentication claims inside a signed token that the client sends on each request, so the server can verify it without storing session state centrally. A session cookie usually stores only a session identifier in the browser, while the real session data lives on the server. JWT fits stateless and distributed API scenarios more naturally, while session cookies are often simpler for traditional web apps with server-managed login state. JWT can be harder to revoke early and must be handled carefully in browsers, while session cookies depend more on server-side session storage and coordination.
-vi: **JWT** thường chứa các authentication claim trong một token đã được ký và client gửi token đó ở mỗi request, nên server có thể xác minh mà không cần giữ session state tập trung. **Session cookie** thường chỉ lưu session identifier trong trình duyệt, còn dữ liệu phiên thật nằm ở phía server. **JWT** hợp hơn với các API theo hướng stateless và phân tán, trong khi **session cookie** thường đơn giản hơn cho các web app truyền thống có trạng thái đăng nhập do server quản lý. **JWT** khó revoke sớm hơn và cần được xử lý cẩn thận trong trình duyệt, còn **session cookie** phụ thuộc nhiều hơn vào session store phía server và cơ chế đồng bộ.
+en: ...
+vi:
+
+[?][Khi người ta gọi 2 khái niệm session và cookie thành một từ "session cookie", ý người ta là gì?]
+[?][Các cách lưu JWT phía Client? Những ảnh hưởng của từng cách? Nên chọn cách nào? Ví dụ.]
+[?][LocalStorage với SessionStorage khác gì nhau?]
+[?][Các cách để invalidate JWT token? Nên chọn cách nào? Cung cấp code cho kỹ thuật này]
+
+[link][https://claude.ai/share/24e11026-021e-497f-9df3-b576b6a51c28]
+[link][https://gemini.google.com/share/fca9febe2e18]
 
 **Details:** ./common/Q_LEVEL2_102.md
+
+#### Q_LEVEL2_333:
+
+**Question:** Single Source of Truth (SSOT) là gì?
+
+**Answer:**
+
+https://gemini.google.com/share/a81aced47502
 
 #### Q_LEVEL2_103: Idempotency
