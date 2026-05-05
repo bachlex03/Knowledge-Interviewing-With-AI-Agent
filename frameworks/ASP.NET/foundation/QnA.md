@@ -1,5 +1,9 @@
 # ASP.NET Core Foundation Q&A
 
+[?][record trong C# ASP.NET có nói "so sánh theo giá trị" điều này có nghĩa là sao?]
+[?][viết thủ công hàm so sánh Equals cho một class là sao?]
+[?][nói rõ hơn về GetHashCode trong C# ASP.NET]
+
 ### Level 1: Remembering
 
 #### Q_LEVEL1_481: What is ASP.NET Core?
@@ -487,6 +491,18 @@ vi: Vì sao thứ tự middleware lại quan trọng, đặc biệt với except
 **Answer:**
 en: Middleware runs in registration order, so putting one in the wrong place changes behavior. For example, exception handling should be early so it can catch downstream failures, authentication must run before authorization, and CORS must run before endpoints that need its headers. A large number of “it works locally but fails in production” issues come from incorrect middleware order.
 vi: Middleware chạy theo đúng thứ tự đăng ký, nên đặt sai vị trí là hành vi ứng dụng đổi ngay. Ví dụ middleware bắt lỗi phải đặt sớm để chụp được lỗi phía sau, authentication phải chạy trước authorization, còn CORS phải đứng trước endpoint nếu muốn response có header phù hợp. Rất nhiều lỗi kiểu “máy em chạy được” thật ra đến từ việc sắp pipeline sai thứ tự.
+
+#### Q_LEVEL2_333:
+
+**Question:**
+
+en: Type Casting
+vi: Ép kiểu (Type Casting) trong C#
+
+**Answer:**
+
+en:
+vi:
 
 ---
 

@@ -15,6 +15,10 @@ _Bị động_
 [-] S + am/is/are + not + V3/V-ed (P2 - past participle) + (by O)
 [?] Am/is/are + (not) + S + V3/V-ed (P2 - past participle) + (by O)?
 
+> "The tree is planted by my father"
+> "The tree is not planted by my father"
+> "Is the tree planted by my father?"
+
 **Trạng từ chỉ tần suất:**
 
 - Always (luôn luôn), Usually (thường xuyên), Often/Frequently (thường).
@@ -89,7 +93,7 @@ _Bị động_
 - Kinh nghiệm sống, trải nghiệm. **HIGH**
 
 > "I have never been to Japan before."
-> "I have travelled to diffrent cities, met people from many cultures, faced challenges on my on, and learned valueable lessons that has helped me grow into a more confident and independent person." -> "Tôi đã đi đến nhiều thành phố, gặp gỡ nhiều nền văn hóa, tự mình đối mặt với thử thách và học được những bài học quý giá giúp tôi trở nên tự tin và độc lập hơn."
+> "I have travelled to different cities, met people from many cultures, faced challenges on my own, and learned valuable lessons that have helped me grow into a more confident and independent person." -> "Tôi đã đi đến nhiều thành phố, gặp gỡ nhiều nền văn hóa, tự mình đối mặt với thử thách và học được những bài học quý giá giúp tôi trở nên tự tin và độc lập hơn."
 > "I've been through a lot of ups and downs, tried different things, and learned from them, which has shaped who I am today." -> "Tôi đã trải qua rất nhiều thăng trầm, thử nhiều thứ khác nhau, mắc sai lầm và học hỏi từ chúng, điều này đã hình thành nên con người tôi ngày nay."
 
 - Tin tức vừa xảy ra. **HIGH**
@@ -108,7 +112,7 @@ _Bị động_
 
 > "I have lived in HCM city for 5 years and I still live here."
 > "We have been friends since 2018."
-> "I have been working on improving my english skills for several years, and _I have gradully become_ more confident in speaking and communicating with others."
+> "I have been working on improving my english skills for several years, and _I have gradually become_ more confident in speaking and communicating with others." -> "Tôi đã cố gắng cải thiện kỹ năng tiếng anh của mình trong vài năm, và tôi đã dần trở nên tự tin hơn khi giao tiếp với người khác."
 
 **Tình huống sử dụng trong câu nghi vấn:**
 
@@ -144,7 +148,7 @@ _Bị động:_
 - Giải thích cho trạng thái hiện tại **HIGH**
 
 > "She has been feeling tired lately"
-> "I have been working non-stop for the past few days, which is why I feel extremely tired and can't concentrate properly right now." -> "Mấy ngày nay tôi đã làm việc không ngừng nghỉ nên lúc này tôi cảm thấy vô cùng mệt mỏi và không thể tập trung được."
+> "I have been working non-stop for the past few days, which is why I feel extremely tired and can't concentrate properly right now." -> "Tôi đã làm việc không ngừng nghỉ trong vài ngày qua, nên bây giờ tôi cảm thấy cực kỳ mệt mỏi và không thể tập trung hiệu quả được."
 
 - Chia sẽ một việc đang diễn ra liên tục **HIGH**
 
@@ -155,13 +159,13 @@ _Bị động:_
 - (phủ định) than thở hoặc giải thích vấn đề **HIGH**
 
 > "I haven't been sleeping well this week"
-> "I haven't been sleeping well lately because I have been dealing with a lot of stress of work, and it has started to affect my health and mood."
+> "I haven't been sleeping well lately because I have been dealing with a lot of stress of work, and it has started to affect my health and mood." -> "Dạo gần đây tôi ngủ không ngon vì phải đối mặt với rất nhiều áp lực công việc, và điều đó đã bắt đầu ảnh hưởng đến sức khỏe cũng như tâm trạng của tôi."
 
 **Tình huống sử dụng trong câu nghi vấn:**
 
 > "Have you been working out? You look great!" **MEDIUM**
 > "Has she been crying? Her eyes are red." **MEDIUM**
-> "How long have been learning English?" **HIGH**
+> "How long have you been learning English?" **HIGH**
 
 **Tình huống sử dụng câu bị động:** **LOW**
 
@@ -178,6 +182,10 @@ _Bị động:_
 [-] S + was/were + not + V3/V-ed + (by O)
 [?] Was/Were + (not) + S + V3/V-ed + (by O)?
 
+> "My English homework was finished last night."
+> "My English homework was not finished last night."
+> "Was my English homework finished last night?"
+
 **Tình huống sử dụng:**
 
 - Đã xảy ra và đã kết thúc hoàn toàn trong quá khứ **HIGH**
@@ -185,7 +193,7 @@ _Bị động:_
 > "I watched a movie last night."
 > "She went to the market this morning."
 > "We had a great dinner yesterday."
-> "Last year, I traveled to Da Nang city with my friends. We explored many beautiful places, tried a lot of local foods and created unforgettable memories that I still think about sometimes. It was a great experience that I would love to do again in the future."
+> "Last year, I traveled to Da Nang city with my friends. We explored many beautiful places, tried a lot of local foods and created unforgettable memories that I still think about sometimes. It was a great experience that I would love to do again in the future." -> "Năm ngoái, tôi đã đi du lịch đến thành phố Đà Nẵng cùng bạn bè. Chúng tôi đã khám phá nhiều địa điểm đẹp, thử rất nhiều món ăn địa phương và tạo nên những kỷ niệm khó quên mà thỉnh thoảng tôi vẫn nhớ lại. Đó là một trải nghiệm tuyệt vời mà tôi rất muốn được trải nghiệm lại trong tương lai."
 
 **Tình huống sử dụng trong câu nghi vấn:** **HIGH**
 
@@ -212,7 +220,7 @@ _Bị động:_
 
 > "I had already eaten dinner before she called me."
 > "I had lived in HCM city before he moved to Hanoi."
-> "By the time the movie started, we had already found our seats."
+> "_By the time_ the movie started, we had already found our seats."
 > "By the time I arrived at the station, the train had already left, so i had to wait and ended up getting home much later than I had expected."
 
 dấu hiệu: when, before, after, by the time, already, never, just...
@@ -378,3 +386,301 @@ Other,Số nhiều,Chưa xác định,Tính từ
 Others,Số nhiều,Chưa xác định,Đại từ
 The other,Số ít,Đã xác định,Tính từ/Đại từ
 The others,Số nhiều,Đã xác định,Đại từ
+
+## Câu Điều Kiện (Conditional Sentences)
+
+_Loại 0: S + Present Simple, Present Simple_
+-> Sự thật hiển nhiên, quy luật chung
+
+> "If you heat ice, it melts." -> "Nếu bạn đun nóng đá, nó sẽ tan chảy."
+
+_Loại 1: If + Present Simple, may/might/will + Vo_
+-> Giả định về hiện tại, **có thể xảy ra**
+
+> "If you study consistently and practice speaking english everyday, you will gradually improve your english and may become more confident in real-life conversations." -> "Nếu bạn học tập chăm chỉ và luyện nói tiếng anh hàng ngày, bạn sẽ dần cải thiện tiếng anh của mình và có thể trở nên tự tin hơn trong các cuộc hội thoại thực tế."
+
+_Loại 2: If + S + Past Simple, would/could/should/might + Vo_
+-> Giả định về hiện tại, **không có thật**
+
+> "If I had more freetime, I would travel to different countries and could explore more new cultures that I have always been interested in." -> "Nếu tôi có nhiều thời gian rảnh hơn, tôi sẽ đi du lịch đến các quốc gia khác nhau và có thể khám phá nhiều nền văn hóa mới mà tôi luôn quan tâm."
+
+_Loại 3: If + S + Past Perfect, would/could/should/might + have + V3/V-ed_
+-> Giả định về quá khứ, **không thể thay đổi**
+
+> "If I had prepared more carefully for the interview, I would have answered questions confidently and might have gotten the job." -> "Nếu tôi đã chuẩn bị cẩn thận hơn cho cuộc phỏng vấn, tôi đã có thể trả lời câu hỏi một cách tự tin và có thể đã nhận được công việc."
+
+_Unless: Unless + Present Simple, will + Vo_
+
+-> if loại 1 nhưng dùng **điều kiện duy nhất ngăn cản một kết quả**
+-> unless = if ... not
+-> _Unless_ không thể thay thế "if not" trong mọi trường hợp. Khi câu mang nghĩa **giả định hoàn toàn không có thật** (loại 2 và 3)
+
+> "Unless you start taking your studies more seriously, you will continue to struggle with your exams and may not achieve the results you expect." -> "Nếu bạn không bắt đầu học tập nghiêm túc hơn, bạn sẽ tiếp tục gặp khó khăn với các kỳ thi và có thể không đạt được kết quả như mong đợi."
+
+_As long as / so long as: As long as + Present Simple, will + Vo_
+
+-> if loại 1 nhưng mang nghĩa **điều kiện cần thiết duy nhất để kết quả xảy ra**
+-> Nếu _unless_ nhấn mạnh **điều kiện ngăn cản**, thì **as long as / so long as** nhấn mạnh **điều kiện cần thiết duy nhất để kết quả xảy ra**
+
+> "As long as you keep practicing english regularly and stay motivated, you will make steady progress and eventually reach your goals." -> "Miễn là bạn tiếp tục luyện tập tiếng anh thường xuyên và giữ động lực, bạn sẽ đạt được tiến bộ ổn định và cuối cùng đạt được mục tiêu của mình."
+
+_When / As soon as: As soon as + Present Simple, Present Simple_
+
+-> if loại 1
+-> nó nói về **hai hành động xảy ra liên tiếp ngay lập tức**, nhấn mạnh sự **không có độ trễ** giữa điều kiện và kết quả.
+
+> "As soon as I finish my work, I call my friend to share What I have done and relax after a long day." -> "Ngay khi tôi làm xong việc, tôi gọi cho bạn tôi để chia sẻ những gì tôi đã làm và thư giãn sau một ngày dài."
+
+_In case: In case + Present Simple, may/might/will + Vo_
+
+-> **"In case"** nói về việc làm gì đó **để chuẩn bị cho** một tình huống có thể xảy ra — hành động là _phòng ngừa trước_.
+
+> "I will umbrella in case it rains later, so that I won't get wet while going home." -> "Tôi sẽ mang ô đề phòng trời mưa lát nữa, để tôi không bị ướt khi đi về nhà."
+
+_In case: In case + Past Simple, would/could/should/might + Vo_ (quá khứ)
+
+-> Khi dùng _in case_ trong ngữ cảnh quá khứ, bạn dùng Past Simple sau nó:
+
+> "I brought an umbrella in case it rained, because the weather forecast said there might be a storm that day."
+
+_In case of + Noun_
+
+-> Trong văn viết trang trọng hoặc trên biển báo, bạn sẽ thấy _"in case of"_ đi kèm trực tiếp với danh từ:
+
+> "In case of emergency, you should press the alarm button immediately then follow the instructions to ensure your safety.""
+
+## Mệnh đề Wish / If only
+
+_TH1: Wish / If only + Past Simple_
+
+—> Ước về hiện tại (thực tế đang không như mong muốn)
+-> dùng nó khi **thực tế hiện tại không như ý**, và bạn ước nó khác đi
+-> Việc dùng _past simple_ ở đây không có nghĩa là nói về quá khứ — đó là cách tiếng Anh dùng thì để biểu thị "điều này không có thật ở hiện tại."
+-> cũng giống như câu điều kiện loại 2, với động từ "be" bạn nên dùng **"were"** cho tất cả các ngôi trong văn viết trang trọng:
+
+> "I wish I were more confident when speaking English in public because I often feel nervous and can't express my ideas as clearly as I want." -> "Tôi ước gì mình tự tin hơn khi nói tiếng anh trước đám đông vì tôi thường cảm thấy lo lắng và không thể diễn đạt ý tưởng của mình một cách rõ ràng như tôi muốn."
+
+_TH2: Wish / If only + Past Perfect (had + V3)_
+
+-> sự **hối tiếc về một điều đã xảy ra hoặc đã không xảy ra trong quá khứ**
+
+> "I wish I had studied more harder for the exam, I would have gotten a better result and felt more satisfied with my performance." -> "Giá như tôi đã học chăm chỉ hơn cho kỳ thi, tôi đã có thể đạt kết quả tốt hơn và cảm thấy hài lòng hơn với màn thể hiện của mình."
+
+"...I would have gotten a better result and felt more satisfied with my performance."
+
+Vế 1: "would have gotten a better result"
+"Gotten" là phân từ hai của "get".
+
+Vế 2: "felt more satisfied with my performance"
+Đây là cấu trúc song song (parallelism). Từ "would have" ở vế trước được dùng chung cho cả "gotten" và "felt"
+
+_TH3: Wish / If only + would + Vo_
+
+-> Ước về tương lai (mong muốn điều khác đi trong tương lai)
+
+**Tình huống thứ nhất** là khi bạn **bực bội về hành vi của người khác** và ước họ thay đổi.
+
+> "I wish my neighbors would stop playing loud music at night, because it has been disturbing my sleep and making it difficult for me to focus during the day."
+
+"...it has been disturbing... and making..."
+
+Thì: Hiện tại hoàn thành tiếp diễn (Present Perfect Continuous).
+Cấu trúc: has been + V-ing.
+Chức năng: Diễn tả một hành động bắt đầu trong quá khứ, kéo dài liên tục đến hiện tại và vẫn đang tiếp diễn. Nó nhấn mạnh sự "dai dẳng" của tiếng ồn khiến bạn rất mệt mỏi.
+
+Cấu trúc song song:
+has been disturbing...
+(has been) making...
+
+**Tình huống thứ hai** là khi bạn **hi vọng một điều gì đó sẽ xảy ra trong tương lai**
+
+> "I wish I would have more upportunities to travel abroad in the future so that I can experience different cultures and broaden my perspective." -> "Tôi ước mình sẽ có nhiều cơ hội hơn để đi du lịch nước ngoài trong tương lai, để có thể trải nghiệm những nền văn hóa khác nhau và mở rộng tầm nhìn của mình."
+
+## Rút gọn mệnh đề quan hệ (Reduced Relative Clauses)
+
+_Cách 1:_ Bỏ đại từ quan hệ khi nó là tân ngữ.
+
+_Cách 2:_ Thay mệnh đề quan hệ bằng cụm V-ing hoặc V3/ed.
+
+_Hiện tượng "Lược bỏ" (Ellipsis):_
+
+- Câu nghi vấn:
+
+- Câu mệnh lệnh: **V (nguyên thể)** + ...
+
+---
+
+[?] Can you introduce yourself and walk us through your professional journey? -> "Bạn có thể giới thiệu về bản thân và chia sẻ hành trình nghề nghiệp của mình không?"
+
+> "Certainly, to give you an overview about myself, my full name is Lê Xuân Bách. I have just completed my studies at Ho Chi Minh University of Technology and Education with a GPA of 3.55, and I have one and a half years of experience working as a Fullstack Software Engineer, starting from my third year at university. Walk through my professional journey, I started my career when I was a third year student, during that time I worked as an intern at Outsourcing company which was my previous company. After I had completed my internship, they invited me to work full time. I worked there more than 1 year, during that time, I worked on several projects in both domestic and international market. For example, about projects in the Vietnam market, I was responsible for developing new features and maintaining the database for the hospital which is 7A military hospital. About maintaining the database, I used my SQL knowledge to write optimized SQL queries. Besides that, I collaborated with the cross-functional dev team from hospital. About developing new features, I used ASP.NET to create a digital signature server for doctors to sign health records legally. About project in the international market, specifically Israel market, I worked with cross-functional dev team from Israel, we developed a fraud detection system from notications alerts from SMS, Gmail, Messenger, WhatsApp. In this project I worked as a Backend Engineer using NestJS, Python, AWS (Cognito, VPC, SNS, SQS, Lamda, EC2) to identify fraudulent messages."
+
+_Phiên bản đã sửa (chuẩn & trôi chảy):_
+
+> Certainly. To give you an overview of myself, my name is Lê Xuân Bách. I have recently graduated from Ho Chi Minh University of Technology and Education with a GPA of 3.55. I also have one and a half years of experience as a Full-stack Software Engineer, starting from my third year at university. -> Chắc chắn rồi. Để giới thiệu tổng quan về bản thân, tôi tên là Lê Xuân Bách. Tôi vừa tốt nghiệp Trường Đại học Sư phạm Kỹ thuật TP. Hồ Chí Minh với GPA 3.55. Tôi cũng có một năm rưỡi kinh nghiệm làm việc với vai trò Full-stack Software Engineer, bắt đầu từ năm ba đại học.
+>
+> Regarding my professional journey, I began my career as an intern at an outsourcing company, which later became my full-time workplace. After completing my internship, I was offered a full-time position, and I worked there for over a year. During that time, I contributed to several projects in both domestic and international markets. -> Về hành trình nghề nghiệp của mình, tôi bắt đầu sự nghiệp với vị trí thực tập sinh tại một công ty outsourcing, nơi sau đó đã trở thành công ty làm việc chính thức của tôi. Sau khi hoàn thành kỳ thực tập, tôi được mời làm việc toàn thời gian và đã làm việc tại đó hơn một năm. Trong thời gian đó, tôi đã tham gia vào nhiều dự án thuộc cả thị trường trong nước và quốc tế.
+>
+> For projects in the Vietnamese market, I was responsible for developing new features and maintaining the database for the 7A Military Hospital system. In terms of database work, I used SQL to write optimized queries and collaborated with a cross-functional development team from the hospital. For feature development, I used ASP.NET to build a digital signature server that allows doctors to sign medical records legally. -> Đối với các dự án tại thị trường Việt Nam, tôi chịu trách nhiệm phát triển các tính năng mới và bảo trì cơ sở dữ liệu cho hệ thống của Bệnh viện Quân y 7A. Về phần cơ sở dữ liệu, tôi sử dụng SQL để viết các truy vấn tối ưu và phối hợp với đội ngũ phát triển đa chức năng của bệnh viện. Về phát triển tính năng, tôi sử dụng ASP.NET để xây dựng hệ thống chữ ký số giúp các bác sĩ ký hồ sơ bệnh án một cách hợp pháp.
+>
+> For an international project targeting the Israeli market, I worked with a cross-functional team from Israel to develop a fraud detection system based on notifications from platforms such as SMS, Gmail, Messenger, and WhatsApp. In this project, I worked as a Backend Engineer using NestJS, Python, and AWS services such as Cognito, VPC, SNS, SQS, Lambda, and EC2 to detect and process fraudulent messages. -> Đối với dự án quốc tế hướng đến thị trường Israel, tôi đã làm việc với một đội ngũ đa chức năng từ Israel để phát triển hệ thống phát hiện gian lận dựa trên các thông báo từ các nền tảng như SMS, Gmail, Messenger và WhatsApp. Trong dự án này, tôi đảm nhận vai trò Backend Engineer, sử dụng NestJS, Python và các dịch vụ AWS như Cognito, VPC, SNS, SQS, Lambda và EC2 để phát hiện và xử lý các tin nhắn gian lận.
+
+[?] Could you share about your previous company? -> "Bạn có thể chia sẻ về công ty trước đây của bạn không?"
+
+> ""
+
+[?] What is your weakness and strength? -> "Điểm mạnh và điểm yếu của bạn là gì?"
+
+> "Regarding my strength, the clearest thing that I feel about my self is dicipline, more specifically, I have high focus when learning or working on something to solve the problem. meaning that I'll do anything until I have solutions for that problem. For example when I maked a MVP fraud detection system, the SNS and SQS have a problem, there always stuck 600 messages in the queue, and I didn't know where is 600 messages come from after a night. So I focus to find the reason and i noticed that the product owner who sent those messages, but at the time the setup of SNS and SQS wasn't right so it stuck 600 messages in the queue and no way out. Finally, I was successfully find the root cause and fix it before show the MVP to the customer. After this real life example, my decipline is about concentration to find the way to solve the problem. And I think I have 1 more strength is I love to learn new things, new technologies, new domain knowledge because with these knowledges I would have more solutions to solve the problem."
+
+_Phiên bản đã sửa (chuẩn & trôi chảy):_
+
+> Regarding my strengths, the clearest thing that I feel about my self is dicipline. More specifically, I have a strong ability to stay focused when learning or working on a problem, and I persist until I find a solution. -> Về điểm mạnh của tôi, điều rõ ràng nhất mà tôi cảm nhận về bản thân là tính kỷ luật. Cụ thể hơn, tôi có khả năng tập trung cao khi học hoặc làm việc để giải quyết một vấn đề, và tôi luôn kiên trì cho đến khi tìm ra giải pháp.
+>
+> For example, when I was developing an MVP for a fraud detection system, I encountered an issue with SNS and SQS, where around 600 messages were stuck in the queue. I didn’t initially know where those messages came from, so I focused on investigating the issue. Eventually, I discovered that the messages were sent by the product owner, but due to an incorrect configuration of SNS and SQS, they got stuck in the queue with no way to be processed. -> Ví dụ, khi tôi phát triển một MVP cho hệ thống phát hiện gian lận, tôi đã gặp một vấn đề với SNS và SQS, khi có khoảng 600 tin nhắn bị kẹt trong hàng đợi. Ban đầu tôi không biết những tin nhắn đó đến từ đâu, nên tôi đã tập trung điều tra vấn đề. Cuối cùng, tôi phát hiện ra rằng các tin nhắn được gửi bởi product owner, nhưng do cấu hình SNS và SQS chưa đúng nên chúng bị kẹt trong hàng đợi và không thể được xử lý.
+>
+> After identifying the root cause, I was able to fix the issue before presenting the MVP to the customer. This experience reflects my dicipline and persistence in problem-solving. -> Sau khi xác định được nguyên nhân gốc rễ, tôi đã có thể khắc phục sự cố trước khi trình bày MVP cho khách hàng. Trải nghiệm này thể hiện tính kỷ luật và sự kiên trì của tôi trong việc giải quyết vấn đề.
+>
+> Another strength of mine is my willingness to learn. I enjoy exploring new technologies and domain knowledge, which helps me expand my skill set and approach problems from different perspectives to enhance problem-solving skill. -> Một điểm mạnh khác của tôi là tinh thần ham học hỏi. Tôi thích khám phá các công nghệ mới và kiến thức trong các lĩnh vực khác nhau, điều này giúp tôi mở rộng kỹ năng và tiếp cận vấn đề từ nhiều góc nhìn khác nhau.
+
+[?] Why did you leave your previous company? -> "Tại sao bạn rời công ty trước?"
+
+> "Honestly, I would not have left my previous company because at that time was my final year and I need to complete my graduation project so I had to quit to focus on that. After I had completed, I was going to find new opportunity at the new environment to challenge my self, to learn more, and to grow up more that why I was here."
+
+[?] Why you are interested in our company? -> "Tại sao bạn quan tâm đến công ty chúng tôi?"
+
+> ""
+
+[?] Describe a complex technical problem you faced. How did you identify the root cause and what was your solution? -> "Hãy mô tả một vấn đề kỹ thuật phức tạp mà bạn từng gặp. Bạn đã xác định nguyên nhân gốc rễ như thế nào và giải pháp của bạn là gì?"
+
+> "In the past, I was working on a project which was a fraud detection system, at the time, we was using tech stack such as NestJS, python, AWS services like SQS and SNS. The summary about this project is we collect data which is messages from many platforms like SMS, Gmail, Whatsapp and more. After that, we process the data to Python service through SQS, SNS then Python service will predict the messages whether is a fraud or not. The issue that I encountered is when after a night, there was 600 messages were stuck in the queue and no way out. At the time, I was new in AWS services and SST which is working as Infrastructure as a Code. So I tried to find out the root cause which was where thoese 600 messages came from. Finally I found the reason that the product owner who sent those messages after a night because we have different time zone and his phone receiced a lot of messages from many platform that why there was 600 messages. After I found the reason, I try to find way to fix it. With 600 messages and no way out so it cost AWS services a lot of money. So first thing I did is I clear all messages in queue so it did not consume our money then I fix the SNS and SQS configuration again. After that I check the process flow again, enventually, everything was worked perfectly."
+
+_fix gramma:_
+
+> "In the past, I was working on a project that was a fraud detection system. At the time, we were using tech stack such as NestJS, Python, and AWS services like SQS and SNS. The summary about this project is we collect data, which are messages from many platforms like SMS, Gmail, WhatsApp, and more. After that, we process the data to the Python service through SQS and SNS, and then the Python service will predict whether the messages are a fraud or not. The issue that I encountered is that after a night, there were 600 messages stuck in the queue with no way out. At the time, I was new in AWS services and SST, which is working as infrastructure as Code. So I tried to find out the root cause, which was where those 600 messages came from. Finally, I found the reason that the product owner sent those messages after a night: because we have different time zones, and his phone received a lot of messages from many platforms. That's why there were 600 messages. After I found the reason, I tried to find a way to fix it first. With 600 messages and no way out, it cost AWS services a lot of money. So the first thing I did was I cleared all messages in the queue so it did not consume our money, and then I fixed the SNS and SQS configuration again. After that I checked the process flow again; eventually, everything worked perfectly."
+
+_Phiên bản đã sửa (chuẩn & trôi chảy):_
+
+> "In the past, I worked on a fraud detection system. At that time, we used technologies such as NestJS, Python, and AWS services like SQS and SNS.
+>
+> In this project, we collected data in the form of messages from various platforms such as SMS, Gmail, and WhatsApp. The data was then processed through SQS and SNS and sent to a Python service, which predicted whether the messages were fraudulent or not.
+>
+> The issue I encountered was that, after one night, around 600 messages were stuck in the queue with no way to be processed. At that time, I was still new to AWS services and SST, which is used as Infrastructure as Code.
+>
+> I began investigating the root cause by tracing where those messages came from. Eventually, I discovered that they were sent by the product owner. Due to the time zone difference, his phone received a large number of messages overnight, which led to the accumulation of 600 messages in the queue.
+>
+> After identifying the root cause, I focused on resolving the issue. Since the large number of messages was increasing AWS costs, I first cleared all the messages in the queue to prevent unnecessary expenses. Then, I corrected the SNS and SQS configuration. After that, I reviewed the entire processing flow, and eventually, everything worked as expected."
+
+[?] "Tell me about a project you are most proud of. What role did you play, and what was the impact of your work?" -> "Hãy kể về một dự án mà bạn tự hào nhất. Bạn đóng vai trò gì và công việc của bạn đã mang lại tác động như thế nào?"
+
+> "About my most proud project, I think it is the time I worked on the 7A military project. At that time, I joined to maintain the project. At the beginning, I collaborated with developers from hospital to understand about the project and fix some issues. One of their problem is the system quite slow on the Monday and some days have high patients. I tried to explore their database and found that some tables didn't index table correctly and some SQL queries were not optimized. So I went to the hospital and asked doctors what features or what problems they have due with the slow system. After I understood user's problem, I suggested some solutions for them. The first solution is optimized index that is only using nescessary indexes and use composition of indexes instead of many single indexes on a table. The second solution is optimize some SQL queries, I used execution plan to evaluate and rewrite those queries. After all, I reduce around 90% of query time and I had good feedback from doctors. The second thing that I proud on this project is I developed a new feature to adapt the goverment requirement which is all electric records must have legal signature from the doctors, we call it Digital Signature. So I developed a new API for that feature. I read document from the goverment to use their private key to sign the medical record for the doctor and then save to the database. When the doctors plug their USB where contains the private key - the digital signature so the can sign the medical record."
+
+_fix gramma:_
+
+> "About my most proud project, I think it was the time I worked on the 7A military project. At that time, I joined to maintain the project. At the beginning, I collaborated with developers from the hospital to understand the project and fix some issues. One of their problems is the system is quite slow on some days have many patients. I tried to explore their database and found that some tables didn't index tables correctly and some SQL queries were not optimized. So I went to the hospital and asked doctors what features or what problems they have with the slow system. After I understood the user's problem, I suggested some solutions for them. The first solution is an optimized index that is only using necessary indexes and uses a composition of indexes instead of many single indexes on a table. The second solution is to optimize some SQL queries. I used the execution plan to evaluate and rewrite those queries. After all, I reduced around 90% of query time, and I had good feedback from doctors. The second thing that I am proud of in this project is that I developed a new feature to adapt to the government requirement that all electronic records must have a legal signature from the doctors; we call it "Digital Signature," so I developed a new API for that feature. I read a document from the government to use their private key to sign the medical record for the doctor and then save it to the database. When the doctors plug in their USB, it contains the private key—the digital signature—so they can sign the medical record."
+
+_Phiên bản đã sửa (chuẩn & trôi chảy):_
+
+> Regarding the project I am most proud of, I would say it was when I worked on the 7A Military Hospital system. At that time, I joined the team to maintain the project.
+>
+> At the beginning, I collaborated with developers from the hospital to understand the system and fix several issues. One of the main problems was that the system became quite slow on Mondays and other days with a high number of patients.
+>
+> I investigated the database and found that some tables were not properly indexed, and several SQL queries were not optimized. To better understand the impact, I visited the hospital and spoke with doctors to learn about the issues they experienced due to the slow system.
+>
+> After understanding the users’ problems, I proposed several solutions. First, I optimized the indexing strategy by using only necessary indexes and applying composite indexes instead of multiple single-column indexes. Second, I optimized SQL queries by analyzing execution plans and rewriting inefficient queries.
+>
+> As a result, I reduced query execution time by approximately 90%, and I received positive feedback from the doctors.
+>
+> Another achievement I am proud of in this project was developing a new feature to meet government requirements, where all electronic medical records must include a legal digital signature from doctors. I developed an API to support this feature.
+>
+> I studied the government documentation to correctly use the doctors’ private keys for signing medical records and storing them securely in the database. When doctors plug in their USB devices containing the private keys, they can digitally sign the medical records in compliance with regulations.
+
+_STAR:_
+
+**Situation (Tình huống)**
+
+> I worked on a hospital management system for the 7A Military Hospital, where the system performance was quite slow, especially on peak days with a high number of patients. This significantly affected doctors’ ability to use the system efficiently.
+
+**Task (Nhiệm vụ)**
+
+> My responsibility was to maintain the system, identify the root causes of the performance issues, and improve overall system performance to ensure a better user experience for doctors.
+
+**Action (Hành động)**
+
+> To address the issue, I first analyzed the database and found that several tables were not properly indexed, and many SQL queries were inefficient.
+>
+> I also visited the hospital to speak directly with doctors and better understand the real impact of the slow system.
+>
+> Based on my findings, I optimized the indexing strategy by removing unnecessary indexes and implementing composite indexes. I also analyzed execution plans and rewrote inefficient SQL queries to improve performance.
+>
+> In addition, I developed a new feature to comply with government regulations, which required all electronic medical records to have legal digital signatures. I built an API that allows doctors to sign records using their private keys stored on USB devices.
+
+**Result (Kết quả)**
+
+> As a result, I reduced query execution time by approximately 90%, significantly improving system performance. The doctors gave very positive feedback, and the system became much more efficient during peak hours.
+>
+> The digital signature feature was also successfully implemented, ensuring compliance with government requirements.
+
+[?] "Why are you interested in joining our team, and how do you think your values align with our company culture?" -> "Tại sao bạn quan tâm đến việc gia nhập đội ngũ của chúng tôi, và bạn nghĩ những giá trị của mình phù hợp với văn hóa công ty của chúng tôi như thế nào?"
+
+> ""
+
+[?] Describe a time when you had a disagreement with a team member or manager. How did you resolve it? -> "Hãy mô tả một lần bạn có bất đồng với đồng nghiệp hoặc quản lý. Bạn đã giải quyết vấn đề đó như thế nào?"
+
+_STAR:_
+**Situation (Tình huống)**
+
+> "The sistuation was my company have a new project. At the first time, I didn't join yet, the project was initially created by 2 developers and their main role is Frontend and Mobile but they are using AI to generate the architecture, at that time, we used NestJS for Backend service. Then I joined the project, the project was already in 2 weeks, the architecture they created was not good and it was hard to read and maintain for later. As a backend engineer, I have experience a lot of backend project, architecture, design pattern and best pratices. So I decided to tell the CEO and 2 members about the architecture they created was by AI are not good, AI not has base instructions if the project will hard to maintain even AI can't help us because enventually, AI is not responsible for any problems and bugs. At the first time, the CEO has disagree to let me refactor project, he said we have no time because we just have 2 weeks remain to deliver MVP and 2 developers have the same point of view but after I show them the problem with example code in project they understand what I going to do so the CEO allow me to refactor project."
+
+_fix:_
+
+_final:_
+
+> The situation was that my company had a new project. Initially, I was not part of the team. The project had been started by two developers who mainly focused on frontend and mobile development, and they used AI to generate the system architecture. At that time, we were using NestJS for the backend.
+>
+> When I joined the project after about two weeks, I found that the architecture was poorly structured and difficult to read and maintain. As a backend engineer with experience in system design and best practices, I recognized that this could cause serious issues in the long term.
+>
+> I raised my concerns to the CEO and the two developers, explaining that the AI-generated architecture lacked proper structure and maintainability. I also pointed out that AI cannot take responsibility for bugs or long-term issues.
+
+**Task (Nhiệm vụ)**
+
+> "My task at that time was collaborated with them and delivered MVP for that project."
+
+_final:_
+
+> "My task was to collaborate with the team and ensure that we could still deliver the MVP on time while improving the system quality."
+
+**Action (Hành động)**
+
+> "After I get approval from CEO, I refactor the architecture that AI can follows and generate new features base on the instructuions"
+
+_final:_
+
+> "After discussing with the team and demonstrating specific problems in the codebase, I convinced the CEO to allow me to refactor the architecture.
+>
+> I redesigned the backend structure following best practices and created clear guidelines so that AI could generate code more effectively based on those instructions."
+
+**Result (Kết quả)**
+
+> "After all, the project was successfully delivered and the MVP was released on time. And the client was very satisfied with the product and just give feedbacks on some business logic but eventually, my teamates admit that they with my new architecture and AI instructions they use AI to generate code more easy and release new features much faster than before."
+
+_final:_
+
+> As a result, we successfully delivered the MVP on time, and the client was satisfied with the product. They only provided minor feedback related to business logic.
+>
+> More importantly, my teammates later acknowledged that with the improved architecture and clear AI instructions, they were able to use AI more effectively, develop features faster, and maintain the system more easily.
+
+[?] Tell me about a time you made a mistake or failed to meet an expectation. How did you handle the aftermath and what did you learn? -> "Hãy kể về một lần bạn mắc sai lầm hoặc không đạt được kỳ vọng. Bạn đã xử lý hậu quả như thế nào và rút ra được bài học gì?"
+
+> "delete SST"
+
+[?] Why do you believe you are the best fit for this position compared to other candidates? -> "Tại sao bạn tin rằng mình là ứng viên phù hợp nhất cho vị trí này so với những ứng viên khác?"
+
+> "In my opinion, anyone can be fit this position but I know that you pay for me to solve your problems, I use my abilities and experience combine with my strengths which are discipline and high ability to adapt, I belive that Im a potential candidate for this position and I want to contribute my value to your company"
+
+_fix:_
+
+> "In my opinion, many candidates can be a good fit for this position. However, I understand that you are looking for someone who can solve your problems. With my abilities and experience, combined with my strengths such as discipline and adaptability, I believe I am a strong candidate for this role and can contribute value to your company."
+
+_final:_
+
+> I believe many candidates may be qualified for this position, but what differentiates me is my ability to solve problems effectively. With my experience, discipline, and strong adaptability, I am confident that I can contribute meaningful value to your team.
