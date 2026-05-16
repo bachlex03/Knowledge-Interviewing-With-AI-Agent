@@ -36,11 +36,11 @@ _Bị động_
 
 - Diễn tả một sự việc, một hành động diễn ra ở hiện tại. **HIGH**
 
-> "I use my laptop for my study and my job. I also use it for entertainment. In short, I use my laptop for everything."
+> "I use my laptop for my study and my job. I also use it for entertainment. In short, I use my laptop for everything." - "Tôi dùng laptop cho việc học và công việc. Tôi cũng dùng nó để giải trí. Tóm lại, tôi dùng laptop cho mọi thứ."
 
 - Diễn tả thói quen, hành động lặp đi lặp lại. **HIGH**
 
-> "I often go to the gym after work to stay fit. It helps me relieve stress and keep my mind clear. On weekends, I usually go for long runs in the park."
+> "I often go to the gym after work to stay fit. It helps me _relieve_ stress and keep my mind clear. On weekends, I usually go for long runs in the park." - "Tôi thường đi tập gym sau giờ làm để giữ dáng. Nó giúp tôi giảm căng thẳng và đầu óc minh mẫn. Cuối tuần, tôi thường chạy bộ dài trong công viên."
 
 - Diễn tả sự thật hiển nhiên, chân lý. **HIGH**
 
@@ -100,7 +100,7 @@ _Bị động_
 
 > "I have just finished my report"
 > "She has just called me"
-> "The goverment has just announced a new policy, which has attracted a lot of public attention and sparked discussions across the country." -> "Chính phủ vừa công bố một chính sách mới, điều này đã thu hút rất nhiều sự chú ý của công chúng và gây ra các cuộc thảo luận trên khắp cả nước."
+> "The government has just announced a new policy, which has attracted a lot of public attention and _sparked_ discussions across the country." -> "Chính phủ vừa công bố một chính sách mới, điều này đã thu hút rất nhiều sự chú ý của công chúng và gây ra các cuộc thảo luận trên khắp cả nước."
 
 - Kết quả còn ảnh hưởng đến hiện tại (trạng thái hiện tại, cảm xúc hiện tại). **HIGH**
 
@@ -148,13 +148,13 @@ _Bị động:_
 - Giải thích cho trạng thái hiện tại **HIGH**
 
 > "She has been feeling tired lately"
-> "I have been working non-stop for the past few days, which is why I feel extremely tired and can't concentrate properly right now." -> "Tôi đã làm việc không ngừng nghỉ trong vài ngày qua, nên bây giờ tôi cảm thấy cực kỳ mệt mỏi và không thể tập trung hiệu quả được."
+> "I have been working non-stop for the past few days, which is why I feel extremely tired and can't concentrate _properly_ right now." -> "Tôi đã làm việc không ngừng nghỉ trong vài ngày qua, nên bây giờ tôi cảm thấy cực kỳ mệt mỏi và không thể tập trung _một cách hiệu quả_ được."
 
 - Chia sẽ một việc đang diễn ra liên tục **HIGH**
 
 > "I have been working on this project for three weeks"
 > "We have been waiting for the bus for 30 minutes"
-> "I have been learning English day by day by watching English video, practice speaking, and reviewing vocabularies, so I have been making steady progress over time." -> "Tôi học tiếng Anh hàng ngày bằng cách xem video, luyện nói và ôn lại từ vựng nên tôi đã tiến bộ đều đặn theo thời gian."
+> "I’ve been improving my English day by day by watching English videos, practicing speaking, and reviewing vocabulary, so I’ve made steady progress over time" -> "Tôi đã cải thiện tiếng Anh của mình từng ngày bằng cách xem video tiếng Anh, luyện nói và ôn lại từ vựng, vì vậy tôi đã có sự tiến bộ đều đặn theo thời gian."
 
 - (phủ định) than thở hoặc giải thích vấn đề **HIGH**
 
@@ -694,3 +694,203 @@ _fix:_
 _final:_
 
 > I believe many candidates may be qualified for this position, but what differentiates me is my ability to solve problems effectively. With my experience, discipline, and strong adaptability, I am confident that I can contribute meaningful value to your team.
+
+## Chunks
+
+> "Morning, how it's going mate ?" -> "Chào buổi sáng, mọi chuyện ổn cả chứ bạn ?"
+> "pretty good, just having some breakfast" -> "khá tốt, chỉ đang ăn sáng thôi"
+> "Sorry, I did not know that" -> "Xin lỗi, tôi không biết điều đó"
+> "The moment this finishes, can I leave?" -> "ngay khi việc này kết thúc, tôi có thể về được không ?"
+> "Mate if you're just taking some photos and you're extremely polite, young fella, you're welcome. _I thought you were probably_ a hunter so you are good mate." -> "Bạn thân mến, nếu bạn chỉ chụp ảnh và rất lịch sự, chàng trai trẻ à, bạn được hoan nghênh. Tôi đã nghĩ bạn có lẽ là một thợ săn nên bạn không sao đâu bạn thân mến."
+> "The most legendary call ever made" -> "Cuộc gọi huyền thoại nhất từng được tạo ra"
+
+
+### Scenario: At Home
+> "I just woke up" -> "Tôi vừa mới thức dậy"
+> "I'm still a little sleepy" -> "Tôi vẫn còn hơi buồn ngủ"
+> "I need to take a shower" -> "Tôi cần đi tắm"
+> "I'm making some coffee" -> "Tôi đang pha cà phê"
+> "The house is really quite" -> "Căn nhà thật sự yên tĩnh"
+> "I'm just relaxing at home" -> "Tôi chỉ đang thư giãn ở nhà"
+> "I'm watching Youtube for a while" -> "Tôi xem Youtube một lúc"
+> "I need to clean my room" -> "Tôi cần dọn phòng"
+> "I'm getting ready for bed" -> "Tôi đang chuẩn bị đi ngủ"
+> "I thought It was only 4 PM" -> "Tôi nghĩ mới có 4 giờ chiều"
+
+#### Mini pattern bạn nên nhớ
+_“I’m + V-ing”_
+> I’m cooking. -> Tôi đang nấu ăn.
+> I’m studying. -> Tôi đang học.
+> I’m watching TV. -> Tôi đang xem TV.
+> I’m cleaning my room. -> Tôi đang dọn phòng.
+
+_“I need to + verb”_
+> I need to sleep. -> Tôi cần đi ngủ.
+> I need to work. -> Tôi cần làm việc.
+> I need to eat something. -> Tôi cần ăn gì đó.
+
+_“for a while”_
+> I’ll rest for a while. -> Tôi sẽ nghỉ một lúc.
+> I watched TV for a while. -> Tôi đã xem TV một lúc.
+
+_1. “I’m used to + N/V-ing”_
+
+= tôi quen với việc gì đó
+
+> I’m used to working late. -> Tôi quen với việc làm muộn.
+> I’m used to this weather. -> Tôi quen với thời tiết này.
+> I’m used to speaking English now. -> Tôi quen với việc nói tiếng Anh bây giờ.
+
+⚠️ Không dùng:
+❌ used to work
+✅ used to working
+
+Vì “to” ở đây là giới từ.
+
+_2. “I’m trying to + verb”_
+
+= tôi đang cố gắng
+
+> I’m trying to improve my English. -> Tôi đang cố gắng cải thiện tiếng Anh của mình.
+> I’m trying to sleep earlier. -> Tôi đang cố gắng ngủ sớm hơn.
+> I’m trying to stay focused. -> Tôi đang cố gắng tập trung.
+
+Chunk này cực hay trong IELTS Speaking.
+
+_3. “I ended up + V-ing”_
+
+= cuối cùng lại…
+
+> I ended up staying home. -> Cuối cùng tôi đã ở nhà.
+> I ended up buying it. -> Cuối cùng tôi đã mua nó.
+> I ended up working all night. -> Cuối cùng tôi đã thức cả đêm để làm việc.
+
+_4. “I feel like + V-ing”_
+
+= tôi cảm thấy muốn…
+
+> I feel like sleeping. -> Tôi cảm thấy muốn đi ngủ.
+> I feel like eating something. -> Tôi cảm thấy muốn ăn gì đó.
+> I don’t feel like talking. -> Tôi không cảm thấy muốn nói.
+
+_5. “There’s no point in + V-ing”_
+
+= chẳng có ích gì khi…
+
+> There’s no point in arguing. -> Chẳng có ích gì khi tranh luận.
+> There’s no point in worrying. -> Chẳng có ích gì khi lo lắng.
+> There’s no point in rushing. -> Chẳng có ích gì khi vội vàng.
+
+_6. “I’m not really into + N/V-ing”_
+
+= tôi không thật sự thích
+
+> I’m not really into sports. -> Tôi không thật sự thích thể thao.
+> I’m not really into partying. -> Tôi không thật sự thích tiệc tùng.
+> I’m not really into horror movies. -> Tôi không thật sự thích phim kinh dị.
+
+Native dùng rất nhiều.
+
+_7. “It depends on + noun”_
+
+= còn tùy vào…
+
+> It depends on the situation. -> Còn tùy thuộc vào tình hình.
+> It depends on my mood. -> Còn tùy thuộc vào tâm trạng của tôi.
+> It depends on the weather. -> Còn tùy thuộc vào thời tiết.
+
+_8. “I’d rather + verb”_
+
+= tôi thích… hơn
+
+> I’d rather stay home. -> Tôi thích ở nhà hơn.
+> I’d rather work alone. -> Tôi thích làm việc một mình hơn.
+> I’d rather not talk about it. -> Tôi thà không nói về nó.
+
+_9. “I can’t help + V-ing”_
+
+= không thể ngừng / không cưỡng lại được
+
+> I can’t help laughing. -> Tôi không thể ngừng cười.
+> I can’t help thinking about it. -> Tôi không thể ngừng nghĩ về điều đó.
+> I can’t help worrying. -> Tôi không thể ngừng lo lắng.
+
+_10. “The thing is…”_
+
+= vấn đề là…
+
+Chunk mở đầu cực tự nhiên.
+
+> The thing is, I’m really busy these days. -> Vấn đề là dạo này tôi bận lắm.
+> The thing is, I don’t have much experience yet. -> Vấn đề là tôi chưa có nhiều kinh nghiệm.
+
+_11. “To be honest…”_
+
+= thật lòng mà nói
+
+> To be honest, I was nervous. -> Thật lòng mà nói, tôi đã lo lắng.
+> To be honest, I didn’t enjoy it much. -> Thật lòng mà nói, tôi không thích nó lắm.
+
+IELTS Speaking dùng rất nhiều.
+
+_12. “At the end of the day…”_
+
+= sau tất cả / cuối cùng thì
+
+> At the end of the day, experience matters most. -> Sau tất cả thì kinh nghiệm là quan trọng nhất.
+> At the end of the day, it’s your decision. -> Sau tất cả thì đó là quyết định của bạn.
+
+_13. “I’ve been + V-ing lately”_
+
+= dạo gần đây tôi đã…
+
+> I’ve been studying a lot lately. -> Dạo gần đây tôi đã học rất nhiều.
+> I’ve been feeling tired lately. -> Dạo gần đây tôi đã cảm thấy mệt.
+
+_14. “I’m kind of + adj”_
+
+= kiểu hơi…
+
+> I’m kind of tired. -> Tôi kiểu hơi mệt.
+> I’m kind of nervous. -> Tôi kiểu hơi lo lắng.
+> I’m kind of hungry. -> Tôi kiểu hơi đói.
+
+_15. “That makes sense.”_
+
+= nghe hợp lý đấy
+
+> Oh, that makes sense. -> Ồ, nghe hợp lý đấy.
+> Yeah, that actually makes sense. -> Vâng, điều đó thực sự hợp lý.
+
+_16. “You know what I mean?”_
+
+= hiểu ý tôi không?
+
+> It just feels weird, you know what I mean? -> Nó cứ kỳ kỳ thế nào ấy, hiểu ý tôi không?
+
+_17. “I’m looking forward to + V-ing”_
+
+= mong chờ
+
+> I’m looking forward to meeting you. -> Tôi mong được gặp bạn.
+> I’m looking forward to the trip. -> Tôi mong chờ chuyến đi.
+
+_18. “It turns out that…”_
+
+= hóa ra là…
+
+> It turns out that he was right. -> Hóa ra anh ấy đã đúng.
+> It turns out that the job was really difficult. -> Hóa ra công việc đó thực sự khó khăn.
+
+_19. “As far as I know…”_
+
+= theo như tôi biết
+
+> As far as I know, the project is still ongoing. -> Theo như tôi biết, dự án vẫn đang tiếp diễn.
+
+_20. “I have no idea.”_
+
+= tôi không biết chút nào
+
+> I have no idea what happened. -> Tôi không biết chuyện gì đã xảy ra.
+> I have no idea how to fix this. -> Tôi không biết làm sao để sửa cái này.
